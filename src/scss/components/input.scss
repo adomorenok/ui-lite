@@ -1,0 +1,55 @@
+.ul-input-container {
+	display: inline-block;
+	padding-top: $input-padding-top;
+	padding-bottom: $input-padding-bottom;
+	position: relative;
+
+	.ul-input {
+		border: 0px;
+		width: 100%;
+		border-bottom: 1px solid rgba(0,0,0,.12);
+	}
+
+	.ul-label {
+		position: absolute;
+		top: $label-top;
+		bottom: 0px;
+    	left: 0px;
+    	right: 0px;
+		width: 100%;
+		cursor: text;
+		transition-duration: .2s;
+		transition-timing-function: cubic-bezier(.4,0,.2,1);
+	}
+
+	.ul-label:after {
+		background-color: $input-border-color;
+	    bottom: $label-top;
+	    content: '';
+	    height: 2px;
+	    left: 49%;
+	    position: absolute;
+	    transition-duration: .2s;
+	    transition-timing-function: cubic-bezier(.4,0,.2,1);
+	    visibility: hidden;
+	    width: 1px;
+	}
+}
+
+.ul-on-focus {
+	.ul-input {
+		outline: none;
+	}
+
+	.ul-label:after {
+		left: 0;
+		visibility: visible;
+		width: 100%;
+	}
+}
+
+.ul-has-value, .ul-on-focus {
+	.ul-label {
+		top: 0px;
+	}
+}

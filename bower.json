@@ -1,0 +1,21 @@
+{
+  "name": "ui-lite",
+  "description": "ui-lite",
+  "version": "0.0.1",
+  "main": "app.js",
+  "authors": [
+    "adomorenok"
+  ],
+  "license": "BSD-2-Clause",
+  "moduleType": [],
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+  }
+}

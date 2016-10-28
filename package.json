@@ -1,0 +1,29 @@
+{
+  "name": "ui-lite",
+  "version": "0.0.1",
+  "description": "ui-lite",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "adomorenok",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bower": "",
+    "gulp-concat": "",
+    "gulp-install": "~0.6.0",
+    "gulp-jshint": "",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.4.0",
+    "jshint-stylish": "",
+    "merge-stream": "",
+    "gulp-cssmin": "",
+    "gulp-rename": ""
+  },
+  "dependencies": {
+    "gulp-install": "~0.6.0"
+  }
+}

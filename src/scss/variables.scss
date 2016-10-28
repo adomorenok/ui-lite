@@ -1,0 +1,14 @@
+$input-padding-top: 16px;
+$input-padding-bottom: $input-padding-top;
+$label-top: $input-padding-top;
+
+$base-color: #3f51b5;
+$active-color: #5C6BC0;
+$text-color: rgba(0,0,0,.54);
+$text-alternative-color: #FFFFFF;
+
+$input-border-color: $base-color;
+
+$button-default-color: $base-color;
+$button-hover-color: $active-color;
+$button-animate-opacity: 0.3;

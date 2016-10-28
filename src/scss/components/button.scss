@@ -1,0 +1,57 @@
+.ul-bnt {
+	min-width: 60px;
+	min-height: 36px;
+	background: $button-default-color;
+	color: $text-alternative-color;
+	display: inline-block;
+	position: relative;
+	border: 0px;
+	border-radius: 3px;
+	line-height: 2;
+    text-align: center;
+    text-decoration: blink;
+    cursor: pointer;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
+
+    .ul-btn-ripple-container {
+    	display: block;
+	    height: 100%;
+	    left: 0;
+	    position: absolute;
+	    top: 0;
+	    width: 100%;
+	    overflow: hidden;
+
+	    .ul-ripple {
+	    	border-radius: 50%;
+	    	left: 0;
+		    opacity: 0;
+		    pointer-events: none;
+		    position: absolute;
+		    top: 0;
+		    overflow: hidden;
+		    background: #fff;
+		    z-index: 0;
+	    }
+
+	    .ui-animate {
+			transition: transform .3s cubic-bezier(0,0,.2,1),
+						width .3s cubic-bezier(0,0,.2,1),
+						height .3s cubic-bezier(0,0,.2,1),
+						opacity .6s cubic-bezier(0,0,.2,1),
+						-webkit-transform .3s cubic-bezier(0,0,.2,1);
+	    }
+
+	    .ul-ripple.ul-visible {
+	    	opacity: 0.2;
+	    }
+    }
+}
+
+.ul-bnt:hover {
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+}
+
+.ul-bnt1:active {
+	background: $button-hover-color;
+}
