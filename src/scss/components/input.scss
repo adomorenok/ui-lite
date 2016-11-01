@@ -1,16 +1,20 @@
-.ul-input-container {
+.ui-input-container {
 	display: inline-block;
 	padding-top: $input-padding-top;
 	padding-bottom: $input-padding-bottom;
 	position: relative;
+	font-family: Arial;
+    font-size: 1em;
 
-	.ul-input {
+	.ui-input {
 		border: 0px;
 		width: 100%;
 		border-bottom: 1px solid rgba(0,0,0,.12);
+		font-family: Arial;
+    	font-size: 1em;
 	}
 
-	.ul-label {
+	.ui-label {
 		position: absolute;
 		top: $label-top;
 		bottom: 0px;
@@ -22,7 +26,7 @@
 		transition-timing-function: cubic-bezier(.4,0,.2,1);
 	}
 
-	.ul-label:after {
+	.ui-label:after {
 		background-color: $input-border-color;
 	    bottom: $label-top;
 	    content: '';
@@ -36,20 +40,20 @@
 	}
 }
 
-.ul-on-focus {
-	.ul-input {
+.ui-on-focus {
+	.ui-input {
 		outline: none;
 	}
 
-	.ul-label:after {
+	.ui-label:after {
 		left: 0;
 		visibility: visible;
 		width: 100%;
 	}
 }
 
-.ul-has-value, .ul-on-focus {
-	.ul-label {
+.ui-has-value, .ui-on-focus {
+	.ui-label {
 		top: 0px;
 	}
 }

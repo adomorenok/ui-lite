@@ -1,27 +1,31 @@
 (function() {
   	'use strict';
 
-	function addRipleEffect(btn) {
+  	var UiButton = function UiButton(element) {
+  		this.init(element);
+  	};
+
+	UiButton.prototype.addRipleEffect = function (btn) {
 		var span = document.createElement('span');
-		span.classList.add('ul-btn-ripple-container');
+		span.classList.add('ui-btn-ripple-container');
 
 		var spanRipple = document.createElement('span');
-		spanRipple.classList.add('ul-ripple');
+		spanRipple.classList.add('ui-ripple');
 		span.appendChild(spanRipple);
 		btn.appendChild(span);
-	}
+	};
 
-	function findRipple(clidNodes) {
+	UiButton.prototype.findRipple = function (clidNodes) {
 		for (var j = 0; j < clidNodes.length; j++) {
-			if (clidNodes[j].classList && clidNodes[j].classList.contains('ul-btn-ripple-container')) {
+			if (clidNodes[j].classList && clidNodes[j].classList.contains('ui-btn-ripple-container')) {
 				return clidNodes[j].childNodes[0];
 			}
 		}
-	}
+	};
 
-	function mouseDown(e) {
+	UiButton.prototype.mouseDown = function (e) {
 		var btn = e.currentTarget,
-			ripple = findRipple(btn.childNodes);
+			ripple = btn.ui.findRipple(btn.childNodes);
 		
 		if (!ripple) {
 			return;
@@ -40,7 +44,7 @@
 		var scale = 'scale(0.0001, 0.0001) ';
 		var offset = 'translate(' + e.offsetX + 'px, ' + e.offsetY + 'px) ';
 
-		ripple.classList.add('ul-visible');
+		ripple.classList.add('ui-visible');
 		ripple.style.transform = 'translate(-50%, -50%) ' + offset + scale;
 		
 		setTimeout(function() {	
@@ -49,25 +53,29 @@
 		setTimeout(function() {
 			ripple.style.transform = 'translate(-50%, -50%) ' + offset;
 		}, 100);
-	}
+	};
 
-	function mouseUp(e) {
+	UiButton.prototype.mouseUp = function (e) {
 		var btn = e.currentTarget,
-			ripple = findRipple(btn.childNodes);
+			ripple = btn.ui.findRipple(btn.childNodes);
 		
 		if (ripple) {
-			ripple.classList.remove('ul-visible');
+			ripple.classList.remove('ui-visible');
 		}
-	}
+	};
 
-	function init(btn) {
-		addRipleEffect(btn);
-		btn.onmousedown = mouseDown;
-		btn.onmouseleave = btn.onmouseup = mouseUp;
-	}
+	UiButton.prototype.init = function (btn) {
+		btn.ui = this;
 
-	ul.button = {
-		init: init
-	}
+		this.addRipleEffect(btn);
+
+		btn.addEventListener('mousedown', this.mouseDown);
+		btn.addEventListener('mouseup', this.mouseUp);
+		btn.addEventListener('mouseout', this.mouseUp);
+		
+	};
+
+	ui.register(UiButton, 'ui-btn', 'button');
+	ui.button = UiButton;
 
 })();

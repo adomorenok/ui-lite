@@ -1,61 +1,68 @@
 (function () {
+  'use strict';
+  
+  	var UiInput = function UiInput(element) {
+  		this.init(element);
+  	};
 
-	function checkValue(input) {
+	UiInput.prototype.checkValue = function (input) {
 		var parent = input.parentElement;
 
 		if (input.value) { 
-			parent.classList.add('ul-has-value');
+			parent.classList.add('ui-has-value');
 		} else {
-			parent.classList.remove('ul-has-value');
+			parent.classList.remove('ui-has-value');
 		}
-	}
+	};
 
-	function onfocus(e) {
+	UiInput.prototype.onfocus = function (e) {
 		var parent = e.target.parentElement;
-		parent.classList.add('ul-on-focus');
-	}
+		parent.classList.add('ui-on-focus');
+	};
 
-	function onblur(e) {
+	UiInput.prototype.onblur = function (e) {
 		var input = e.target
 			parent = input.parentElement;
-		parent.classList.remove('ul-on-focus');
+		parent.classList.remove('ui-on-focus');
 
-		checkValue(input);
-	}
+		this.ui.checkValue(input);
+	};
 
-	function getLabel(input) {
+	UiInput.prototype.getLabel = function (input) {
 		var label = input.previousElementSibling;
 
-		if (label && label.classList && label.classList.contains('ul-label')) {
+		if (label && label.classList && label.classList.contains('ui-label')) {
 			return label;
 		}
 
 		label = input.nextElementSibling;
 
-		if (label && label.classList && label.classList.contains('ul-label')) {
+		if (label && label.classList && label.classList.contains('ui-label')) {
 			return label;
 		}
 
 		return null;
-	}
+	};
 
-	function init(input) {
-		checkValue(input);
+	UiInput.prototype.init = function (input) {
+		input.ui = this;
+		
+		this.checkValue(input);
 
-		input.onfocus = onfocus;
-		input.onblur = onblur;
+		input.addEventListener('focus', this.onfocus);
+		input.addEventListener('blur', this.onblur);
 
-		var label = getLabel(input);
+		var label = this.getLabel(input);
 
 		if (label) {
-			label.onclick = function () {
+			label.addEventListener('click', function () {
 				input.focus();
-			};
+				input.value = input.value;
+			});
 		}
-	}
-
-	ul.input = {
-		init: init
 	};
+
+	ui.register(UiInput, 'ui-input', 'input');
+	ui.input = UiInput;
 
 })();

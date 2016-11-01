@@ -1,51 +1,72 @@
 (function() {
-	window.ul = {};
+	var ui = {};
 
-	ul._components = {
-		'button': 'ul-bnt',
-		'input': 'ul-input'
-	};
+	ui.componentService = {
+		components: [],
 
-	ul._initComponents = function(component, className) {
-		var elements = document.getElementsByClassName(className);
+		register: function(componentName, className) {
+			this.components.push({
+				name: componentName,
+				className: className
+			});
+		},
 
-		for(var i = 0; i < elements.length; i++) {
-			ul[component].init(elements[i]);
+		initAllComponents: function() {
+			for (var i = 0; i < this.components.length; i++) {
+				this.initComponents(this.components[i]);
+			}
+		},
+
+		initComponents: function(component) {
+			var elements = document.getElementsByClassName(component.className);
+
+			for(var i = 0; i < elements.length; i++) {
+				new ui[component.name](elements[i]);
+			}
 		}
 	};
 
-	ul.init = function() {
-		for(var i in ul._components) {
-			ul._initComponents(i, ul._components[i]);
-		}
+	ui.register = function(component, className, componentName) {
+		ui[componentName] = component;
+		ui.componentService.register(componentName, className);
 	};
+
+	ui.init = function() {
+		ui.componentService.initAllComponents();
+	};
+
+	window.ui = ui;
 
 })();
 
 (function() {
   	'use strict';
 
-	function addRipleEffect(btn) {
+  	var UiButton = function UiButton(element) {
+  		this.init(element);
+  	};
+
+	UiButton.prototype.addRipleEffect = function (btn) {
 		var span = document.createElement('span');
-		span.classList.add('ul-btn-ripple-container');
+		span.classList.add('ui-btn-ripple-container');
 
 		var spanRipple = document.createElement('span');
-		spanRipple.classList.add('ul-ripple');
+		spanRipple.classList.add('ui-ripple');
 		span.appendChild(spanRipple);
 		btn.appendChild(span);
-	}
+	};
 
-	function findRipple(clidNodes) {
+	UiButton.prototype.findRipple = function (clidNodes) {
 		for (var j = 0; j < clidNodes.length; j++) {
-			if (clidNodes[j].classList && clidNodes[j].classList.contains('ul-btn-ripple-container')) {
+			if (clidNodes[j].classList && clidNodes[j].classList.contains('ui-btn-ripple-container')) {
 				return clidNodes[j].childNodes[0];
 			}
 		}
-	}
+	};
 
-	function mouseDown(e) {
+	UiButton.prototype.mouseDown = function (e) {
 		var btn = e.currentTarget,
-			ripple = findRipple(btn.childNodes);
+			ripple = btn.ui.findRipple(btn.childNodes);
 		
 		if (!ripple) {
 			return;
@@ -64,7 +85,7 @@
 		var scale = 'scale(0.0001, 0.0001) ';
 		var offset = 'translate(' + e.offsetX + 'px, ' + e.offsetY + 'px) ';
 
-		ripple.classList.add('ul-visible');
+		ripple.classList.add('ui-visible');
 		ripple.style.transform = 'translate(-50%, -50%) ' + offset + scale;
 		
 		setTimeout(function() {	
@@ -73,86 +94,97 @@
 		setTimeout(function() {
 			ripple.style.transform = 'translate(-50%, -50%) ' + offset;
 		}, 100);
-	}
+	};
 
-	function mouseUp(e) {
+	UiButton.prototype.mouseUp = function (e) {
 		var btn = e.currentTarget,
-			ripple = findRipple(btn.childNodes);
+			ripple = btn.ui.findRipple(btn.childNodes);
 		
 		if (ripple) {
-			ripple.classList.remove('ul-visible');
+			ripple.classList.remove('ui-visible');
 		}
-	}
+	};
 
-	function init(btn) {
-		addRipleEffect(btn);
-		btn.onmousedown = mouseDown;
-		btn.onmouseleave = btn.onmouseup = mouseUp;
-	}
+	UiButton.prototype.init = function (btn) {
+		btn.ui = this;
 
-	ul.button = {
-		init: init
-	}
+		this.addRipleEffect(btn);
+
+		btn.addEventListener('mousedown', this.mouseDown);
+		btn.addEventListener('mouseup', this.mouseUp);
+		btn.addEventListener('mouseout', this.mouseUp);
+		
+	};
+
+	ui.register(UiButton, 'ui-btn', 'button');
+	ui.button = UiButton;
 
 })();
 (function () {
+  'use strict';
+  
+  	var UiInput = function UiInput(element) {
+  		this.init(element);
+  	};
 
-	function checkValue(input) {
+	UiInput.prototype.checkValue = function (input) {
 		var parent = input.parentElement;
 
 		if (input.value) { 
-			parent.classList.add('ul-has-value');
+			parent.classList.add('ui-has-value');
 		} else {
-			parent.classList.remove('ul-has-value');
+			parent.classList.remove('ui-has-value');
 		}
-	}
+	};
 
-	function onfocus(e) {
+	UiInput.prototype.onfocus = function (e) {
 		var parent = e.target.parentElement;
-		parent.classList.add('ul-on-focus');
-	}
+		parent.classList.add('ui-on-focus');
+	};
 
-	function onblur(e) {
+	UiInput.prototype.onblur = function (e) {
 		var input = e.target
 			parent = input.parentElement;
-		parent.classList.remove('ul-on-focus');
+		parent.classList.remove('ui-on-focus');
 
-		checkValue(input);
-	}
+		this.ui.checkValue(input);
+	};
 
-	function getLabel(input) {
+	UiInput.prototype.getLabel = function (input) {
 		var label = input.previousElementSibling;
 
-		if (label && label.classList && label.classList.contains('ul-label')) {
+		if (label && label.classList && label.classList.contains('ui-label')) {
 			return label;
 		}
 
 		label = input.nextElementSibling;
 
-		if (label && label.classList && label.classList.contains('ul-label')) {
+		if (label && label.classList && label.classList.contains('ui-label')) {
 			return label;
 		}
 
 		return null;
-	}
+	};
 
-	function init(input) {
-		checkValue(input);
+	UiInput.prototype.init = function (input) {
+		input.ui = this;
+		
+		this.checkValue(input);
 
-		input.onfocus = onfocus;
-		input.onblur = onblur;
+		input.addEventListener('focus', this.onfocus);
+		input.addEventListener('blur', this.onblur);
 
-		var label = getLabel(input);
+		var label = this.getLabel(input);
 
 		if (label) {
-			label.onclick = function () {
+			label.addEventListener('click', function () {
 				input.focus();
-			};
+				input.value = input.value;
+			});
 		}
-	}
-
-	ul.input = {
-		init: init
 	};
+
+	ui.register(UiInput, 'ui-input', 'input');
+	ui.input = UiInput;
 
 })();

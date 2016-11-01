@@ -1,23 +1,40 @@
 (function() {
-	window.ul = {};
+	var ui = {};
 
-	ul._components = {
-		'button': 'ul-bnt',
-		'input': 'ul-input'
-	};
+	ui.componentService = {
+		components: [],
 
-	ul._initComponents = function(component, className) {
-		var elements = document.getElementsByClassName(className);
+		register: function(componentName, className) {
+			this.components.push({
+				name: componentName,
+				className: className
+			});
+		},
 
-		for(var i = 0; i < elements.length; i++) {
-			ul[component].init(elements[i]);
+		initAllComponents: function() {
+			for (var i = 0; i < this.components.length; i++) {
+				this.initComponents(this.components[i]);
+			}
+		},
+
+		initComponents: function(component) {
+			var elements = document.getElementsByClassName(component.className);
+
+			for(var i = 0; i < elements.length; i++) {
+				new ui[component.name](elements[i]);
+			}
 		}
 	};
 
-	ul.init = function() {
-		for(var i in ul._components) {
-			ul._initComponents(i, ul._components[i]);
-		}
+	ui.register = function(component, className, componentName) {
+		ui[componentName] = component;
+		ui.componentService.register(componentName, className);
 	};
+
+	ui.init = function() {
+		ui.componentService.initAllComponents();
+	};
+
+	window.ui = ui;
 
 })();
