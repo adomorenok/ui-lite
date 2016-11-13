@@ -86,8 +86,29 @@ a.ui-btn {
     .ui-btn .ui-btn-ripple-container .ui-ripple.ui-visible {
       opacity: 0.2; }
 
+.ui-btn.ui-fab {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 50%; }
+  .ui-btn.ui-fab i {
+    font-size: 1em;
+    vertical-align: middle;
+    line-height: 36px; }
+
+.ui-btn.ui-fab-min {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%; }
+  .ui-btn.ui-fab-min i {
+    font-size: 1em;
+    vertical-align: middle;
+    line-height: 1em; }
+
 .ui-btn:hover {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
 
 .ui-btn:active {
   background: #5C6BC0; }
+
+.ui-btn:focus {
+  outline-color: transparent; }

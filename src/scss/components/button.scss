@@ -1,63 +1,91 @@
 a.ui-btn {
-	line-height: 36px;
+  line-height: 36px;
 }
 
 .ui-btn {
-	min-width: 70px;
-	min-height: 36px;
-	background: $button-default-color;
-	color: $text-alternative-color;
-	display: inline-block;
-	position: relative;
-	border: 0px;
-	border-radius: 3px;
-	line-height: 2em;
-    text-align: center;
-    text-decoration: blink;
-    cursor: pointer;
-    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
-    font-family: Arial;
-    font-size: 1em;
+  min-width: 70px;
+  min-height: 36px;
+  background: $button-default-color;
+  color: $text-alternative-color;
+  display: inline-block;
+  position: relative;
+  border: 0px;
+  border-radius: 3px;
+  line-height: 2em;
+  text-align: center;
+  text-decoration: blink;
+  cursor: pointer;
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, .12), 0 1px 1px 0 rgba(0, 0, 0, .24);
+  font-family: Arial;
+  font-size: 1em;
 
-    .ui-btn-ripple-container {
-    	display: block;
-	    height: 100%;
-	    left: 0;
-	    position: absolute;
-	    top: 0;
-	    width: 100%;
-	    overflow: hidden;
+  .ui-btn-ripple-container {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
 
-	    .ui-ripple {
-	    	border-radius: 50%;
-	    	left: 0;
-		    opacity: 0;
-		    pointer-events: none;
-		    position: absolute;
-		    top: 0;
-		    overflow: hidden;
-		    background: #fff;
-		    z-index: 0;
-	    }
-
-	    .ui-animate {
-			transition: transform .3s cubic-bezier(0,0,.2,1),
-						width .3s cubic-bezier(0,0,.2,1),
-						height .3s cubic-bezier(0,0,.2,1),
-						opacity .6s cubic-bezier(0,0,.2,1),
-						-webkit-transform .3s cubic-bezier(0,0,.2,1);
-	    }
-
-	    .ui-ripple.ui-visible {
-	    	opacity: 0.2;
-	    }
+    .ui-ripple {
+      border-radius: 50%;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      overflow: hidden;
+      background: #fff;
+      z-index: 0;
     }
+
+    .ui-animate {
+      transition: transform .3s cubic-bezier(0, 0, .2, 1),
+                  width .3s cubic-bezier(0, 0, .2, 1),
+                  height .3s cubic-bezier(0, 0, .2, 1),
+                  opacity .6s cubic-bezier(0, 0, .2, 1),
+                  -webkit-transform .3s cubic-bezier(0, 0, .2, 1);
+    }
+
+    .ui-ripple.ui-visible {
+      opacity: 0.2;
+    }
+  }
+}
+
+.ui-btn.ui-fab {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 50%;
+
+  i {
+    font-size: 1em;
+    vertical-align: middle;
+    line-height: 36px;
+  }
+}
+
+.ui-btn.ui-fab-min {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+
+  i {
+    font-size: 1em;
+    vertical-align: middle;
+    line-height: 1em;
+  }
 }
 
 .ui-btn:hover {
-	box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 }
 
 .ui-btn:active {
-	background: $button-hover-color;
+  background: $button-hover-color;
+}
+
+.ui-btn:focus {
+  outline-color: rgba(0, 0, 0, 0);
 }
