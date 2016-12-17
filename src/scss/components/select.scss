@@ -1,0 +1,47 @@
+.ui-input-container.ui-upgraded {
+  select.ui-select {
+    display: none;
+  }
+}
+
+.ui-input-container {
+  .ui-select-input {
+    border: 0px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    font-family: Arial;
+    font-size: 1em;
+  }
+}
+
+.ui-on-focus {
+  .ui-select-input {
+    outline: none;
+  }
+}
+
+.ui-select-options {
+  display: none;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+
+  .ui-select-option {
+    height: 40px;
+    padding: 0px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    line-height: 40px;
+  }
+
+  .ui-select-option:hover,
+  .ui-select-option:focus {
+    background: rgb(238,238,238);
+    outline: 0px solid transparent;
+  }
+}
+
+.ui-select-options.is-opened {
+  display: block;
+}

@@ -21,7 +21,7 @@
 	};
 
 	UiInput.prototype.onblur = function (e) {
-		var input = e.target
+		var input = e.target,
 			parent = input.parentElement;
 		parent.classList.remove('ui-on-focus');
 
