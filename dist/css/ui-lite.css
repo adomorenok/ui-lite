@@ -123,25 +123,53 @@ a.ui-btn {
   font-family: Arial;
   font-size: 1em; }
 
+.ui-input-container .ui-select-icon {
+  position: absolute;
+  right: 0;
+  cursor: pointer; }
+
+.ui-input-container .ui-select-icon:after {
+  display: block;
+  content: '\25BC';
+  position: relative;
+  top: 2px;
+  transform: scaleY(0.6) scaleX(1); }
+
 .ui-on-focus .ui-select-input {
   outline: none; }
 
 .ui-select-options {
+  opacity: 0;
   display: none;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   z-index: 10;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  max-height: 0px;
+  overflow-y: auto; }
   .ui-select-options .ui-select-option {
     height: 40px;
     padding: 0px 15px;
     font-size: 1em;
     cursor: pointer;
-    line-height: 40px; }
+    line-height: 40px;
+    background: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden; }
   .ui-select-options .ui-select-option:hover,
   .ui-select-options .ui-select-option:focus {
     background: #eeeeee;
     outline: 0px solid transparent; }
 
 .ui-select-options.is-opened {
-  display: block; }
+  opacity: 1;
+  display: block;
+  position: absolute;
+  max-height: 200px; }
+
+.ui-select-options.opening {
+  display: block;
+  transform: translate(0, -50%);
+  transition-duration: 200ms;
+  transform-origin: 100% 50% 0px; }

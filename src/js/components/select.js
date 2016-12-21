@@ -34,6 +34,14 @@
     UiSelect.prototype.generateList = function (select, input) {
         var parent = select.parentElement;
 
+        var selectIcon = document.createElement('span');
+        selectIcon.classList.add('ui-select-icon');
+        selectIcon.addEventListener('click', function (e) {
+            input.focus();
+            input.value = input.value;
+        });
+        parent.appendChild(selectIcon);
+
         var list = document.createElement('div');
         list.classList.add('ui-select-options');
 
@@ -56,6 +64,7 @@
             input.value = node.label;
             select.value = node.value;
             input.ui.checkValue(input);
+            input.ui.closeSelect(input);
         });
         option.addEventListener('keydown', function (e) {
             var keyCode = e.which || e.keyCode;
@@ -64,18 +73,8 @@
                 select.value = node.value;
                 input.ui.checkValue(input);
             } else if (keyCode == 40) {
-                // next
-                console.log("keydown down");
-                console.log(e.target);
-                console.log(document.activeElement);
-                console.log('------');
                 e.target.nextElementSibling.focus();
             } else if (keyCode == 38) {
-                // prev
-                console.log("keydown up");
-                console.log(e.target);
-                console.log(document.activeElement);
-                console.log('------');
                 e.target.previousElementSibling.focus();
             } else if (keyCode == 27) {
                 // close select
@@ -83,15 +82,11 @@
             }
         });
         option.addEventListener('blur', function (e) {
-            /*setTimeout(function() {
-
-            });*/
-            console.log(e.target);
-            console.log(document.activeElement);
-
-            /*if (!document.activeElement.classList || !document.activeElement.classList.contains('ui-select-option')) {
-                input.ui.closeSelect(input);
-            }*/
+            setTimeout(function() {
+                if (!document.activeElement.classList || !document.activeElement.classList.contains('ui-select-option')) {
+                    input.ui.closeSelect(input);
+                }
+            });
         });
 
         return option;
@@ -100,9 +95,14 @@
     UiSelect.prototype.onfocus = function (e) {
         var input = e.target,
             parent = input.parentElement;
+
         parent.classList.add('ui-on-focus');
-        input.selectList.classList.add('is-opened');
-        input.selectList.childNodes[0].focus();
+        input.selectList.classList.add('opening');
+        setTimeout(function() {
+            input.selectList.classList.add('is-opened');
+            input.selectList.childNodes[0].focus();
+        }, 0);
+
     };
 
     UiSelect.prototype.onblur = function (e) {
