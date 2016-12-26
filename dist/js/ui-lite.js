@@ -192,8 +192,8 @@
 (function () {
     'use strict';
 
-    var UiSelect = function UiSelect(element) {
-        this.init(element);
+    var UiSelect = function UiSelect(element, list, label) {
+        this.init(element, list, label);
     };
 
     UiSelect.prototype.checkValue = function (input) {
@@ -220,6 +220,24 @@
         parent.appendChild(input);
 
         return input;
+    };
+
+    UiSelect.prototype.updateOptions = function (select, list, label) {
+        if (!list) {
+            return;
+        }
+        for (var i = select.childNodes.length - 1; i >= 0 ; i--) {
+            select.removeChild(select.childNodes[i]);
+        }
+
+        for (var i = 0; i < list.length; i++) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.uiValue = list[i];
+            option.innerHTML = list[i][label];
+            select.appendChild(option);
+        }
+
     };
 
     UiSelect.prototype.generateList = function (select, input) {
@@ -254,6 +272,7 @@
         option.addEventListener('click', function (e) {
             input.value = node.label;
             select.value = node.value;
+            select.uiValue = node.uiValue;
             input.ui.checkValue(input);
             input.ui.closeSelect(input);
         });
@@ -262,6 +281,7 @@
             if(keyCode == 13) {
                 input.value = node.label;
                 select.value = node.value;
+                select.uiValue = node.uiValue;
                 input.ui.checkValue(input);
             } else if (keyCode == 40) {
                 e.target.nextElementSibling.focus();
@@ -277,7 +297,7 @@
                 if (!document.activeElement.classList || !document.activeElement.classList.contains('ui-select-option')) {
                     input.ui.closeSelect(input);
                 }
-            });
+            }, 0);
         });
 
         return option;
@@ -328,7 +348,12 @@
         return null;
     };
 
-    UiSelect.prototype.init = function (select) {
+    UiSelect.prototype.getValue = function () {
+        console.log(this);
+    };
+
+    UiSelect.prototype.init = function (select, list, label) {
+        this.updateOptions(select, list, label);
         this.upgrade(select);
         var input = this.addInput(select);
         this.checkValue(input);
@@ -346,7 +371,10 @@
             });
         }
 
-        input.ui = this;
+        select.ui = input.ui = this;
+        select.ui.getValue = function () {
+            console.log(select.uiValue);
+        };
     };
 
     ui.register(UiSelect, 'ui-select', 'select');

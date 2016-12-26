@@ -69,21 +69,42 @@
 					<option value="2">Value two</option>
 					<option value="3">Value three</option>
 					<option value="4">Value four</option>
-					<option value="4">Value four1</option>
-					<option value="4">Value four2</option>
+					<option value="5">Value four1</option>
+					<option value="6">Value four2</option>
 				</select>
+			</div>
+		</div>
+		<div style="width: 25%; float: left;">
+			<div class="ui-input-container">
+				<label class="ui-label">Test select 2</label>
+				<select id="custom-options" class=""></select>
 			</div>
 		</div>
 	</div>
 
 	<div style="display: inline-block; width: 100%">
 		<div style="width: 25%; float: left;">
-			
+
 		</div>
 	</div>
 
 	<script type="text/javascript">
 		ui.init();
+		var select = document.getElementById('custom-options');
+		select.classList.add('ui-select');
+
+		var options = [
+			{ id: 1, name: 'Name 1', price: 1 },
+			{ id: 2, name: 'Name 2', price: 2 },
+			{ id: 3, name: 'Name 3', price: 3 },
+			{ id: 4, name: 'Name 4', price: 4 },
+			{ id: 5, name: 'Name 5', price: 5 },
+			{ id: 6, name: 'Name 6', price: 6 },
+			{ id: 7, name: 'Name 7', price: 7 },
+			{ id: 8, name: 'Name 8', price: 8 }
+		];
+
+		var uiSelect = new ui.select(select, options, 'name');
 	</script>
 
 </body>
