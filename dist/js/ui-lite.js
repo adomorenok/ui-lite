@@ -677,6 +677,16 @@
 
 	var menuService = {
 
+		closeMenu : function() {
+			sidebar.classList.remove('ui-sidebar-hidden');
+			submenu.classList.remove('ui-submenu-active');
+			submenu.classList.add('ui-submenu-hidden');
+
+			setTimeout(function() {
+				submenu.classList.remove('ui-submenu-hidden');
+			},500);
+		},
+			
 		addCloseEventByClick: function(type) {
 			document.documentElement.addEventListener('click', closeSubMenu, true);
 		}
