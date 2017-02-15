@@ -304,10 +304,8 @@ a.ui-btn {
   position: fixed !important;
   background-color: #272727;
   z-index: 1000;
-  transform: scaleX(0);
   transition: transform 150ms linear;
   /* For Safari 3.1 to 6.0 */
-  -webkit-transform: scaleX(0);
   -webkit-transition: transform 150ms linear; }
   .ui-submenu a {
     text-decoration: none; }
@@ -319,6 +317,9 @@ a.ui-btn {
   .ui-submenu .ui-submenu-element-label:hover {
     color: #E3D6A5; }
 
+.ui-submenu-hidden {
+  pointer-events: none; }
+
 @media (max-width: 480px) {
   .ui-submenu {
     bottom: 15px;
@@ -326,9 +327,11 @@ a.ui-btn {
     right: 15px;
     text-align: center;
     border-radius: 15px;
-    transform-origin: bottom;
+    transform: scaleY(0);
+    transform-origin: center bottom;
     /* For Safari 3.1 to 6.0 */
-    -webkit-transform-origin: bottom; }
+    -webkit-transform: scaleY(0);
+    -webkit-transform-origin: center bottom; }
     .ui-submenu .ui-submenu-element-container .ui-submenu-element-label {
       display: block;
       padding: 26px;
@@ -341,15 +344,25 @@ a.ui-btn {
       border-bottom: solid 1px #303030; }
     .ui-submenu .ui-submenu-close-container {
       padding: 0;
-      margin: 0; } }
+      margin: 0; }
+  .ui-submenu:hover {
+    transform: scaleY(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleY(1); }
+  .ui-submenu-active {
+    transform: scaleY(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleY(1); } }
 
 @media (min-width: 481px) {
   .ui-submenu {
     height: 100%;
     width: 146px;
     top: 56px;
+    transform: scaleX(0);
     transform-origin: left;
     /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleX(0);
     -webkit-transform-origin: left; }
   .ui-sidebar-has-header {
     margin-top: 56px; }
@@ -360,20 +373,15 @@ a.ui-btn {
   .ui-submenu-element-container .ui-submenu-element-label {
     display: block;
     padding: 26px;
-    font-size: 12px; } }
-
-.ui-submenu:hover {
-  transform: scaleX(1);
-  /* For Safari 3.1 to 6.0 */
-  -webkit-transform: scaleX(1); }
-
-.ui-submenu-hidden {
-  pointer-events: none; }
-
-.ui-submenu-active {
-  transform: scaleX(1);
-  /* For Safari 3.1 to 6.0 */
-  -webkit-transform: scaleX(1); }
+    font-size: 12px; }
+  .ui-submenu:hover {
+    transform: scaleX(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleX(1); }
+  .ui-submenu-active {
+    transform: scaleX(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleX(1); } }
 
 .ui-container {
   position: absolute;

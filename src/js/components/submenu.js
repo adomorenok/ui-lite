@@ -27,7 +27,7 @@
 			console.log(href);
 		}
 
-		UISubMenu.prototype.hideSubmenu(this);
+		menuService.closeMenu('submenu');
 
 		e.preventDefault();
 	};
@@ -54,17 +54,6 @@
 				container.classList.remove('ui-container-has-submenu');
 			}
 		}
-	};
-
-	UISubMenu.prototype.hideSubmenu = function(_this) {	
-
-		sidebar.classList.remove('ui-sidebar-hidden');
-		submenu.classList.remove('ui-submenu-active');
-		submenu.classList.add('ui-submenu-hidden');
-
-		setTimeout(function() {
-			submenu.classList.remove('ui-submenu-hidden');
-		},500);
 	};
 
 	UISubMenu.prototype.init = function(_submenu) {

@@ -37,6 +37,8 @@
 		var submenu = document.getElementsByClassName('ui-submenu')[0];
 		sidebar.classList.add('ui-sidebar-hidden');
 		submenu.classList.add('ui-submenu-active');
+
+		menuService.addCloseEventByClick('submenu');
 	};
 
 	UIHeader.prototype.init = function(header) {

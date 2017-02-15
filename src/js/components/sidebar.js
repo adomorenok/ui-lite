@@ -65,6 +65,8 @@
 
 	UISidebar.prototype.showSubMenu = function() {
 		submenu.classList.add('ui-submenu-active');
+
+		menuService.addCloseEventByClick('submenu');
 	};
 
 	UISidebar.prototype.hideSubMenu = function() {

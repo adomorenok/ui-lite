@@ -191,6 +191,8 @@
 		var submenu = document.getElementsByClassName('ui-submenu')[0];
 		sidebar.classList.add('ui-sidebar-hidden');
 		submenu.classList.add('ui-submenu-active');
+
+		menuService.addCloseEventByClick('submenu');
 	};
 
 	UIHeader.prototype.init = function(header) {
@@ -531,6 +533,8 @@
 
 	UISidebar.prototype.showSubMenu = function() {
 		submenu.classList.add('ui-submenu-active');
+
+		menuService.addCloseEventByClick('submenu');
 	};
 
 	UISidebar.prototype.hideSubMenu = function() {
@@ -603,7 +607,7 @@
 			console.log(href);
 		}
 
-		UISubMenu.prototype.hideSubmenu(this);
+		menuService.closeMenu('submenu');
 
 		e.preventDefault();
 	};
@@ -632,17 +636,6 @@
 		}
 	};
 
-	UISubMenu.prototype.hideSubmenu = function(_this) {	
-
-		sidebar.classList.remove('ui-sidebar-hidden');
-		submenu.classList.remove('ui-submenu-active');
-		submenu.classList.add('ui-submenu-hidden');
-
-		setTimeout(function() {
-			submenu.classList.remove('ui-submenu-hidden');
-		},500);
-	};
-
 	UISubMenu.prototype.init = function(_submenu) {
 
 		_submenu.ui = this;
@@ -665,8 +658,31 @@
 
 	'use strict';
 
-	var menuService = {};
+	var submenu =  document.getElementsByClassName('ui-submenu')[0];
+	var container = document.getElementsByClassName('ui-container')[0];
+	var sidebar = document.getElementsByClassName('ui-sidebar')[0];
 
+	function closeSubMenu(e, type) {
+
+		sidebar.classList.remove('ui-sidebar-hidden');
+		submenu.classList.remove('ui-submenu-active');
+		submenu.classList.add('ui-submenu-hidden');
+
+		setTimeout(function() {
+			submenu.classList.remove('ui-submenu-hidden');
+		},500);
+
+		document.documentElement.removeEventListener('click', closeSubMenu, true);
+	}
+
+	var menuService = {
+
+		addCloseEventByClick: function(type) {
+			document.documentElement.addEventListener('click', closeSubMenu, true);
+		}
+	};
+		
+	window.menuService = menuService;
 })();
 
 		
