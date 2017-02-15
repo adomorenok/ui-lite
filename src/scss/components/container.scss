@@ -1,0 +1,25 @@
+.ui-container {
+	position: absolute;
+	top: $header-height;
+}
+
+@media (min-width: $not-mobile-width) {
+	.ui-container {
+		z-index: 99;
+		left: 0;
+		padding: 12px;
+		transition: left 150ms linear;
+		/* For Safari 3.1 to 6.0 */
+		-webkit-transition: left 150ms linear;
+	}
+
+	.ui-container-has-sidebar, .ui-container-has-submenu {
+		left: $sidebar-element-size;
+	}
+}
+
+@media (min-width: 800px) {
+	.ui-container-has-open-sidebar, .ui-container-has-open-submenu {
+		left: $sidebar-open-width !important;
+	}
+}

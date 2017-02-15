@@ -1,4 +1,5 @@
 (function() {
+
 	var ui = {};
 
 	ui.componentService = {
@@ -36,5 +37,4 @@
 	};
 
 	window.ui = ui;
-
 })();

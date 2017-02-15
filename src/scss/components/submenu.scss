@@ -1,0 +1,121 @@
+.ui-submenu {
+
+	position: fixed !important;
+	background-color: $submenu-color;
+	z-index: 1000;
+	transform: scaleX(0);
+	transition: transform 150ms linear;
+	/* For Safari 3.1 to 6.0 */
+	-webkit-transform: scaleX(0);
+	-webkit-transition: transform 150ms linear;
+
+	a {	
+		text-decoration:none;
+	}
+
+	.ui-submenu-element-label {
+
+		color: $sidebar-text-color;
+		font-size: $sidebar-text-size;
+		font-weight: $sidebar-text-style;
+		font-family: $sidebar-text-family;
+	}
+
+	.ui-submenu-element-label:hover {
+		color: $sidebar-active-text-color;
+	}
+}
+
+@media (max-width: $mobile_width) {
+
+	.ui-submenu {
+
+		bottom: 15px;
+		left: 15px;
+		right: 15px;
+		text-align: center;
+		border-radius: 15px;
+	    transform-origin: bottom;
+	    /* For Safari 3.1 to 6.0 */
+		-webkit-transform-origin: bottom;
+
+		.ui-submenu-element-container {
+
+			.ui-submenu-element-label {
+
+				display: block;
+				padding: 26px;
+				font-size: $submenu-mobile-text-size;
+			}
+			
+			.ui-submenu-element {
+
+				.icon-down-arrow {
+
+					background-size: 30px;
+					display: block;
+					height: 30px;
+				}
+			}
+		}
+
+		.ui-submenu-element-container:not(:last-child) {
+			border-bottom: solid 1px $main-background-color;
+		}
+
+		.ui-submenu-close-container {
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+@media (min-width: $not-mobile-width) {
+
+	.ui-submenu {
+		
+		height: 100%;
+		width: $submenu-width;
+		top: $header-height;
+	    transform-origin: left;
+	     /* For Safari 3.1 to 6.0 */
+		-webkit-transform-origin: left;
+	}
+
+	.ui-sidebar-has-header {
+		margin-top: $header-height;
+	}
+
+	.ui-submenu-left {
+		left: $sidebar-element-size;
+	}
+
+	.ui-submenu-right {
+		right: $sidebar-element-size;
+	}
+
+	.ui-submenu-element-container {
+
+		.ui-submenu-element-label {
+			display: block;
+			padding: 26px;
+			font-size: $sidebar-text-size;
+		}
+	}
+}
+
+.ui-submenu:hover {
+	transform: scaleX(1);
+	/* For Safari 3.1 to 6.0 */
+	-webkit-transform: scaleX(1);
+}
+
+.ui-submenu-hidden {
+	pointer-events:none;
+}
+
+.ui-submenu-active {
+	transform: scaleX(1);
+	/* For Safari 3.1 to 6.0 */
+	-webkit-transform: scaleX(1);
+}

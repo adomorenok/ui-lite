@@ -9,84 +9,212 @@
 	<script type="text/javascript" src="../dist/js/ui-lite.js"></script>
 </head>
 <body>
-
-	<div style="display: inline-block; width: 100%;">
-		<div style="width: 25%; float: left;">
-			<div class="ui-input-container">
-				<label class="ui-label">Test input</label>
-				<input class="ui-input">
+	<!-- Header -->
+	<header class="ui-header cling">
+		<section>
+			<div class="ui-logo-container">
+				<a href="home" class="ui-header-btn">
+					<i class="ui-logo"></i>
+				</a>
 			</div>
-		</div>
-
-		<div style="width: 25%; float: left;">
-			<div class="ui-input-container">
-				<label class="ui-label">Test input</label>
-				<input class="ui-input" value="">
-			</div>
-		</div>
-
-		<div style="width: 25%; float: left;">
-			<div class="ui-input-container">
-				<label class="ui-label">Test input</label>
-				<input class="ui-input" value="123">
-			</div>
-		</div>
-	</div>
-
-	<div style="display: inline-block; width: 100%;">
-		<div style="width: 25%; float: left;">
-			<button class="ui-btn">
-				<span>Button</span>
-			</button>
-		</div>
-
-		<div style="width: 25%; float: left;">
-			<a href="#" class="ui-btn">
-				Link
+			
+			<a href="submenu" class="ui-header-btn">
+				<i class="icon icon-setting"></i>
 			</a>	
-		</div>
+		</section>
+	</header>
 
-		<div style="width: 25%; float: left;">
-			<button class="ui-btn ui-fab">
-				<i class="fa fa-plus" aria-hidden="true"></i>
-			</button>
-		</div>
+	<div class="layout">
 
-		<div style="width: 25%; float: left;">
-			<button class="ui-btn ui-fab-min">
-				<i class="fa fa-plus" aria-hidden="true"></i>
-			</button>
-		</div>
-	</div>
-
-	<div style="display: inline-block; width: 100%">
-		<div style="width: 25%; float: left;">
-			<div class="ui-input-container">
-				<label class="ui-label">Test select</label>
-				<select class="ui-select">
-					<option value="0">Value zero</option>
-					<option value="1">Value one</option>
-					<option value="2">Value two</option>
-					<option value="3">Value three</option>
-					<option value="4">Value four</option>
-					<option value="5">Value four1</option>
-					<option value="6">Value four2</option>
-				</select>
+		<!-- Sidebar -->
+		<section class="ui-sidebar ui-sidebar-left">
+			<div class="ui-sidebar-element-container">
+				<a href="to_do" class="ui-sidebar-element ui-sidebar-btn">
+					<i class="icon icon-list"></i>
+					<span class="ui-sidebar-element-label">
+						To Do List
+					</span>
+				</a>
 			</div>
-		</div>
-		<div style="width: 25%; float: left;">
-			<div class="ui-input-container">
-				<label class="ui-label">Test select 2</label>
-				<select id="custom-options" class=""></select>
+			<div class="ui-sidebar-element-container">
+				<a href="search_request" class="ui-sidebar-element ui-sidebar-btn">
+					<i class="icon icon-request-search"></i>
+					<span class="ui-sidebar-element-label">
+						Search Request
+					</span>
+				</a>
 			</div>
-		</div>
+			<div class="ui-sidebar-element-container">
+				<a href="history" class="ui-sidebar-element ui-sidebar-btn">
+					<i class="icon icon-history"></i>
+					<span class="ui-sidebar-element-label">
+						History
+					</span>
+				</a>
+			</div>
+			<div class="ui-sidebar-element-container">
+				<a href="notifications" class="ui-sidebar-element ui-sidebar-btn">
+					<i class="icon icon-notification"></i>
+					<span class="ui-sidebar-element-label">
+						Notifications
+					</span>
+				</a>	
+			</div>
+			<div class="ui-sidebar-element-container">
+				<a href="inbox" class="ui-sidebar-element ui-sidebar-btn">
+					<i class="icon icon-inbox"></i>
+					<span class="ui-sidebar-element-label">
+						Inbox
+					</span>
+				</a>
+			</div>
+			<div class="ui-sidebar-element-container ui-sidebar-bottom-element">
+				<a href="submenu" class="ui-sidebar-element ui-sidebar-btn">
+					<i class="icon icon-setting"></i>
+					<span class="ui-sidebar-element-label">
+						Settings
+					</span>
+				</a>
+			</div>
+		</section>
+
+		<!-- Submenu -->
+		<section class="ui-submenu ui-submenu-left">
+
+			<div class="ui-submenu-element-container">
+				<a href="payment" class="ui-submenu-element ui-submenu-btn">
+					<span class="ui-submenu-element-label">
+						Payment
+					</span>
+				</a>
+			</div>
+
+			<div class="ui-submenu-element-container">
+				<a href="insurance" class="ui-submenu-element ui-submenu-btn">
+					<span class="ui-submenu-element-label">
+						Insurance
+					</span>
+				</a>
+			</div>
+
+			<div class="ui-submenu-element-container">
+				<a href="security" class="ui-submenu-element ui-submenu-btn">
+					<span class="ui-submenu-element-label">
+						Security
+					</span>
+				</a>
+			</div>
+
+			<div class="ui-submenu-element-container">
+				<a href="tools" class="ui-submenu-element ui-submenu-btn">
+					<span class="ui-submenu-element-label">
+						Tools
+					</span>
+				</a>
+			</div>
+
+			<div class="ui-submenu-element-container">
+				<a href="working_area" class="ui-submenu-element ui-submenu-btn">
+					<span class="ui-submenu-element-label">
+						My Working Area
+					</span>
+				</a>
+			</div>
+
+			<div class="ui-submenu-element-container ">
+				<a href="close_submenu" class="ui-submenu-element ui-submenu-btn">
+					<i class="ui-submenu-close icon icon-down-arrow"></i>
+				</a>
+			</div>
+		</section>
+
+		<!--Container-->
+		<section class="ui-container">
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="123">
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn">
+						<span>Button</span>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<a href="" class="ui-btn">
+						Link
+					</a>	
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab-min">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select</label>
+						<select class="ui-select">
+							<option value="0">Value zero</option>
+							<option value="1">Value one</option>
+							<option value="2">Value two</option>
+							<option value="3">Value three</option>
+							<option value="4">Value four</option>
+							<option value="5">Value four1</option>
+							<option value="6">Value four2</option>
+						</select>
+					</div>
+				</div>
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select 2</label>
+						<select id="custom-options" class=""></select>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+
+				</div>
+			</div>
+		</section>
+
 	</div>
 
-	<div style="display: inline-block; width: 100%">
-		<div style="width: 25%; float: left;">
+	<!-- Footer -->
+	<footer class="footer">
 
-		</div>
-	</div>
+	</footer>
 
 	<script type="text/javascript">
 		ui.init();

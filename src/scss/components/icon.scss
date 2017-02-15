@@ -1,0 +1,46 @@
+.icon {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon-list {
+	background-image: url("../img/list.png");
+}
+.icon-request-search {
+	background-image: url("../img/search.png");
+}
+.icon-history {
+	background-image: url("../img/history.png");
+}
+.icon-notification {
+	background-image: url("../img/notification.png");
+}
+.icon-inbox {
+	background-image: url("../img/message.png");
+}
+.icon-setting {
+	background-image: url("../img/settings.png");
+}
+.icon-down-arrow {
+	background-image: url("../img/down-arrow.png");
+}
+
+// Active
+a:hover i.icon-list {
+	background-image: url("../img/list_active.png");
+}
+a:hover i.icon-request-search {
+	background-image: url("../img/search_active.png");
+}
+a:hover i.icon-history {
+	background-image: url("../img/history_active.png");
+}
+a:hover i.icon-notification {
+	background-image: url("../img/notification_active.png");
+}
+a:hover i.icon-inbox {
+	background-image: url("../img/message_active.png");
+}
+a:hover i.icon-setting {
+	background-image: url("../img/settings_active.png");
+}

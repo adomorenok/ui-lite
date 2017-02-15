@@ -1,3 +1,38 @@
+//Main variables
+$main-background-color: #303030;
+
+//Resolution variables
+$mobile-width: 480px;
+$not-mobile-width: 481px;
+
+//Header variables
+$header-height: 56px;
+$header-mobile-logo: url(../img/velotooler-logo.png);
+$header-logo: url(../img/logo.png);
+
+//Sidebar variables
+$sidebar-color: #363737;
+$sidebar-open-width: 210px;
+$sidebar-text-color: #ADAAA2;
+$sidebar-text-size: 12px;
+$sidebar-label-width: 136px;
+$sidebar-text-family: 'Open Sans';
+$sidebar-text-style: bold;
+$sidebar-active-text-color: #E3D6A5;
+$sidebar-element-size: 64px;
+$sidebar-element-size-small: 60px; // iPhone4/5 
+
+//Sidebar variables
+$submenu-color: #272727;
+$submenu-title: #181818;
+$submenu-width: 146px;
+$submenu-mobile-text-size: 16px;
+
+
+
+
+
+
 $input-padding-top: 16px;
 $input-padding-bottom: $input-padding-top;
 $label-top: $input-padding-top;
@@ -12,3 +47,4 @@ $input-border-color: $base-color;
 $button-default-color: $base-color;
 $button-hover-color: $active-color;
 $button-animate-opacity: 0.3;
+

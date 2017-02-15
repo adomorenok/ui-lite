@@ -1,0 +1,130 @@
+.ui-sidebar {
+
+	background-color: $sidebar-color;
+	position: absolute;
+	z-index: 999;
+	margin: 0;
+	padding: 0;
+	bottom: 0;
+	a {	
+		text-decoration:none;
+	}
+}
+
+.ui-sidebar-element-container {
+
+	.ui-sidebar-element-label {
+		display: block;
+		visibility: hidden;
+		color: $sidebar-text-color;
+		font-size: $sidebar-text-size;
+		font-weight: $sidebar-text-style;
+		font-family: $sidebar-text-family;
+		padding: 26px;
+		width: $sidebar-label-width;
+	}
+
+	.icon {
+		background-size: 32px;
+		width: $sidebar-element-size;
+		height: $sidebar-element-size;
+		float: left;
+	}
+}
+
+@media (max-width: 340px) {
+	i.icon {
+		width: $sidebar-element-size-small;
+		height: $sidebar-element-size-small;
+	}
+}
+
+@media (max-width: $mobile-width) {
+
+	.ui-sidebar {
+
+		position: fixed !important;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		height: $sidebar-element-size;
+		visibility: visible;
+		transition: all 150ms linear;
+		/* For Safari 3.1 to 6.0 */
+		-webkit-transition: all 150ms linear;
+
+		.ui-sidebar-element-container {
+
+			display: inline-block;
+
+			.ui-sidebar-element-label {
+				display: none;
+			}
+		}
+		.ui-sidebar-bottom-element {
+			display: none !important;
+		}
+	}
+
+	.ui-sidebar-hidden {
+		visibility: hidden !important;
+	}
+}
+
+@media (min-width: $not-mobile-width) {
+
+	.ui-sidebar {
+		width: $sidebar-element-size;
+		top: $header-height;
+		float: left;
+		transition: all 150ms linear;
+		/* For Safari 3.1 to 6.0 */
+		-webkit-transition: all 150ms linear;
+	}
+
+	.ui-sidebar-hidden {
+		pointer-events:none;
+	}
+
+	.ui-sidebar-has-header {
+		margin-top: $header-height;
+	}
+
+	.ui-sidebar-left {
+		left: 0;
+	}
+
+	.ui-sidebar-right {
+		right: 0;
+	}
+
+	.ui-sidebar-bottom-element {
+		position: absolute !important;
+		bottom: 0;
+	}
+
+	.ui-sidebar:hover {
+
+		width: $sidebar-open-width;
+		
+		.ui-sidebar-element-container {
+
+			.ui-sidebar-element-label {
+				visibility: visible;
+				transition: all 0s linear 150ms;
+				/* For Safari 3.1 to 6.0 */
+				-webkit-transition: all 0s linear 150ms;
+			}
+		}
+
+		a:hover .ui-sidebar-element-label {
+			color: $sidebar-active-text-color;
+		}
+
+		a:hover i, .ui-sidebar-element-label{
+			transition: all 150ms linear;
+			/* For Safari 3.1 to 6.0 */
+			-webkit-transition: all 150ms linear;
+		}
+	}
+}

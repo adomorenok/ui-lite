@@ -13,7 +13,7 @@ var files = {
     vendor: [],
     js: [
         './src/js/ui-lite.js',
-        './src/js/components/*.js'
+        './src/js/**/*.js'
     ],
     sass: [
         './src/scss/ui-lite.scss'
@@ -26,7 +26,9 @@ gulp.task('watch', function () {
         './src/scss/**/*.scss',
 
         './src/js/*.js',
-        './src/js/**/*.js'
+        './src/js/**/*.js',
+
+        './demo/index.html'
     ], [
         'build'
     ]);
@@ -47,9 +49,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./dist/css/'));
 });
 
+gulp.task('copy-img', function () {
+    gulp.src(['./src/img/**/*'])
+        .pipe(gulp.dest('./dist/img/'));
+});
+
 gulp.task('build', function () {
     gulp.start('js');
     gulp.start('sass');
+    gulp.start('copy-img');
 });
 
 
