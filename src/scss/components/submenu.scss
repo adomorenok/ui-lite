@@ -3,24 +3,19 @@
 	position: fixed !important;
 	background-color: $submenu-color;
 	z-index: 1000;
-	transition: transform 150ms linear;
+	transition: transform $transition-speed linear;
 	/* For Safari 3.1 to 6.0 */
-	-webkit-transition: transform 150ms linear;
-
-	a {	
-		text-decoration:none;
-	}
+	-webkit-transition: transform $transition-speed linear;
 
 	.ui-submenu-element-label {
 
-		color: $sidebar-text-color;
+		color: $yello-text-color;
 		font-size: $sidebar-text-size;
 		font-weight: $sidebar-text-style;
-		font-family: $sidebar-text-family;
-	}
 
-	.ui-submenu-element-label:hover {
-		color: $sidebar-active-text-color;
+		&:hover {
+			color: $yello-active-text-color;
+		}
 	}
 }
 
@@ -38,10 +33,10 @@
 		text-align: center;
 		border-radius: 15px;	
 		transform: scaleY(0);
-	    transform-origin: center bottom;
+	    transform-origin: bottom;
 	    /* For Safari 3.1 to 6.0 */
 	    -webkit-transform: scaleY(0);
-		-webkit-transform-origin: center bottom;
+		-webkit-transform-origin: bottom;
 
 		.ui-submenu-element-container {
 
@@ -61,10 +56,10 @@
 					height: 30px;
 				}
 			}
-		}
 
-		.ui-submenu-element-container:not(:last-child) {
-			border-bottom: solid 1px $main-background-color;
+			&:not(:last-child) {
+				border-bottom: solid 1px $main-background-color;
+			}
 		}
 
 		.ui-submenu-close-container {
@@ -94,11 +89,8 @@
 		width: $submenu-width;
 		top: $header-height;
 		transform: scaleX(0);
-	    transform-origin: left;
 	     /* For Safari 3.1 to 6.0 */
-	    -webkit-transform: scaleX(0);
-		-webkit-transform-origin: left;
-		
+	    -webkit-transform: scaleX(0);	
 	}
 
 	.ui-sidebar-has-header {
@@ -107,10 +99,14 @@
 
 	.ui-submenu-left {
 		left: $sidebar-element-size;
+		transform-origin: left;
+		-webkit-transform-origin: left;
 	}
 
 	.ui-submenu-right {
 		right: $sidebar-element-size;
+		transform-origin: right;
+		-webkit-transform-origin: right;
 	}
 
 	.ui-submenu-element-container {
@@ -132,5 +128,8 @@
 		transform: scaleX(1);
 		/* For Safari 3.1 to 6.0 */
 		-webkit-transform: $submenu-scale;
+		transition: transform $transition-speed linear $transition-speed;
+		/* For Safari 3.1 to 6.0 */
+		-webkit-transition: transform $transition-speed linear $transition-speed;
 	}
 }

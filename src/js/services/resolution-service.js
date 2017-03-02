@@ -2,7 +2,8 @@
 
 	'use strict';
 
-	var MOBILEWIDTH = 480; //Max mobile width
+	var MOBILEWIDTH = 670; //Max mobile width
+	var TABLETWIDTH = 880; //Max mobile width
 
 	var resolutionService = {
 
@@ -12,10 +13,16 @@
 
 		isMobile : function() {
 			return this.getScreenWidth() < (MOBILEWIDTH + 1) ? true : false;
+		},
+
+		isTablet : function() {
+			return this.getScreenWidth() < (TABLETWIDTH + 1) ? true : false;
 		}
 	};
 
 	window.resolutionService = resolutionService;
+	window.MOBILEWIDTH = MOBILEWIDTH;
+	window.TABLETWIDTH = TABLETWIDTH;
 })();
 
 		

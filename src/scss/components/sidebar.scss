@@ -1,25 +1,21 @@
 .ui-sidebar {
 
 	background-color: $sidebar-color;
-	position: absolute;
+	position: fixed;
 	z-index: 999;
 	margin: 0;
 	padding: 0;
 	bottom: 0;
-	a {	
-		text-decoration:none;
-	}
 }
 
 .ui-sidebar-element-container {
 
 	.ui-sidebar-element-label {
-		display: block;
-		visibility: hidden;
-		color: $sidebar-text-color;
+	    visibility: hidden;
+	    display: block;
+		color: $yello-text-color;
 		font-size: $sidebar-text-size;
 		font-weight: $sidebar-text-style;
-		font-family: $sidebar-text-family;
 		padding: 26px;
 		width: $sidebar-label-width;
 	}
@@ -49,9 +45,9 @@
 		text-align: center;
 		height: $sidebar-element-size;
 		visibility: visible;
-		transition: all 150ms linear;
+		transition: all $transition-speed linear;
 		/* For Safari 3.1 to 6.0 */
-		-webkit-transition: all 150ms linear;
+		-webkit-transition: all $transition-speed linear;
 
 		.ui-sidebar-element-container {
 
@@ -77,9 +73,9 @@
 		width: $sidebar-element-size;
 		top: $header-height;
 		float: left;
-		transition: all 150ms linear;
+		transition: all $transition-speed linear;
 		/* For Safari 3.1 to 6.0 */
-		-webkit-transition: all 150ms linear;
+		-webkit-transition: all $transition-speed linear;
 	}
 
 	.ui-sidebar-hidden {
@@ -100,31 +96,32 @@
 
 	.ui-sidebar-bottom-element {
 		position: absolute !important;
+		width: 100%;
 		bottom: 0;
 	}
 
 	.ui-sidebar:hover {
 
 		width: $sidebar-open-width;
-		
-		.ui-sidebar-element-container {
+		transform: scaleX(1);
+	    /* For Safari 3.1 to 6.0 */
+	    -webkit-transform: scaleX(1);
 
-			.ui-sidebar-element-label {
-				visibility: visible;
-				transition: all 0s linear 150ms;
-				/* For Safari 3.1 to 6.0 */
-				-webkit-transition: all 0s linear 150ms;
-			}
-		}
+	    .ui-sidebar-element-label {
+	    	visibility: visible;
+	    	transition: visibility 0ms linear $transition-speed !important;
+	    	/* For Safari 3.1 to 6.0 */
+	    	-webkit-transition: visibility 0ms linear $transition-speed !important;
+	    }
 
 		a:hover .ui-sidebar-element-label {
-			color: $sidebar-active-text-color;
+			color: $yello-active-text-color;
 		}
 
-		a:hover i, .ui-sidebar-element-label{
-			transition: all 150ms linear;
+		a:hover i, .ui-sidebar-element-label {
+			transition: color $transition-speed linear;
 			/* For Safari 3.1 to 6.0 */
-			-webkit-transition: all 150ms linear;
+			-webkit-transition: color $transition-speed linear;
 		}
 	}
 }

@@ -1,34 +1,47 @@
 //Main variables
 $main-background-color: #303030;
+$hover-color: #363737;
+$transition-speed: 150ms;
+$transition-type: ease-in-out;
+$yello-color: rgb(255, 242, 183);
+$yello-text-color: rgba(184, 184, 179, 0.97);
+$yello-active-text-color: #FBC02D;
 
 //Resolution variables
-$mobile-width: 480px;
-$not-mobile-width: 481px;
+$mobile-width: 670px;
+$not-mobile-width: 671px;
+$tablet-width: 880px;
+$not-tablet-width: 881px;
 
 //Header variables
 $header-height: 56px;
+$header-background-color: rgba(23, 23, 23, 0.97);;
+$full-header-logo-width: 150px;
 $header-mobile-logo: url(../img/velotooler-logo.png);
 $header-logo: url(../img/logo.png);
 
 //Sidebar variables
-$sidebar-color: #363737;
-$sidebar-open-width: 210px;
-$sidebar-text-color: #ADAAA2;
-$sidebar-text-size: 12px;
-$sidebar-label-width: 136px;
-$sidebar-text-family: 'Open Sans';
+$sidebar-color: rgba(23, 23, 23, 0.97);
+$sidebar-open-width: 230px;
+$sidebar-text-size: 14px;
+$sidebar-label-width: 156px;
+$ui-text-family: LandingPage, sans-serif;
 $sidebar-text-style: bold;
-$sidebar-active-text-color: #E3D6A5;
 $sidebar-element-size: 64px;
 $sidebar-element-size-small: 60px; // iPhone4/5 
 
 //Sidebar variables
-$submenu-color: #272727;
+$submenu-color: rgba(39, 39, 39, 0.97);;
 $submenu-title: #181818;
-$submenu-width: 146px;
+$submenu-width: 170px;
 $submenu-mobile-text-size: 16px;
 $submenu-scale: scaleX(1);
 $submenu-mobile-scale: scaleY(1);
+
+//Panel variables
+$header-full-panel-width: 1100px;
+$panel-font-size: 18px;
+$transition-speed-panel: 150ms;
 
 
 
