@@ -1,18 +1,18 @@
 .ui-submenu {
   position: fixed !important;
   background-color: $submenu-color;
-  z-index: 1000;
+  z-index: 10;
   transition: transform $transition-speed linear;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform $transition-speed linear;
 
   .ui-submenu-element-label {
-    color: $yello-text-color;
+    color: $text-color;
     font-size: $sidebar-text-size;
     font-weight: $sidebar-text-style;
 
     &:hover {
-      color: $yello-active-text-color;
+      color: $active-color;
     }
   }
 }

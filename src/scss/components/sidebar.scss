@@ -2,7 +2,7 @@
 
   background-color: $sidebar-color;
   position: fixed;
-  z-index: 999;
+  z-index: 9;
   margin: 0;
   padding: 0;
   bottom: 0;
@@ -13,7 +13,7 @@
   .ui-sidebar-element-label {
     visibility: hidden;
     display: block;
-    color: $yello-text-color;
+    color: $text-color;
     font-size: $sidebar-text-size;
     font-weight: $sidebar-text-style;
     padding: 26px;
@@ -115,7 +115,7 @@
     }
 
     a:hover .ui-sidebar-element-label {
-      color: $yello-active-text-color;
+      color: $active-color;
     }
 
     a:hover i, .ui-sidebar-element-label {

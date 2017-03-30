@@ -18,12 +18,12 @@
       padding: 0 20px 0 20px;
 
       span {
-        color: $yello-text-color;
+        color: $text-color;
       }
     }
 
     &:after {
-      background-color: $yello-color;
+      background-color: $base-color;
       bottom: 0px;
       content: '';
       height: 1px;
@@ -36,7 +36,7 @@
     }
 
     &:hover {
-      border-bottom: solid 1px $yello-active-text-color;
+      border-bottom: solid 1px $active-color;
       box-sizing: border-box;
     }
 
@@ -62,7 +62,7 @@
     height: 100%;
     display: block;
     background-color: $sidebar-color;
-    z-index: 999;
+    z-index: 9;
     left: 0;
     top: $header-height;
     transform: scaleX(0);
@@ -89,7 +89,7 @@
         border: 0;
 
         span {
-          color: $yello-active-text-color;
+          color: $active-color;
         }
       }
 

@@ -3,19 +3,19 @@
   padding-top: $input-padding-top;
   padding-bottom: $input-padding-bottom;
   position: relative;
-  font-family: Arial;
   font-size: 1em;
 
   .ui-input {
+    color: $input-color;
     border: 0px;
     width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, .12);
-    font-family: Arial;
+    border-bottom: $input-border-bottom-color;
     font-size: 1em;
     background: transparent;
   }
 
   .ui-label {
+    color: $input-color;
     position: absolute;
     top: $label-top;
     bottom: 0px;

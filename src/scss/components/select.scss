@@ -8,16 +8,17 @@
   .ui-select-input {
     border: 0px;
     width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, .12);
-    font-family: Arial;
+    border-bottom: $select-border-bottom-color;
     font-size: 1em;
     background: transparent;
+    color: $text-color;
   }
 
   .ui-select-icon {
     position: absolute;
     right: 0;
     cursor: pointer;
+    color: $text-color;
   }
 
   .ui-select-icon:after {
@@ -38,7 +39,7 @@
 .ui-select-options {
   opacity: 0;
   display: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+  box-shadow: $select-option-box-shadow;
   z-index: 10;
   position: absolute;
   width: 100%;
@@ -46,12 +47,12 @@
   overflow-y: auto;
 
   .ui-select-option {
-    height: 40px;
-    padding: 0px 15px;
+    height: 2.5em;
+    padding: 0em 1em;
     font-size: 1em;
     cursor: pointer;
-    line-height: 40px;
-    background: #FFFFFF;
+    line-height: 2.5em;
+    background: $select-option-background;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow-x: hidden;
@@ -59,7 +60,7 @@
 
   .ui-select-option:hover,
   .ui-select-option:focus {
-    background: rgb(238, 238, 238);
+    background: $select-option-background-active;
     outline: 0px solid transparent;
   }
 }
@@ -68,7 +69,7 @@
   opacity: 1;
   display: block;
   position: absolute;
-  max-height: 200px;
+  max-height: 12.5em;
 }
 
 .ui-select-options.opening {

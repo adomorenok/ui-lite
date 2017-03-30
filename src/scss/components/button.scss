@@ -1,5 +1,5 @@
 a.ui-btn {
-  line-height: 36px;
+  line-height: 34px;
 }
 
 .ui-btn {
@@ -37,16 +37,12 @@ a.ui-btn {
       position: absolute;
       top: 0;
       overflow: hidden;
-      background: #fff;
+      background: $button-ripple-effect-color;
       z-index: 0;
     }
 
     .ui-animate {
-      transition: transform .3s cubic-bezier(0, 0, .2, 1),
-                  width .3s cubic-bezier(0, 0, .2, 1),
-                  height .3s cubic-bezier(0, 0, .2, 1),
-                  opacity .6s cubic-bezier(0, 0, .2, 1),
-                  -webkit-transform .3s cubic-bezier(0, 0, .2, 1);
+      transition: $button-ripple-effect;
     }
 
     .ui-ripple.ui-visible {
@@ -56,8 +52,8 @@ a.ui-btn {
 }
 
 .ui-btn.ui-fab {
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 3em;
+  min-height: 3em;
   border-radius: 50%;
 
   .ui-btn-ripple-container {
@@ -75,7 +71,7 @@ a.ui-btn {
   min-width: 2em;
   min-height: 2em;
   border-radius: 50%;
-  
+
   .ui-btn-ripple-container {
     border-radius: 50%;
   }
@@ -88,7 +84,7 @@ a.ui-btn {
 }
 
 .ui-btn:hover {
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+  box-shadow: $button-box-shadow;
 }
 
 .ui-btn:active {

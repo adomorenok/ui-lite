@@ -1,11 +1,13 @@
 //Main variables
+$base-color: rgb(255, 242, 183);
+$active-color: #FBC02D;
+$text-color: rgba(184, 184, 179, 0.97);
+$text-alternative-color: #FFFFFF;
 $main-background-color: #303030;
 $hover-color: #363737;
 $transition-speed: 150ms;
 $transition-type: ease-in-out;
-$yello-color: rgb(255, 242, 183);
-$yello-text-color: rgba(184, 184, 179, 0.97);
-$yello-active-text-color: #FBC02D;
+
 
 //Resolution variables
 $mobile-width: 670px;
@@ -35,7 +37,7 @@ $submenu-color: rgba(39, 39, 39, 0.97);
 
 $submenu-title: #181818;
 $submenu-width: 170px;
-$submenu-mobile-text-size: 16px;
+$submenu-mobile-text-size: 1em;
 $submenu-scale: scaleX(1);
 $submenu-mobile-scale: scaleY(1);
 
@@ -44,18 +46,27 @@ $header-full-panel-width: 1100px;
 $panel-font-size: 18px;
 $transition-speed-panel: 150ms;
 
-$input-padding-top: 16px;
+$input-color: $text-color;
+$input-padding-top: 1em;
 $input-padding-bottom: $input-padding-top;
+
+$input-border-bottom-color: 1px solid rgba(255, 242, 183, .25);
 $label-top: $input-padding-top;
-
-$base-color: #3f51b5;
-$active-color: #5C6BC0;
-$text-color: rgba(0, 0, 0, .54);
-$text-alternative-color: #FFFFFF;
-
 $input-border-color: $base-color;
 
-$button-default-color: $base-color;
+$select-option-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+$select-border-bottom-color: $input-border-bottom-color;
+$select-option-background: #FFFFFF;
+$select-option-background-active: rgb(238, 238, 238);
+
+$button-default-color: $active-color;
 $button-hover-color: $active-color;
 $button-animate-opacity: 0.3;
+$button-ripple-effect: transform .3s cubic-bezier(0, 0, .2, 1),
+                       width .3s cubic-bezier(0, 0, .2, 1),
+                       height .3s cubic-bezier(0, 0, .2, 1),
+                       opacity .6s cubic-bezier(0, 0, .2, 1),
+                       -webkit-transform .3s cubic-bezier(0, 0, .2, 1);
+$button-ripple-effect-color: #FFFFFF;
+$button-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 

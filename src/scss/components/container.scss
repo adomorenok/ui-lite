@@ -5,7 +5,7 @@
 
 @media (min-width: $not-mobile-width) {
   .ui-container {
-    z-index: 99;
+    z-index: 5;
     padding: 12px;
     transition: all $transition-speed linear;
     /* For Safari 3.1 to 6.0 */

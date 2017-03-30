@@ -110,7 +110,7 @@ a {
     height: 100%;
     display: block;
     background-color: rgba(23, 23, 23, 0.97);
-    z-index: 999;
+    z-index: 9;
     left: 0;
     top: 56px;
     transform: scaleX(0);
@@ -166,21 +166,21 @@ a {
 
 .ui-input-container {
   display: inline-block;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 1em;
+  padding-bottom: 1em;
   position: relative;
-  font-family: Arial;
   font-size: 1em; }
   .ui-input-container .ui-input {
+    color: rgba(184, 184, 179, 0.97);
     border: 0px;
     width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    font-family: Arial;
+    border-bottom: 1px solid rgba(255, 242, 183, 0.25);
     font-size: 1em;
     background: transparent; }
   .ui-input-container .ui-label {
+    color: rgba(184, 184, 179, 0.97);
     position: absolute;
-    top: 16px;
+    top: 1em;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -189,8 +189,8 @@ a {
     transition-duration: .2s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
   .ui-input-container .ui-label:after {
-    background-color: #3f51b5;
-    bottom: 16px;
+    background-color: #fff2b7;
+    bottom: 1em;
     content: '';
     height: 2px;
     left: 49%;
@@ -212,12 +212,12 @@ a {
   top: 0px; }
 
 a.ui-btn {
-  line-height: 36px; }
+  line-height: 34px; }
 
 .ui-btn {
   min-width: 5em;
   min-height: 2em;
-  background: #3f51b5;
+  background: #FBC02D;
   color: #FFFFFF;
   display: inline-block;
   position: relative;
@@ -247,7 +247,7 @@ a.ui-btn {
       position: absolute;
       top: 0;
       overflow: hidden;
-      background: #fff;
+      background: #FFFFFF;
       z-index: 0; }
     .ui-btn .ui-btn-ripple-container .ui-animate {
       transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1), width 0.3s cubic-bezier(0, 0, 0.2, 1), height 0.3s cubic-bezier(0, 0, 0.2, 1), opacity 0.6s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.2, 1); }
@@ -255,8 +255,8 @@ a.ui-btn {
       opacity: 0.2; }
 
 .ui-btn.ui-fab {
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 3em;
+  min-height: 3em;
   border-radius: 50%; }
   .ui-btn.ui-fab .ui-btn-ripple-container {
     border-radius: 50%; }
@@ -280,7 +280,7 @@ a.ui-btn {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
 
 .ui-btn:active {
-  background: #5C6BC0; }
+  background: #FBC02D; }
 
 .ui-btn:focus {
   outline-color: transparent; }
@@ -291,15 +291,16 @@ a.ui-btn {
 .ui-input-container .ui-select-input {
   border: 0px;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  font-family: Arial;
+  border-bottom: 1px solid rgba(255, 242, 183, 0.25);
   font-size: 1em;
-  background: transparent; }
+  background: transparent;
+  color: rgba(184, 184, 179, 0.97); }
 
 .ui-input-container .ui-select-icon {
   position: absolute;
   right: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  color: rgba(184, 184, 179, 0.97); }
 
 .ui-input-container .ui-select-icon:after {
   display: block;
@@ -321,11 +322,11 @@ a.ui-btn {
   max-height: 0px;
   overflow-y: auto; }
   .ui-select-options .ui-select-option {
-    height: 40px;
-    padding: 0px 15px;
+    height: 2.5em;
+    padding: 0em 1em;
     font-size: 1em;
     cursor: pointer;
-    line-height: 40px;
+    line-height: 2.5em;
     background: #FFFFFF;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -339,7 +340,7 @@ a.ui-btn {
   opacity: 1;
   display: block;
   position: absolute;
-  max-height: 200px; }
+  max-height: 12.5em; }
 
 .ui-select-options.opening {
   display: block;
@@ -350,7 +351,7 @@ a.ui-btn {
 .ui-sidebar {
   background-color: rgba(23, 23, 23, 0.97);
   position: fixed;
-  z-index: 999;
+  z-index: 9;
   margin: 0;
   padding: 0;
   bottom: 0; }
@@ -435,7 +436,7 @@ a.ui-btn {
 .ui-submenu {
   position: fixed !important;
   background-color: rgba(39, 39, 39, 0.97);
-  z-index: 1000;
+  z-index: 10;
   transition: transform 150ms linear;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform 150ms linear; }
@@ -464,7 +465,7 @@ a.ui-btn {
     .ui-submenu .ui-submenu-element-container .ui-submenu-element-label {
       display: block;
       padding: 26px;
-      font-size: 16px; }
+      font-size: 1em; }
     .ui-submenu .ui-submenu-element-container .ui-submenu-element .icon-down-arrow {
       background-size: 30px;
       display: block;
@@ -523,7 +524,7 @@ a.ui-btn {
 
 @media (min-width: 671px) {
   .ui-container {
-    z-index: 99;
+    z-index: 5;
     padding: 12px;
     transition: all 150ms linear;
     /* For Safari 3.1 to 6.0 */
