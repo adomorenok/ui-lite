@@ -3,8 +3,8 @@ a.ui-btn {
 }
 
 .ui-btn {
-  min-width: 70px;
-  min-height: 36px;
+  min-width: 5em;
+  min-height: 2em;
   background: $button-default-color;
   color: $text-alternative-color;
   display: inline-block;
@@ -67,13 +67,13 @@ a.ui-btn {
   i {
     font-size: 1em;
     vertical-align: middle;
-    line-height: 36px;
+    line-height: 2em;
   }
 }
 
 .ui-btn.ui-fab-min {
-  min-width: 36px;
-  min-height: 36px;
+  min-width: 2em;
+  min-height: 2em;
   border-radius: 50%;
   
   .ui-btn-ripple-container {

@@ -10,18 +10,15 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-bower": "",
     "gulp-concat": "",
     "gulp-install": "~0.6.0",
     "gulp-jshint": "",
-    "gulp-rename": "^1.2.2",
     "gulp-sass": "",
-    "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.4.0",
+    "jshint": "",
     "jshint-stylish": "",
     "merge-stream": "",
-    "gulp-cssmin": "",
-    "gulp-rename": ""
+    "font-awesome": "^4.7.0"
   },
   "dependencies": {
     "gulp-install": "~0.6.0"

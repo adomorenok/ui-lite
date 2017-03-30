@@ -1,10 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
-var cssmin = require('gulp-cssmin');
-var rename = require('gulp-rename');
-//var jshint = require('gulp-jshint');
+var jshint = require('gulp-jshint');
 
 
 var files = {
@@ -32,6 +29,13 @@ gulp.task('watch', function () {
     ]);
 });
 
+gulp.task('jshint', function () {
+    gulp.src(files.js)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
+});
+
 gulp.task('js', function () {
     return gulp.src(files.js)
         .pipe(concat('ui-lite.js'))
@@ -42,15 +46,13 @@ gulp.task('sass', function () {
     return gulp.src(files.sass)
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('ui-lite.css'))
-        /*.pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))*/
         .pipe(gulp.dest('./dist/css/'));
 });
 
 gulp.task('build', function () {
+    gulp.start('jshint');
     gulp.start('js');
     gulp.start('sass');
-    gulp.start('copy-img');
 });
 
 gulp.task('default', function () {

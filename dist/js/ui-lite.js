@@ -288,7 +288,11 @@
             panelToggleButton.addEventListener('click', function (e) {
                 var fieldsets = panel.getElementsByClassName('ui-panel-fieldset');
                 for (var i = 0; 2 > i; i++) {
-                    fieldsets[i].classList.contains('ui-panel-active') ? fieldsets[i].classList.remove('ui-panel-active') : fieldsets[i].classList.add('ui-panel-active');
+                    if (fieldsets[i].classList.contains('ui-panel-active')) {
+                        fieldsets[i].classList.remove('ui-panel-active');
+                    } else {
+                        fieldsets[i].classList.add('ui-panel-active');
+                    }
                 }
 
                 if (resolutionService.isMobile()) {
@@ -305,7 +309,9 @@
 
         if (!activePanel[0]) {
             var firstPanelBlock = panel.getElementsByClassName('ui-panel-fieldset')[0];
-            firstPanelBlock ? firstPanelBlock.classList.add('ui-panel-active') : null;
+            if (firstPanelBlock) {
+                firstPanelBlock.classList.add('ui-panel-active');
+            }
         }
     };
 
@@ -381,11 +387,12 @@
         if (!list) {
             return;
         }
-        for (var i = select.childNodes.length - 1; i >= 0; i--) {
+        var i;
+        for (i = select.childNodes.length - 1; i >= 0; i--) {
             select.removeChild(select.childNodes[i]);
         }
 
-        for (var i = 0; i < list.length; i++) {
+        for (i = 0; i < list.length; i++) {
             var option = document.createElement('option');
             option.value = i;
             option.uiValue = list[i];
@@ -519,10 +526,10 @@
         input.addEventListener('focus', this.onfocus);
         input.addEventListener('blur', this.onblur);
 
-        var label = this.getLabel(select);
+        var selectLabel = this.getLabel(select);
 
-        if (label) {
-            label.addEventListener('click', function (e) {
+        if (selectLabel) {
+            selectLabel.addEventListener('click', function (e) {
                 input.focus();
                 input.value = input.value;
             });
@@ -664,10 +671,14 @@
     };
 
     UISubMenu.prototype.onOpenSubMenu = function (e) {
-        submenu.classList.contains('ui-submenu-active') ? menuService.closeSubMenu() : menuService.openSubMenu();
+        if (submenu.classList.contains('ui-submenu-active')) {
+            menuService.closeSubMenu();
+        } else {
+            menuService.openSubMenu();
+        }
 
         e.preventDefault();
-    }
+    };
 
     UISubMenu.prototype.onButtonClick = function (e) {
 
@@ -730,7 +741,7 @@
 
     UISubMenu.prototype.init = function (_submenu) {
         _submenu.ui = this;
-        submenu = _submenu
+        submenu = _submenu;
         container = document.getElementsByClassName('ui-container')[0];
         sidebar = document.getElementsByClassName('ui-sidebar')[0];
 
@@ -767,7 +778,7 @@
             sidebar.classList.add('ui-sidebar-hidden');
         }
 
-        this.addCloseEventByClickOnSubmenu();
+        addCloseEventByClickOnSubmenu();
     }
 
     function closeSubMenu() {
@@ -810,7 +821,7 @@
             openSubMenu: openSubMenu,
             addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
-        }
+        };
     })();
 
     window.menuService = menuService;

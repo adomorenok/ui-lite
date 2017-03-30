@@ -36,11 +36,12 @@
         if (!list) {
             return;
         }
-        for (var i = select.childNodes.length - 1; i >= 0; i--) {
+        var i;
+        for (i = select.childNodes.length - 1; i >= 0; i--) {
             select.removeChild(select.childNodes[i]);
         }
 
-        for (var i = 0; i < list.length; i++) {
+        for (i = 0; i < list.length; i++) {
             var option = document.createElement('option');
             option.value = i;
             option.uiValue = list[i];
@@ -174,10 +175,10 @@
         input.addEventListener('focus', this.onfocus);
         input.addEventListener('blur', this.onblur);
 
-        var label = this.getLabel(select);
+        var selectLabel = this.getLabel(select);
 
-        if (label) {
-            label.addEventListener('click', function (e) {
+        if (selectLabel) {
+            selectLabel.addEventListener('click', function (e) {
                 input.focus();
                 input.value = input.value;
             });

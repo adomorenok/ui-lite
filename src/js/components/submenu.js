@@ -27,10 +27,14 @@
     };
 
     UISubMenu.prototype.onOpenSubMenu = function (e) {
-        submenu.classList.contains('ui-submenu-active') ? menuService.closeSubMenu() : menuService.openSubMenu();
+        if (submenu.classList.contains('ui-submenu-active')) {
+            menuService.closeSubMenu();
+        } else {
+            menuService.openSubMenu();
+        }
 
         e.preventDefault();
-    }
+    };
 
     UISubMenu.prototype.onButtonClick = function (e) {
 
@@ -93,7 +97,7 @@
 
     UISubMenu.prototype.init = function (_submenu) {
         _submenu.ui = this;
-        submenu = _submenu
+        submenu = _submenu;
         container = document.getElementsByClassName('ui-container')[0];
         sidebar = document.getElementsByClassName('ui-sidebar')[0];
 

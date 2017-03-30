@@ -55,15 +55,13 @@ a {
   .ui-header .ui-header-logo-conteiner {
     width: 56px; }
   a i.ui-logo {
-    background-size: 56px;
-    background-image: url(../img/velotooler-logo.png); } }
+    background-size: 56px; } }
 
 @media (min-width: 671px) {
   .ui-header-logo-conteiner {
     width: 150px; }
   i.ui-logo {
-    background-size: 150px;
-    background-image: url(../img/logo.png); } }
+    background-size: 150px; } }
 
 .ui-panel {
   position: fixed;
@@ -217,8 +215,8 @@ a.ui-btn {
   line-height: 36px; }
 
 .ui-btn {
-  min-width: 70px;
-  min-height: 36px;
+  min-width: 5em;
+  min-height: 2em;
   background: #3f51b5;
   color: #FFFFFF;
   display: inline-block;
@@ -265,11 +263,11 @@ a.ui-btn {
   .ui-btn.ui-fab i {
     font-size: 1em;
     vertical-align: middle;
-    line-height: 36px; }
+    line-height: 2em; }
 
 .ui-btn.ui-fab-min {
-  min-width: 36px;
-  min-height: 36px;
+  min-width: 2em;
+  min-height: 2em;
   border-radius: 50%; }
   .ui-btn.ui-fab-min .ui-btn-ripple-container {
     border-radius: 50%; }
@@ -540,46 +538,3 @@ a.ui-btn {
     left: 230px !important; }
   .ui-container-has-right-open-sidebar, .ui-container-has-right-open-submenu {
     right: 230px !important; } }
-
-.icon {
-  background-position: center;
-  background-repeat: no-repeat; }
-
-.icon-list {
-  background-image: url("../img/list.png"); }
-
-.icon-request-search {
-  background-image: url("../img/search.png"); }
-
-.icon-history {
-  background-image: url("../img/history.png"); }
-
-.icon-notification {
-  background-image: url("../img/notification.png"); }
-
-.icon-inbox {
-  background-image: url("../img/message.png"); }
-
-.icon-setting {
-  background-image: url("../img/settings.png"); }
-
-.icon-down-arrow {
-  background-image: url("../img/down-arrow.png"); }
-
-a:hover i.icon-list {
-  background-image: url("../img/list_active.png"); }
-
-a:hover i.icon-request-search {
-  background-image: url("../img/search_active.png"); }
-
-a:hover i.icon-history {
-  background-image: url("../img/history_active.png"); }
-
-a:hover i.icon-notification {
-  background-image: url("../img/notification_active.png"); }
-
-a:hover i.icon-inbox {
-  background-image: url("../img/message_active.png"); }
-
-a:hover i.icon-setting {
-  background-image: url("../img/settings_active.png"); }

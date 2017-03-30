@@ -23,7 +23,11 @@
             panelToggleButton.addEventListener('click', function (e) {
                 var fieldsets = panel.getElementsByClassName('ui-panel-fieldset');
                 for (var i = 0; 2 > i; i++) {
-                    fieldsets[i].classList.contains('ui-panel-active') ? fieldsets[i].classList.remove('ui-panel-active') : fieldsets[i].classList.add('ui-panel-active');
+                    if (fieldsets[i].classList.contains('ui-panel-active')) {
+                        fieldsets[i].classList.remove('ui-panel-active');
+                    } else {
+                        fieldsets[i].classList.add('ui-panel-active');
+                    }
                 }
 
                 if (resolutionService.isMobile()) {
@@ -40,7 +44,9 @@
 
         if (!activePanel[0]) {
             var firstPanelBlock = panel.getElementsByClassName('ui-panel-fieldset')[0];
-            firstPanelBlock ? firstPanelBlock.classList.add('ui-panel-active') : null;
+            if (firstPanelBlock) {
+                firstPanelBlock.classList.add('ui-panel-active');
+            }
         }
     };
 

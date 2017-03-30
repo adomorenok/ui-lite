@@ -18,7 +18,7 @@
             sidebar.classList.add('ui-sidebar-hidden');
         }
 
-        this.addCloseEventByClickOnSubmenu();
+        addCloseEventByClickOnSubmenu();
     }
 
     function closeSubMenu() {
@@ -61,7 +61,7 @@
             openSubMenu: openSubMenu,
             addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
-        }
+        };
     })();
 
     window.menuService = menuService;
