@@ -15,7 +15,8 @@ $not-tablet-width: 881px;
 
 //Header variables
 $header-height: 56px;
-$header-background-color: rgba(23, 23, 23, 0.97);;
+$header-background-color: rgba(23, 23, 23, 0.97);
+
 $full-header-logo-width: 150px;
 $header-mobile-logo: url(../img/velotooler-logo.png);
 $header-logo: url(../img/logo.png);
@@ -28,10 +29,12 @@ $sidebar-label-width: 156px;
 $ui-text-family: LandingPage, sans-serif;
 $sidebar-text-style: bold;
 $sidebar-element-size: 64px;
-$sidebar-element-size-small: 60px; // iPhone4/5 
+$sidebar-element-size-small: 60px;
+// iPhone4/5
 
 //Sidebar variables
-$submenu-color: rgba(39, 39, 39, 0.97);;
+$submenu-color: rgba(39, 39, 39, 0.97);
+;
 $submenu-title: #181818;
 $submenu-width: 170px;
 $submenu-mobile-text-size: 16px;
@@ -43,18 +46,13 @@ $header-full-panel-width: 1100px;
 $panel-font-size: 18px;
 $transition-speed-panel: 150ms;
 
-
-
-
-
-
 $input-padding-top: 16px;
 $input-padding-bottom: $input-padding-top;
 $label-top: $input-padding-top;
 
 $base-color: #3f51b5;
 $active-color: #5C6BC0;
-$text-color: rgba(0,0,0,.54);
+$text-color: rgba(0, 0, 0, .54);
 $text-alternative-color: #FFFFFF;
 
 $input-border-color: $base-color;

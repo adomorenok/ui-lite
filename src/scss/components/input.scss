@@ -1,59 +1,60 @@
 .ui-input-container {
-	display: inline-block;
-	padding-top: $input-padding-top;
-	padding-bottom: $input-padding-bottom;
-	position: relative;
-	font-family: Arial;
+  display: inline-block;
+  padding-top: $input-padding-top;
+  padding-bottom: $input-padding-bottom;
+  position: relative;
+  font-family: Arial;
+  font-size: 1em;
+
+  .ui-input {
+    border: 0px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    font-family: Arial;
     font-size: 1em;
+    background: transparent;
+  }
 
-	.ui-input {
-		border: 0px;
-		width: 100%;
-		border-bottom: 1px solid rgba(0,0,0,.12);
-		font-family: Arial;
-    	font-size: 1em;
-	}
+  .ui-label {
+    position: absolute;
+    top: $label-top;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    cursor: text;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  }
 
-	.ui-label {
-		position: absolute;
-		top: $label-top;
-		bottom: 0px;
-    	left: 0px;
-    	right: 0px;
-		width: 100%;
-		cursor: text;
-		transition-duration: .2s;
-		transition-timing-function: cubic-bezier(.4,0,.2,1);
-	}
-
-	.ui-label:after {
-		background-color: $input-border-color;
-	    bottom: $label-top;
-	    content: '';
-	    height: 2px;
-	    left: 49%;
-	    position: absolute;
-	    transition-duration: .2s;
-	    transition-timing-function: cubic-bezier(.4,0,.2,1);
-	    visibility: hidden;
-	    width: 1px;
-	}
+  .ui-label:after {
+    background-color: $input-border-color;
+    bottom: $label-top;
+    content: '';
+    height: 2px;
+    left: 49%;
+    position: absolute;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    visibility: hidden;
+    width: 1px;
+  }
 }
 
 .ui-on-focus {
-	.ui-input {
-		outline: none;
-	}
+  .ui-input {
+    outline: none;
+  }
 
-	.ui-label:after {
-		left: 0;
-		visibility: visible;
-		width: 100%;
-	}
+  .ui-label:after {
+    left: 0;
+    visibility: visible;
+    width: 100%;
+  }
 }
 
 .ui-has-value, .ui-on-focus {
-	.ui-label {
-		top: 0px;
-	}
+  .ui-label {
+    top: 0px;
+  }
 }

@@ -178,7 +178,8 @@ a {
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     font-family: Arial;
-    font-size: 1em; }
+    font-size: 1em;
+    background: transparent; }
   .ui-input-container .ui-label {
     position: absolute;
     top: 16px;
@@ -238,7 +239,8 @@ a.ui-btn {
     position: absolute;
     top: 0;
     width: 100%;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 1; }
     .ui-btn .ui-btn-ripple-container .ui-ripple {
       border-radius: 50%;
       left: 0;
@@ -258,6 +260,8 @@ a.ui-btn {
   min-width: 50px;
   min-height: 50px;
   border-radius: 50%; }
+  .ui-btn.ui-fab .ui-btn-ripple-container {
+    border-radius: 50%; }
   .ui-btn.ui-fab i {
     font-size: 1em;
     vertical-align: middle;
@@ -267,6 +271,8 @@ a.ui-btn {
   min-width: 36px;
   min-height: 36px;
   border-radius: 50%; }
+  .ui-btn.ui-fab-min .ui-btn-ripple-container {
+    border-radius: 50%; }
   .ui-btn.ui-fab-min i {
     font-size: 1em;
     vertical-align: middle;
@@ -289,7 +295,8 @@ a.ui-btn {
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   font-family: Arial;
-  font-size: 1em; }
+  font-size: 1em;
+  background: transparent; }
 
 .ui-input-container .ui-select-icon {
   position: absolute;

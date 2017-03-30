@@ -1,4 +1,5 @@
 (function () {
+
     'use strict';
 
     var UiSelect = function UiSelect(element, list, label) {
@@ -35,7 +36,7 @@
         if (!list) {
             return;
         }
-        for (var i = select.childNodes.length - 1; i >= 0 ; i--) {
+        for (var i = select.childNodes.length - 1; i >= 0; i--) {
             select.removeChild(select.childNodes[i]);
         }
 
@@ -85,9 +86,10 @@
             input.ui.checkValue(input);
             input.ui.closeSelect(input);
         });
+
         option.addEventListener('keydown', function (e) {
             var keyCode = e.which || e.keyCode;
-            if(keyCode == 13) {
+            if (keyCode == 13) {
                 input.value = node.label;
                 select.value = node.value;
                 select.uiValue = node.uiValue;
@@ -101,8 +103,9 @@
                 input.ui.closeSelect(input);
             }
         });
+
         option.addEventListener('blur', function (e) {
-            setTimeout(function() {
+            setTimeout(function () {
                 if (!document.activeElement.classList || !document.activeElement.classList.contains('ui-select-option')) {
                     input.ui.closeSelect(input);
                 }
@@ -118,7 +121,7 @@
 
         parent.classList.add('ui-on-focus');
         input.selectList.classList.add('opening');
-        setTimeout(function() {
+        setTimeout(function () {
             input.selectList.classList.add('is-opened');
             input.selectList.childNodes[0].focus();
         }, 0);

@@ -1,135 +1,130 @@
 .ui-submenu {
+  position: fixed !important;
+  background-color: $submenu-color;
+  z-index: 1000;
+  transition: transform $transition-speed linear;
+  /* For Safari 3.1 to 6.0 */
+  -webkit-transition: transform $transition-speed linear;
 
-	position: fixed !important;
-	background-color: $submenu-color;
-	z-index: 1000;
-	transition: transform $transition-speed linear;
-	/* For Safari 3.1 to 6.0 */
-	-webkit-transition: transform $transition-speed linear;
+  .ui-submenu-element-label {
+    color: $yello-text-color;
+    font-size: $sidebar-text-size;
+    font-weight: $sidebar-text-style;
 
-	.ui-submenu-element-label {
-
-		color: $yello-text-color;
-		font-size: $sidebar-text-size;
-		font-weight: $sidebar-text-style;
-
-		&:hover {
-			color: $yello-active-text-color;
-		}
-	}
+    &:hover {
+      color: $yello-active-text-color;
+    }
+  }
 }
 
 .ui-submenu-hidden {
-	pointer-events:none;
+  pointer-events: none;
 }
 
 @media (max-width: $mobile_width) {
+  .ui-submenu {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    text-align: center;
+    border-radius: 15px;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleY(0);
+    -webkit-transform-origin: bottom;
 
-	.ui-submenu {
+    .ui-submenu-element-container {
 
-		bottom: 15px;
-		left: 15px;
-		right: 15px;
-		text-align: center;
-		border-radius: 15px;	
-		transform: scaleY(0);
-	    transform-origin: bottom;
-	    /* For Safari 3.1 to 6.0 */
-	    -webkit-transform: scaleY(0);
-		-webkit-transform-origin: bottom;
+      .ui-submenu-element-label {
 
-		.ui-submenu-element-container {
+        display: block;
+        padding: 26px;
+        font-size: $submenu-mobile-text-size;
+      }
 
-			.ui-submenu-element-label {
+      .ui-submenu-element {
 
-				display: block;
-				padding: 26px;
-				font-size: $submenu-mobile-text-size;
-			}
-			
-			.ui-submenu-element {
+        .icon-down-arrow {
 
-				.icon-down-arrow {
+          background-size: 30px;
+          display: block;
+          height: 30px;
+        }
+      }
 
-					background-size: 30px;
-					display: block;
-					height: 30px;
-				}
-			}
+      &:not(:last-child) {
+        border-bottom: solid 1px $main-background-color;
+      }
+    }
 
-			&:not(:last-child) {
-				border-bottom: solid 1px $main-background-color;
-			}
-		}
+    .ui-submenu-close-container {
+      padding: 0;
+      margin: 0;
+    }
+  }
 
-		.ui-submenu-close-container {
-			padding: 0;
-			margin: 0;
-		}
-	}
+  .ui-submenu:hover {
+    transform: scaleY(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: $submenu-mobile-scale;
+  }
 
-
-	.ui-submenu:hover {
-		transform: scaleY(1);
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transform: $submenu-mobile-scale;
-	}
-
-	.ui-submenu-active {
-		transform: scaleY(1);
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transform: $submenu-mobile-scale;
-	}
+  .ui-submenu-active {
+    transform: scaleY(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: $submenu-mobile-scale;
+  }
 }
 
 @media (min-width: $not-mobile-width) {
 
-	.ui-submenu {
-		height: 100%;
-		width: $submenu-width;
-		top: $header-height;
-		transform: scaleX(0);
-	     /* For Safari 3.1 to 6.0 */
-	    -webkit-transform: scaleX(0);	
-	}
+  .ui-submenu {
+    height: 100%;
+    width: $submenu-width;
+    top: $header-height;
+    transform: scaleX(0);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleX(0);
+  }
 
-	.ui-sidebar-has-header {
-		margin-top: $header-height;
-	}
+  .ui-sidebar-has-header {
+    margin-top: $header-height;
+  }
 
-	.ui-submenu-left {
-		left: $sidebar-element-size;
-		transform-origin: left;
-		-webkit-transform-origin: left;
-	}
+  .ui-submenu-left {
+    left: $sidebar-element-size;
+    transform-origin: left;
+    -webkit-transform-origin: left;
+  }
 
-	.ui-submenu-right {
-		right: $sidebar-element-size;
-		transform-origin: right;
-		-webkit-transform-origin: right;
-	}
+  .ui-submenu-right {
+    right: $sidebar-element-size;
+    transform-origin: right;
+    -webkit-transform-origin: right;
+  }
 
-	.ui-submenu-element-container {
+  .ui-submenu-element-container {
 
-		.ui-submenu-element-label {
-			display: block;
-			padding: 26px;
-			font-size: $sidebar-text-size;
-		}
-	}
+    .ui-submenu-element-label {
+      display: block;
+      padding: 26px;
+      font-size: $sidebar-text-size;
+    }
+  }
 
-	.ui-submenu:hover {
-		transform: scaleX(1);
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transform: $submenu-scale;
-	}
+  .ui-submenu:hover {
+    transform: scaleX(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: $submenu-scale;
+  }
 
-	.ui-submenu-active {
-		transform: scaleX(1);
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transform: $submenu-scale;
-		transition: transform $transition-speed linear $transition-speed;
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transition: transform $transition-speed linear $transition-speed;
-	}
+  .ui-submenu-active {
+    transform: scaleX(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: $submenu-scale;
+    transition: transform $transition-speed linear $transition-speed;
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transition: transform $transition-speed linear $transition-speed;
+  }
 }

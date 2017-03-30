@@ -1,81 +1,80 @@
-;(function(){
-	
-	'use strict';
+(function () {
 
-	var panel;
+    'use strict';
 
-	var UIPanel = function UIPanel(element) {
-		this.init(element);
-	};
+    var panel;
 
-	UIPanel.prototype.initPanelButtons = function(panel) {
-		var panelButtons = panel.getElementsByClassName('ui-panel-btn');
+    var UIPanel = function UIPanel(element) {
+        this.init(element);
+    };
 
-		for(var b = 0; b < panelButtons.length; b++) {
-			panelButtons[b].addEventListener('click', this.onButtonClick);
-		}
-	};
+    UIPanel.prototype.initPanelButtons = function (panel) {
+        var panelButtons = panel.getElementsByClassName('ui-panel-btn');
 
-	UIPanel.prototype.initPanelToggleButton = function(panel) {
-		var panelToggleButton = document.documentElement.getElementsByClassName('ui-panel-toggle-btn')[0];
+        for (var b = 0; b < panelButtons.length; b++) {
+            panelButtons[b].addEventListener('click', this.onButtonClick);
+        }
+    };
 
-		if(panelToggleButton) {
-			panelToggleButton.addEventListener('click', function(e) {	
+    UIPanel.prototype.initPanelToggleButton = function (panel) {
+        var panelToggleButton = document.documentElement.getElementsByClassName('ui-panel-toggle-btn')[0];
 
-				var fieldsets = panel.getElementsByClassName('ui-panel-fieldset');
-				for(var i = 0; 2 > i; i++) {
-					fieldsets[i].classList.contains('ui-panel-active') ? fieldsets[i].classList.remove('ui-panel-active') : fieldsets[i].classList.add('ui-panel-active');
-				}
+        if (panelToggleButton) {
+            panelToggleButton.addEventListener('click', function (e) {
+                var fieldsets = panel.getElementsByClassName('ui-panel-fieldset');
+                for (var i = 0; 2 > i; i++) {
+                    fieldsets[i].classList.contains('ui-panel-active') ? fieldsets[i].classList.remove('ui-panel-active') : fieldsets[i].classList.add('ui-panel-active');
+                }
 
-				if(resolutionService.isMobile()) {
-					menuService.addCloseEventByClickOnPanel(e);
-				}
+                if (resolutionService.isMobile()) {
+                    menuService.addCloseEventByClickOnPanel(e);
+                }
 
-				e.preventDefault();
-			});
-		}
-	};
+                e.preventDefault();
+            });
+        }
+    };
 
-	UIPanel.prototype.initDefaultActivePanel = function(panel) {
-		var activePanel = panel.getElementsByClassName('ui-panel-active');
+    UIPanel.prototype.initDefaultActivePanel = function (panel) {
+        var activePanel = panel.getElementsByClassName('ui-panel-active');
 
-		if(!activePanel[0]) {
-			var firstPanelBlock = panel.getElementsByClassName('ui-panel-fieldset')[0];
-			firstPanelBlock ? firstPanelBlock.classList.add('ui-panel-active') : null;
-		}
-	};
+        if (!activePanel[0]) {
+            var firstPanelBlock = panel.getElementsByClassName('ui-panel-fieldset')[0];
+            firstPanelBlock ? firstPanelBlock.classList.add('ui-panel-active') : null;
+        }
+    };
 
-	UIPanel.prototype.onButtonClick = function(e) {
+    UIPanel.prototype.onButtonClick = function (e) {
 
-		e.preventDefault();
+        e.preventDefault();
 
-		//Find all activ buttons
-		var activeButton = panel.getElementsByClassName('ui-panel-btn-active')[0];
-		if(activeButton) {
-			activeButton.classList.remove('ui-panel-btn-active');
-		}
+        //Find all activ buttons
+        var activeButton = panel.getElementsByClassName('ui-panel-btn-active')[0];
+        if (activeButton) {
+            activeButton.classList.remove('ui-panel-btn-active');
+        }
 
-		//Parse HREF
-		var href = this.getAttribute('href');
-		
-
-		if(href) {
-			console.log(href);
-		}
-
-		this.parentElement.classList.add('ui-panel-btn-active');
-	};
-
-	UIPanel.prototype.init = function(_panel) {
-		_panel.ui = this;
-		panel = _panel;
-
-		this.initDefaultActivePanel(panel);
-		this.initPanelToggleButton(panel);
-		this.initPanelButtons(panel);
-	};
+        //Parse HREF
+        var href = this.getAttribute('href');
 
 
-	ui.register(UIPanel, 'ui-panel', 'panel');
+        if (href) {
+            console.log(href);
+        }
+
+        this.parentElement.classList.add('ui-panel-btn-active');
+    };
+
+    UIPanel.prototype.init = function (_panel) {
+        _panel.ui = this;
+        panel = _panel;
+
+        this.initDefaultActivePanel(panel);
+        this.initPanelToggleButton(panel);
+        this.initPanelButtons(panel);
+    };
+
+
+    ui.register(UIPanel, 'ui-panel', 'panel');
     ui.panel = UIPanel;
 })();

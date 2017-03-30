@@ -1,38 +1,38 @@
-;(function(){
-	
-	'use strict';
+(function () {
 
-	var UIHeader = function UIHeader(element) {
-		this.init(element);
-	};
+    'use strict';
 
-	UIHeader.prototype.initHeaderButtons = function(header) {
+    var UIHeader = function UIHeader(element) {
+        this.init(element);
+    };
 
-		var headerButtons = header.getElementsByClassName('ui-header-btn');
+    UIHeader.prototype.initHeaderButtons = function (header) {
+        var headerButtons = header.getElementsByClassName('ui-header-btn');
 
-		for(var b = 0; b < headerButtons.length; b++) {
-			headerButtons[b].addEventListener('click', this.onButtonClick);
-		}
-	};
+        for (var b = 0; b < headerButtons.length; b++) {
+            headerButtons[b].addEventListener('click', this.onButtonClick);
+        }
+    };
 
-	UIHeader.prototype.onButtonClick = function(e) {
+    UIHeader.prototype.onButtonClick = function (e) {
 
-		//Parse HREF
-		var href = this.getAttribute('href');
+        //Parse HREF
+        var href = this.getAttribute('href');
 
-		if(href) {
-			console.log(href);
-		}
+        if (href) {
+            console.log(href);
+        }
 
-		e.preventDefault();
-	};
+        e.preventDefault();
+    };
 
-	UIHeader.prototype.init = function(header) {
-		header.ui = this;
+    UIHeader.prototype.init = function (header) {
+        header.ui = this;
 
-		this.initHeaderButtons(header);
-	};
+        this.initHeaderButtons(header);
+    };
 
-	ui.register(UIHeader, 'ui-header', 'header');
+    ui.register(UIHeader, 'ui-header', 'header');
     ui.header = UIHeader;
+
 })();

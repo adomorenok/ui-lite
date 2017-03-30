@@ -1,86 +1,82 @@
 .ui-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $header-background-color;
+  height: $header-height;
 
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	background-color: $header-background-color;
-	height: $header-height;
+  a {
+    display: block;
+    color: $yello-color;
 
-	a {
-		display: block;
-		color: $yello-color;
+    .fa.fa-bars {
+      width: $sidebar-element-size;
+    }
+  }
 
-		.fa.fa-bars {
-			width: $sidebar-element-size;
-		}
-	}
+  .ui-logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    height: $header-height;
+    display: block;
+  }
 
-	.ui-logo {
-		background-position: center;
-		background-repeat: no-repeat;
-		height: $header-height;
-		display: block;
-	}
+  .cling {
+    position: fixed !important;
+  }
 
-	.cling {
-		position: fixed !important;
-	}
+  .ui-header-element-container {
+    float: left;
+    height: $header-height;
+    text-align: center;
+    line-height: $header-height;
 
-	.ui-header-element-container {
-		float: left;
-		height: $header-height;
-		text-align: center;
-		line-height: $header-height;
-		
-		.fa-bars {
-			line-height: $header-height;
-		}
-		.fa {
-			font-size: 2em;
-		}
-	}
+    .fa-bars {
+      line-height: $header-height;
+    }
+    .fa {
+      font-size: 2em;
+    }
+  }
 }
 
 @media (max-width: $mobile-width) {
+  .ui-header {
+    .icon-right {
+      position: absolute;
+      top: 0;
+      right: 0;
 
-	.ui-header {
-
-		.icon-right {
-		
-			position: absolute;
-			top: 0;
-			right: 0;
-
-			i {
-				display: block;
-				background-size: 40px;
-				width: $header-height;
-				height: $header-height;
-			}
-		}
-	}
+      i {
+        display: block;
+        background-size: 40px;
+        width: $header-height;
+        height: $header-height;
+      }
+    }
+  }
 }
 
 @media (max-width: $tablet-width) {
-	.ui-header .ui-header-logo-conteiner {
-		width: $header-height;
-	}
+  .ui-header .ui-header-logo-conteiner {
+    width: $header-height;
+  }
 
-	a i.ui-logo {
-		background-size: $header-height;
-		background-image: $header-mobile-logo;
-	}
+  a i.ui-logo {
+    background-size: $header-height;
+    background-image: $header-mobile-logo;
+  }
 }
 
 @media (min-width: $not-mobile-width) {
 
-	.ui-header-logo-conteiner {
-		width: $full-header-logo-width;
-	}
+  .ui-header-logo-conteiner {
+    width: $full-header-logo-width;
+  }
 
-	i.ui-logo {
-		background-size: $full-header-logo-width;
-		background-image: $header-logo;
-	}
+  i.ui-logo {
+    background-size: $full-header-logo-width;
+    background-image: $header-logo;
+  }
 }

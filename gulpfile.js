@@ -1,8 +1,6 @@
 var gulp = require('gulp');
-var install = require("gulp-install");
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
@@ -49,17 +47,11 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./dist/css/'));
 });
 
-gulp.task('copy-img', function () {
-    gulp.src(['./src/img/**/*'])
-        .pipe(gulp.dest('./dist/img/'));
-});
-
 gulp.task('build', function () {
     gulp.start('js');
     gulp.start('sass');
     gulp.start('copy-img');
 });
-
 
 gulp.task('default', function () {
     gulp.start('build');

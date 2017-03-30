@@ -1,112 +1,112 @@
-;(function(){
-	
-	'use strict';
+(function () {
 
-	var container,
-		submenu,
-		sidebar;
+    'use strict';
 
-	var UISubMenu = function UISubMenu(element) {
-		this.init(element);
-	};
+    var container,
+        submenu,
+        sidebar;
 
-	UISubMenu.prototype.initOpenSubmenuButtons = function() {
-		var openSubmenuButtons = document.documentElement.getElementsByClassName('ui-open-submenu-btn');
+    var UISubMenu = function UISubMenu(element) {
+        this.init(element);
+    };
 
-		for(var b = 0; b < openSubmenuButtons.length; b++) {
-			openSubmenuButtons[b].addEventListener('click', this.onOpenSubMenu);
-		}
-	};
+    UISubMenu.prototype.initOpenSubmenuButtons = function () {
+        var openSubmenuButtons = document.documentElement.getElementsByClassName('ui-open-submenu-btn');
 
-	UISubMenu.prototype.initSubmenuButtons = function(submenu) {
-		var submenuButtons = submenu.getElementsByClassName('ui-submenu-btn');
+        for (var b = 0; b < openSubmenuButtons.length; b++) {
+            openSubmenuButtons[b].addEventListener('click', this.onOpenSubMenu);
+        }
+    };
 
-		for(var b = 0; b < submenuButtons.length; b++) {
-			submenuButtons[b].addEventListener('click', this.onButtonClick);
-		}
-	};
+    UISubMenu.prototype.initSubmenuButtons = function (submenu) {
+        var submenuButtons = submenu.getElementsByClassName('ui-submenu-btn');
 
-	UISubMenu.prototype.onOpenSubMenu = function(e) {
-		submenu.classList.contains('ui-submenu-active') ? menuService.closeSubMenu() : menuService.openSubMenu();
+        for (var b = 0; b < submenuButtons.length; b++) {
+            submenuButtons[b].addEventListener('click', this.onButtonClick);
+        }
+    };
 
-		e.preventDefault();
-	}
+    UISubMenu.prototype.onOpenSubMenu = function (e) {
+        submenu.classList.contains('ui-submenu-active') ? menuService.closeSubMenu() : menuService.openSubMenu();
 
-	UISubMenu.prototype.onButtonClick = function(e) {
+        e.preventDefault();
+    }
 
-		//Parse HREF
-		var href = this.getAttribute('href');
+    UISubMenu.prototype.onButtonClick = function (e) {
 
-		if(href) {
-			console.log(href);
-		}
+        //Parse HREF
+        var href = this.getAttribute('href');
 
-		e.preventDefault();
-	};
+        if (href) {
+            console.log(href);
+        }
 
-	UISubMenu.prototype.mouseover = function(e) {
+        e.preventDefault();
+    };
 
-		if(submenu.classList.contains('ui-submenu-left')) {
-			container.classList.add('ui-container-has-left-open-submenu');
-		} else {
-			container.classList.add('ui-container-has-right-open-submenu');
-		}
+    UISubMenu.prototype.mouseover = function (e) {
 
-		if(sidebar) {
-			sidebar.classList.add('ui-sidebar-hidden');
-		}
-	};
+        if (submenu.classList.contains('ui-submenu-left')) {
+            container.classList.add('ui-container-has-left-open-submenu');
+        } else {
+            container.classList.add('ui-container-has-right-open-submenu');
+        }
 
-	UISubMenu.prototype.mouseout = function(e) {
+        if (sidebar) {
+            sidebar.classList.add('ui-sidebar-hidden');
+        }
+    };
 
-		if(submenu.classList.contains('ui-submenu-left')) {
-			container.classList.remove('ui-container-has-left-open-submenu');
-		} else {
-			container.classList.remove('ui-container-has-right-open-submenu');
-		}
+    UISubMenu.prototype.mouseout = function (e) {
 
-		submenu.classList.remove('ui-submenu-active');
+        if (submenu.classList.contains('ui-submenu-left')) {
+            container.classList.remove('ui-container-has-left-open-submenu');
+        } else {
+            container.classList.remove('ui-container-has-right-open-submenu');
+        }
 
-		if(sidebar) {
-			setTimeout(function(){
-				sidebar.classList.remove('ui-sidebar-hidden');
-			},150);
-		}
-	};
+        submenu.classList.remove('ui-submenu-active');
 
-	UISubMenu.prototype.resize = function(e) {
+        if (sidebar) {
+            setTimeout(function () {
+                sidebar.classList.remove('ui-sidebar-hidden');
+            }, 150);
+        }
+    };
 
-		if(!resolutionService.isMobile()) {
-			if(!container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
-				container.classList.add('ui-container-has-left-submenu');
-			} else if(!container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')){
-				container.classList.add('ui-container-has-right-submenu');
-			}
-		} else {
-			if(container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
-				container.classList.remove('ui-container-has-left-submenu');
-			} else if(container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')){
-				container.classList.remove('ui-container-has-right-submenu');
-			}
-		}
-	};
+    UISubMenu.prototype.resize = function (e) {
 
-	UISubMenu.prototype.init = function(_submenu) {
+        if (!resolutionService.isMobile()) {
+            if (!container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
+                container.classList.add('ui-container-has-left-submenu');
+            } else if (!container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
+                container.classList.add('ui-container-has-right-submenu');
+            }
+        } else {
+            if (container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
+                container.classList.remove('ui-container-has-left-submenu');
+            } else if (container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
+                container.classList.remove('ui-container-has-right-submenu');
+            }
+        }
+    };
 
-		_submenu.ui = this;
-		submenu = _submenu
-		container = document.getElementsByClassName('ui-container')[0];
-		sidebar = document.getElementsByClassName('ui-sidebar')[0];
+    UISubMenu.prototype.init = function (_submenu) {
+        _submenu.ui = this;
+        submenu = _submenu
+        container = document.getElementsByClassName('ui-container')[0];
+        sidebar = document.getElementsByClassName('ui-sidebar')[0];
 
-		this.initOpenSubmenuButtons(submenu);
-		this.initSubmenuButtons(submenu);
+        this.initOpenSubmenuButtons(submenu);
+        this.initSubmenuButtons(submenu);
 
-		_submenu.addEventListener('mouseover', this.mouseover);
-		_submenu.addEventListener('mouseout', this.mouseout);	
+        _submenu.addEventListener('mouseover', this.mouseover);
+        _submenu.addEventListener('mouseout', this.mouseout);
 
-		window.addEventListener('resize', this.resize);
-	};
+        window.addEventListener('resize', this.resize);
+    };
 
-	ui.register(UISubMenu, 'ui-submenu', 'submenu');
+    ui.register(UISubMenu, 'ui-submenu', 'submenu');
     ui.submenu = UISubMenu;
+
 })();

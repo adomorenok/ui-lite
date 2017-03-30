@@ -1,127 +1,127 @@
 .ui-sidebar {
 
-	background-color: $sidebar-color;
-	position: fixed;
-	z-index: 999;
-	margin: 0;
-	padding: 0;
-	bottom: 0;
+  background-color: $sidebar-color;
+  position: fixed;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
 }
 
 .ui-sidebar-element-container {
 
-	.ui-sidebar-element-label {
-	    visibility: hidden;
-	    display: block;
-		color: $yello-text-color;
-		font-size: $sidebar-text-size;
-		font-weight: $sidebar-text-style;
-		padding: 26px;
-		width: $sidebar-label-width;
-	}
+  .ui-sidebar-element-label {
+    visibility: hidden;
+    display: block;
+    color: $yello-text-color;
+    font-size: $sidebar-text-size;
+    font-weight: $sidebar-text-style;
+    padding: 26px;
+    width: $sidebar-label-width;
+  }
 
-	.icon {
-		background-size: 32px;
-		width: $sidebar-element-size;
-		height: $sidebar-element-size;
-		float: left;
-	}
+  .icon {
+    background-size: 32px;
+    width: $sidebar-element-size;
+    height: $sidebar-element-size;
+    float: left;
+  }
 }
 
 @media (max-width: 340px) {
-	i.icon {
-		width: $sidebar-element-size-small;
-		height: $sidebar-element-size-small;
-	}
+  i.icon {
+    width: $sidebar-element-size-small;
+    height: $sidebar-element-size-small;
+  }
 }
 
 @media (max-width: $mobile-width) {
 
-	.ui-sidebar {
+  .ui-sidebar {
 
-		position: fixed !important;
-		left: 0;
-		width: 100%;
-		text-align: center;
-		height: $sidebar-element-size;
-		visibility: visible;
-		transition: all $transition-speed linear;
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transition: all $transition-speed linear;
+    position: fixed !important;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    height: $sidebar-element-size;
+    visibility: visible;
+    transition: all $transition-speed linear;
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transition: all $transition-speed linear;
 
-		.ui-sidebar-element-container {
+    .ui-sidebar-element-container {
 
-			display: inline-block;
+      display: inline-block;
 
-			.ui-sidebar-element-label {
-				display: none;
-			}
-		}
-		.ui-sidebar-bottom-element {
-			display: none !important;
-		}
-	}
+      .ui-sidebar-element-label {
+        display: none;
+      }
+    }
+    .ui-sidebar-bottom-element {
+      display: none !important;
+    }
+  }
 
-	.ui-sidebar-hidden {
-		visibility: hidden !important;
-	}
+  .ui-sidebar-hidden {
+    visibility: hidden !important;
+  }
 }
 
 @media (min-width: $not-mobile-width) {
 
-	.ui-sidebar {
-		width: $sidebar-element-size;
-		top: $header-height;
-		float: left;
-		transition: all $transition-speed linear;
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transition: all $transition-speed linear;
-	}
+  .ui-sidebar {
+    width: $sidebar-element-size;
+    top: $header-height;
+    float: left;
+    transition: all $transition-speed linear;
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transition: all $transition-speed linear;
+  }
 
-	.ui-sidebar-hidden {
-		pointer-events:none;
-	}
+  .ui-sidebar-hidden {
+    pointer-events: none;
+  }
 
-	.ui-sidebar-has-header {
-		margin-top: $header-height;
-	}
+  .ui-sidebar-has-header {
+    margin-top: $header-height;
+  }
 
-	.ui-sidebar-left {
-		left: 0;
-	}
+  .ui-sidebar-left {
+    left: 0;
+  }
 
-	.ui-sidebar-right {
-		right: 0;
-	}
+  .ui-sidebar-right {
+    right: 0;
+  }
 
-	.ui-sidebar-bottom-element {
-		position: absolute !important;
-		width: 100%;
-		bottom: 0;
-	}
+  .ui-sidebar-bottom-element {
+    position: absolute !important;
+    width: 100%;
+    bottom: 0;
+  }
 
-	.ui-sidebar:hover {
+  .ui-sidebar:hover {
 
-		width: $sidebar-open-width;
-		transform: scaleX(1);
-	    /* For Safari 3.1 to 6.0 */
-	    -webkit-transform: scaleX(1);
+    width: $sidebar-open-width;
+    transform: scaleX(1);
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transform: scaleX(1);
 
-	    .ui-sidebar-element-label {
-	    	visibility: visible;
-	    	transition: visibility 0ms linear $transition-speed !important;
-	    	/* For Safari 3.1 to 6.0 */
-	    	-webkit-transition: visibility 0ms linear $transition-speed !important;
-	    }
+    .ui-sidebar-element-label {
+      visibility: visible;
+      transition: visibility 0ms linear $transition-speed !important;
+      /* For Safari 3.1 to 6.0 */
+      -webkit-transition: visibility 0ms linear $transition-speed !important;
+    }
 
-		a:hover .ui-sidebar-element-label {
-			color: $yello-active-text-color;
-		}
+    a:hover .ui-sidebar-element-label {
+      color: $yello-active-text-color;
+    }
 
-		a:hover i, .ui-sidebar-element-label {
-			transition: color $transition-speed linear;
-			/* For Safari 3.1 to 6.0 */
-			-webkit-transition: color $transition-speed linear;
-		}
-	}
+    a:hover i, .ui-sidebar-element-label {
+      transition: color $transition-speed linear;
+      /* For Safari 3.1 to 6.0 */
+      -webkit-transition: color $transition-speed linear;
+    }
+  }
 }

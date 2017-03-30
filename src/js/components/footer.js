@@ -1,15 +1,16 @@
-;(function(){
-	
-	'use strict';
+(function () {
 
-	var UIFooter = function UIFooter(element) {
-		this.init(element);
-	};
+    'use strict';
 
-	UIFooter.prototype.init = function(footer) {
-		footer.ui = this;
-	};
+    var UIFooter = function UIFooter(element) {
+        this.init(element);
+    };
 
-	ui.register(UIFooter, 'ui-footer', 'footer');
+    UIFooter.prototype.init = function (footer) {
+        footer.ui = this;
+    };
+
+    ui.register(UIFooter, 'ui-footer', 'footer');
     ui.footer = UIFooter;
+
 })();

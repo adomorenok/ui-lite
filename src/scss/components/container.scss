@@ -1,32 +1,32 @@
 .ui-container {
-	position: absolute;
-	top: $header-height;
+  position: absolute;
+  top: $header-height;
 }
 
 @media (min-width: $not-mobile-width) {
-	.ui-container {
-		z-index: 99;
-		padding: 12px;
-		transition: all $transition-speed linear;
-		/* For Safari 3.1 to 6.0 */
-		-webkit-transition: all $transition-speed linear;
-	}
+  .ui-container {
+    z-index: 99;
+    padding: 12px;
+    transition: all $transition-speed linear;
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transition: all $transition-speed linear;
+  }
 
-	.ui-container-has-left-sidebar, .ui-container-has-left-submenu {
-		left: $sidebar-element-size;
-	}
+  .ui-container-has-left-sidebar, .ui-container-has-left-submenu {
+    left: $sidebar-element-size;
+  }
 
-	.ui-container-has-right-sidebar, .ui-container-has-right-submenu {
-		right: $sidebar-element-size;
-	}
+  .ui-container-has-right-sidebar, .ui-container-has-right-submenu {
+    right: $sidebar-element-size;
+  }
 }
 
 @media (min-width: $tablet-width) {
-	.ui-container-has-left-open-sidebar, .ui-container-has-left-open-submenu {
-		left: $sidebar-open-width !important;
-	}
+  .ui-container-has-left-open-sidebar, .ui-container-has-left-open-submenu {
+    left: $sidebar-open-width !important;
+  }
 
-	.ui-container-has-right-open-sidebar, .ui-container-has-right-open-submenu {
-		right: $sidebar-open-width !important;
-	}
+  .ui-container-has-right-open-sidebar, .ui-container-has-right-open-submenu {
+    right: $sidebar-open-width !important;
+  }
 }

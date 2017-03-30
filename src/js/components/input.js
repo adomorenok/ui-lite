@@ -1,68 +1,69 @@
 (function () {
-  'use strict';
-  
-  	var UiInput = function UiInput(element) {
-  		this.init(element);
-  	};
 
-	UiInput.prototype.checkValue = function (input) {
-		var parent = input.parentElement;
+    'use strict';
 
-		if (input.value) { 
-			parent.classList.add('ui-has-value');
-		} else {
-			parent.classList.remove('ui-has-value');
-		}
-	};
+    var UiInput = function UiInput(element) {
+        this.init(element);
+    };
 
-	UiInput.prototype.onfocus = function (e) {
-		var parent = e.target.parentElement;
-		parent.classList.add('ui-on-focus');
-	};
+    UiInput.prototype.checkValue = function (input) {
+        var parent = input.parentElement;
 
-	UiInput.prototype.onblur = function (e) {
-		var input = e.target,
-			parent = input.parentElement;
-		parent.classList.remove('ui-on-focus');
+        if (input.value) {
+            parent.classList.add('ui-has-value');
+        } else {
+            parent.classList.remove('ui-has-value');
+        }
+    };
 
-		this.ui.checkValue(input);
-	};
+    UiInput.prototype.onfocus = function (e) {
+        var parent = e.target.parentElement;
+        parent.classList.add('ui-on-focus');
+    };
 
-	UiInput.prototype.getLabel = function (input) {
-		var label = input.previousElementSibling;
+    UiInput.prototype.onblur = function (e) {
+        var input = e.target,
+            parent = input.parentElement;
+        parent.classList.remove('ui-on-focus');
 
-		if (label && label.classList && label.classList.contains('ui-label')) {
-			return label;
-		}
+        this.ui.checkValue(input);
+    };
 
-		label = input.nextElementSibling;
+    UiInput.prototype.getLabel = function (input) {
+        var label = input.previousElementSibling;
 
-		if (label && label.classList && label.classList.contains('ui-label')) {
-			return label;
-		}
+        if (label && label.classList && label.classList.contains('ui-label')) {
+            return label;
+        }
 
-		return null;
-	};
+        label = input.nextElementSibling;
 
-	UiInput.prototype.init = function (input) {
-		input.ui = this;
-		
-		this.checkValue(input);
+        if (label && label.classList && label.classList.contains('ui-label')) {
+            return label;
+        }
 
-		input.addEventListener('focus', this.onfocus);
-		input.addEventListener('blur', this.onblur);
+        return null;
+    };
 
-		var label = this.getLabel(input);
+    UiInput.prototype.init = function (input) {
+        input.ui = this;
 
-		if (label) {
-			label.addEventListener('click', function () {
-				input.focus();
-				input.value = input.value;
-			});
-		}
-	};
+        this.checkValue(input);
 
-	ui.register(UiInput, 'ui-input', 'input');
-	ui.input = UiInput;
+        input.addEventListener('focus', this.onfocus);
+        input.addEventListener('blur', this.onblur);
+
+        var label = this.getLabel(input);
+
+        if (label) {
+            label.addEventListener('click', function () {
+                input.focus();
+                input.value = input.value;
+            });
+        }
+    };
+
+    ui.register(UiInput, 'ui-input', 'input');
+    ui.input = UiInput;
 
 })();
