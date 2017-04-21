@@ -50,7 +50,7 @@ gulp.task('sass', function () {
 
 gulp.task('copy-img', function () {
     gulp.src(['./src/img/**/*'])
-        .pipe(gulp.dest('./dist/img/'));
+        .pipe(gulp.dest('./dist/img/ui-lite'));
 });
 
 gulp.task('build', function () {

@@ -167,51 +167,51 @@ a {
   background-repeat: no-repeat; }
 
 .ui-icon-list {
-  background-image: url("../img/list.png"); }
+  background-image: url("../img/ui-lite/list.png"); }
 
 .ui-icon-request-search {
-  background-image: url("../img/search.png"); }
+  background-image: url("../img/ui-lite/search.png"); }
 
 .ui-icon-history {
-  background-image: url("../img/history.png"); }
+  background-image: url("../img/ui-lite/history.png"); }
 
 .ui-icon-notification {
-  background-image: url("../img/notification.png"); }
+  background-image: url("../img/ui-lite/notification.png"); }
 
 .ui-icon-inbox {
-  background-image: url("../img/message.png"); }
+  background-image: url("../img/ui-lite/message.png"); }
 
 .ui-icon-setting {
-  background-image: url("../img/settings.png"); }
+  background-image: url("../img/ui-lite/settings.png"); }
 
 .ui-icon-down-arrow {
-  background-image: url("../img/down-arrow.png"); }
+  background-image: url("../img/ui-lite/down-arrow.png"); }
 
 .w-ui-icon:hover > i.ui-icon-list {
-  background-image: url("../img/list_active.png"); }
+  background-image: url("../img/ui-lite/list_active.png"); }
 
 .w-ui-icon:hover > i.ui-icon-request-search {
-  background-image: url("../img/search_active.png"); }
+  background-image: url("../img/ui-lite/search_active.png"); }
 
 .w-ui-icon:hover > i.ui-icon-history {
-  background-image: url("../img/history_active.png"); }
+  background-image: url("../img/ui-lite/history_active.png"); }
 
 .w-ui-icon:hover > i.ui-icon-notification {
-  background-image: url("../img/notification_active.png"); }
+  background-image: url("../img/ui-lite/notification_active.png"); }
 
 .w-ui-icon:hover > i.ui-icon-inbox {
-  background-image: url("../img/message_active.png"); }
+  background-image: url("../img/ui-lite/message_active.png"); }
 
 .w-ui-icon:hover > i.ui-icon-setting {
-  background-image: url("../img/settings_active.png"); }
+  background-image: url("../img/ui-lite/settings_active.png"); }
 
 @media (max-width: 880px) {
   i.ui-logo {
-    background-image: url(../img/velotooler-logo.png) !important; } }
+    background-image: url(../img/ui-lite/velotooler-logo.png) !important; } }
 
 @media (min-width: 671px) {
   i.ui-logo {
-    background-image: url(../img/logo.png); } }
+    background-image: url(../img/ui-lite/logo.png); } }
 
 .ui-input-container {
   display: inline-block;
