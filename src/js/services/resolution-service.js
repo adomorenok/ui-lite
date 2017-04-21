@@ -2,8 +2,8 @@
 
     'use strict';
 
-    var MOBILEWIDTH = 670; //Max mobile width
-    var TABLETWIDTH = 880; //Max mobile width
+	var MOBILEWIDTH = 470; //Max mobile width
+	var TABLETWIDTH = 880; //Max mobile width
 
     var resolutionService = {
 

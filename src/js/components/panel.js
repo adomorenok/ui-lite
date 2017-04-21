@@ -30,9 +30,9 @@
                     }
                 }
 
-                if (resolutionService.isMobile()) {
-                    menuService.addCloseEventByClickOnPanel(e);
-                }
+				if (resolutionService.isTablet()) {
+					menuService.addCloseEventByClickOnPanel(e);
+				}
 
                 e.preventDefault();
             });

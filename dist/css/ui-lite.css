@@ -40,7 +40,7 @@ a {
     .ui-header .ui-header-element-container .fa {
       font-size: 2em; }
 
-@media (max-width: 670px) {
+@media (max-width: 470px) {
   .ui-header .icon-right {
     position: absolute;
     top: 0;
@@ -57,7 +57,7 @@ a {
   a i.ui-logo {
     background-size: 56px; } }
 
-@media (min-width: 671px) {
+@media (min-width: 471px) {
   .ui-header-logo-conteiner {
     width: 150px; }
   i.ui-logo {
@@ -67,7 +67,8 @@ a {
   position: fixed;
   font-size: 18px;
   height: 56px;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 9999; }
   .ui-panel .ui-panel-element-container {
     display: block;
     position: relative;
@@ -91,9 +92,6 @@ a {
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 0.6);
       visibility: hidden;
       width: 1px; }
-    .ui-panel .ui-panel-element-container:hover {
-      border-bottom: solid 1px #FBC02D;
-      box-sizing: border-box; }
     .ui-panel .ui-panel-element-container.ui-panel-btn-active:after {
       left: 0;
       visibility: visible;
@@ -104,13 +102,16 @@ a {
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform 150ms linear; }
 
-@media (max-width: 670px) {
+@media (max-width: 880px) {
   .ui-panel {
     width: 221px;
     height: 100%;
     display: block;
     background-color: rgba(23, 23, 23, 0.97);
+<<<<<<< HEAD
     z-index: 9;
+=======
+>>>>>>> Repear of some menu issues
     left: 0;
     top: 56px;
     transform: scaleX(0);
@@ -135,10 +136,10 @@ a {
       .ui-panel .ui-panel-element-container:after {
         background-color: transparent; } }
 
-@media (min-width: 671px) and (max-width: 1100px) {
+@media (min-width: 881px) and (max-width: 1350px) {
   .ui-panel {
     display: block;
-    width: 545px;
+    width: 645px;
     right: 0; }
   .ui-panel-fieldset {
     position: absolute;
@@ -156,10 +157,10 @@ a {
       /* For Safari 3.1 to 6.0 */
       -webkit-transition-delay: 150ms; } }
 
-@media (min-width: 1100px) {
+@media (min-width: 1350px) {
   .ui-panel {
     display: block;
-    width: 835px;
+    width: 1082px;
     right: 0; }
   .ui-panel-toggle-btn {
     display: none !important; } }
@@ -376,7 +377,7 @@ a.ui-btn {
     width: 60px;
     height: 60px; } }
 
-@media (max-width: 670px) {
+@media (max-width: 470px) {
   .ui-sidebar {
     position: fixed !important;
     left: 0;
@@ -396,7 +397,7 @@ a.ui-btn {
   .ui-sidebar-hidden {
     visibility: hidden !important; } }
 
-@media (min-width: 671px) {
+@media (min-width: 471px) {
   .ui-sidebar {
     width: 64px;
     top: 56px;
@@ -450,7 +451,7 @@ a.ui-btn {
 .ui-submenu-hidden {
   pointer-events: none; }
 
-@media (max-width: 670px) {
+@media (max-width: 470px) {
   .ui-submenu {
     bottom: 15px;
     left: 15px;
@@ -484,7 +485,7 @@ a.ui-btn {
     /* For Safari 3.1 to 6.0 */
     -webkit-transform: scaleY(1); } }
 
-@media (min-width: 671px) {
+@media (min-width: 471px) {
   .ui-submenu {
     height: 100%;
     width: 170px;
@@ -522,7 +523,7 @@ a.ui-btn {
   position: absolute;
   top: 56px; }
 
-@media (min-width: 671px) {
+@media (min-width: 471px) {
   .ui-container {
     z-index: 5;
     padding: 12px;

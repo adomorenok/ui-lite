@@ -10,8 +10,8 @@ $transition-type: ease-in-out;
 
 
 //Resolution variables
-$mobile-width: 670px;
-$not-mobile-width: 671px;
+$mobile-width: 470px;
+$not-mobile-width: 471px;
 $tablet-width: 880px;
 $not-tablet-width: 881px;
 
@@ -42,7 +42,10 @@ $submenu-scale: scaleX(1);
 $submenu-mobile-scale: scaleY(1);
 
 //Panel variables
-$header-full-panel-width: 1100px;
+$header-full-panel-width-media: 1350px;
+$header-full-panel-width: 1082px;
+$header-half-panel-width-media: 881px;
+$header-half-panel-width: 645px;
 $panel-font-size: 18px;
 $transition-speed-panel: 150ms;
 

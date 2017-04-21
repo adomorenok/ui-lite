@@ -1,142 +1,141 @@
 .ui-panel {
 
-  position: fixed;
-  font-size: $panel-font-size;
-  height: $header-height;
-  overflow: hidden;
+	position: fixed;
+	font-size: $panel-font-size;
+	height: $header-height;
+	overflow: hidden;
+	z-index: 9999;
 
-  .ui-panel-element-container {
+	.ui-panel-element-container {
 
-    display: block;
-    position: relative;
-    float: left;
-    text-align: center;
-    height: $header-height;
-    line-height: $header-height;
-    a {
-      display: block;
-      padding: 0 20px 0 20px;
+		display: block;
+		position: relative;
+		float: left;
+		text-align: center;
+		height: $header-height;
+		line-height: $header-height;
 
-      span {
-        color: $text-color;
-      }
-    }
+		a {
+			display: block;
+			padding: 0 20px 0 20px;
 
-    &:after {
-      background-color: $base-color;
-      bottom: 0px;
-      content: '';
-      height: 1px;
-      left: 49%;
-      position: absolute;
-      transition-duration: .2s;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 0.6);
-      visibility: hidden;
-      width: 1px;
-    }
+			span {
+				color: $yello-text-color;
+			}
+		}
 
-    &:hover {
-      border-bottom: solid 1px $active-color;
-      box-sizing: border-box;
-    }
+		&:after {
+			background-color: $yello-color;
+		    bottom: 0px;
+		    content: '';
+		    height: 1px;
+		    left: 49%;
+		    position: absolute;
+		    transition-duration: .2s;
+		    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 0.6);
+		    visibility: hidden;
+		    width: 1px;
+		}
 
-    &.ui-panel-btn-active:after {
-      left: 0;
-      visibility: visible;
-      width: 100%;
-    }
-  }
+		&.ui-panel-btn-active:after {
+			left:0;
+			visibility: visible;
+			width: 100%;
+		}
+	}
 }
 
 .ui-panel, .ui-panel-fieldset {
-  transition: transform $transition-speed-panel linear;
-  /* For Safari 3.1 to 6.0 */
-  -webkit-transition: transform $transition-speed-panel linear;
+	transition: transform $transition-speed linear;
+	/* For Safari 3.1 to 6.0 */
+	-webkit-transition: transform $transition-speed linear;
 }
 
-@media (max-width: $mobile-width) {
+@media (max-width: $tablet-width) {
 
-  .ui-panel {
+	.ui-panel {
 
-    width: 221px;
-    height: 100%;
-    display: block;
-    background-color: $sidebar-color;
-    z-index: 9;
-    left: 0;
-    top: $header-height;
-    transform: scaleX(0);
-    transform-origin: left;
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleX(0);
-    -webkit-transform-origin: left;
+		width: 221px;
+		height: 100%;
+		display: block;
+		background-color: $sidebar-color;
+		left: 0;
+		top: $header-height;
+		transform: scaleX(0);
+		transform-origin: left;
+	    /* For Safari 3.1 to 6.0 */
+	    -webkit-transform: scaleX(0);
+	    -webkit-transform-origin: left;
 
-    &.ui-panel-active {
-      transform: scaleX(1);
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transform: scaleX(1);
-    }
+	    &.ui-panel-active {
+	    	transform: scaleX(1);
+	    	/* For Safari 3.1 to 6.0 */
+	        -webkit-transform: scaleX(1);
+	    }
 
-    .ui-panel-element-container {
+		.ui-panel-element-container {
 
-      clear: both;
-      width: 100%;
-      text-align: left;
-      font-size: $sidebar-text-size;
-      font-weight: $sidebar-text-style;
+			clear: both;
+			width: 100%;
+			text-align: left;
+			font-size: $sidebar-text-size;
+			font-weight: $sidebar-text-style;
 
-      &:hover {
-        border: 0;
+			&:hover {
+				border: 0;
 
-        span {
-          color: $active-color;
-        }
-      }
+				span {
+					color: $yello-active-text-color;
+				}
+			}
 
-      &:after {
-        background-color: transparent;
-      }
-    }
-  }
+			&:after {
+				background-color: transparent;
+			}
+		}
+	}
 }
 
-@media (min-width: $not-mobile-width) and (max-width: $header-full-panel-width) {
-  .ui-panel {
-    display: block;
-    width: 545px;
-    right: 0;
-  }
+@media (min-width: $header-half-panel-width-media) and (max-width: $header-full-panel-width-media) {
 
-  .ui-panel-fieldset {
+	.ui-panel {
 
-    position: absolute;
-    right: 0;
-    transform: scaleX(0);
-    transform-origin: right;
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleX(0);
-    -webkit-transform-origin: right;
+		display: block;
+		width: $header-half-panel-width;
+		right: 0;
+	}
 
-    &.ui-panel-active {
-      transform: scaleX(1);
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transform: scaleX(1);
-      transition-delay: $transition-speed-panel;
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transition-delay: $transition-speed-panel;
-    }
-  }
+	.ui-panel-fieldset {
+
+		position: absolute;
+		right: 0;
+		transform: scaleX(0);
+		transform-origin: right;
+	    /* For Safari 3.1 to 6.0 */
+	    -webkit-transform: scaleX(0);
+	    -webkit-transform-origin: right;
+
+	    &.ui-panel-active {
+	    	transform: scaleX(1);
+		    /* For Safari 3.1 to 6.0 */
+		    -webkit-transform: scaleX(1);
+		    transition-delay: $transition-speed;
+			/* For Safari 3.1 to 6.0 */
+			-webkit-transition-delay: $transition-speed;
+	    }
+	}
 }
 
-@media (min-width: $header-full-panel-width) {
+@media (min-width: $header-full-panel-width-media) {
 
-  .ui-panel {
-    display: block;
-    width: 835px;
-    right: 0;
-  }
+	.ui-panel {
 
-  .ui-panel-toggle-btn {
-    display: none !important;
-  }
+		display: block;
+		width: $header-full-panel-width;
+		right: 0;
+	}
+
+    .ui-panel-toggle-btn {
+      display: none !important;
+    }
 }

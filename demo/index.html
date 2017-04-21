@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
 	<title>test</title>
 
@@ -13,6 +14,17 @@
 	<!-- Header -->
 	<header class="ui-header cling">
 		<section>
+=======
+	<head>
+		<title>test</title>
+		<link rel="stylesheet" href="../dist/css/ui-lite.css">
+		<link rel="stylesheet" href="./css/demo.css">
+		<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="ui-header cling">
+>>>>>>> Repear of some menu issues
 			<div class="ui-header-element-container ui-header-menu-conteiner">
 				<a href="header-menu" class="ui-panel-toggle-btn">
 					<i class="icon fa fa-bars"></i>
@@ -26,13 +38,18 @@
 			<div class="ui-panel">
 				<div class="ui-panel-fieldset">
 					<div class="ui-panel-element-container">
+						<a href="features" class="ui-panel-btn">
+							<span>Features</span>
+						</a>
+					</div>
+					<div class="ui-panel-element-container">
 						<a href="price" class="ui-panel-btn">
 							<span>Pricing</span>
 						</a>
 					</div>
 					<div class="ui-panel-element-container">
 						<a href="why" class="ui-panel-btn">
-							<span>Why Velotooler?</span>
+							<span>Why Velotooler</span>
 						</a>
 					</div>
 					<div class="ui-panel-element-container">
@@ -69,10 +86,7 @@
 					<i class="icon icon-setting"></i>
 				</a>
 			</div>	
-		</section>
-	</header>
-
-	<div class="layout">
+		</header>
 
 		<!-- Sidebar -->
 		<section class="ui-sidebar ui-sidebar-left">
@@ -176,6 +190,16 @@
 			</div>
 		</section>
 
+		<ui-content-wraper>
+			<ui-content>
+
+			</ui-content>
+
+			<ui-content>
+			
+			</ui-content>
+		</ui-content-wraper>
+
 		<!--Container-->
 		<section class="ui-container">
 			<div style="display: inline-block; width: 100%;">
@@ -257,31 +281,29 @@
 			</div>
 		</section>
 
-	</div>
+		<!-- Footer -->
+		<footer class="footer">
 
-	<!-- Footer -->
-	<footer class="footer">
+		</footer>
+		<script type="text/javascript" src="../dist/js/ui-lite.js"></script>
+		<script type="text/javascript">
+			ui.init();
+			var select = document.getElementById('custom-options');
+			select.classList.add('ui-select');
 
-	</footer>
-	<script type="text/javascript" src="../dist/js/ui-lite.js"></script>
-	<script type="text/javascript">
-		ui.init();
-		var select = document.getElementById('custom-options');
-		select.classList.add('ui-select');
+			var options = [
+				{ id: 1, name: 'Name 1', price: 1 },
+				{ id: 2, name: 'Name 2', price: 2 },
+				{ id: 3, name: 'Name 3', price: 3 },
+				{ id: 4, name: 'Name 4', price: 4 },
+				{ id: 5, name: 'Name 5', price: 5 },
+				{ id: 6, name: 'Name 6', price: 6 },
+				{ id: 7, name: 'Name 7', price: 7 },
+				{ id: 8, name: 'Name 8', price: 8 }
+			];
 
-		var options = [
-			{ id: 1, name: 'Name 1', price: 1 },
-			{ id: 2, name: 'Name 2', price: 2 },
-			{ id: 3, name: 'Name 3', price: 3 },
-			{ id: 4, name: 'Name 4', price: 4 },
-			{ id: 5, name: 'Name 5', price: 5 },
-			{ id: 6, name: 'Name 6', price: 6 },
-			{ id: 7, name: 'Name 7', price: 7 },
-			{ id: 8, name: 'Name 8', price: 8 }
-		];
+			var uiSelect = new ui.select(select, options, 'name');
+		</script>
 
-		var uiSelect = new ui.select(select, options, 'name');
-	</script>
-
-</body>
+	</body>
 </html>
