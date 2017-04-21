@@ -3,10 +3,12 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 99;
   background-color: $header-background-color;
   height: $header-height;
 
-  a {
+  a, .ui-panel-toggle-btn {
+    cursor: pointer;
     display: block;
     color: $base-color;
 
@@ -63,7 +65,7 @@
     width: $header-height;
   }
 
-  a i.ui-logo {
+  .ui-header-btn i.ui-logo {
     background-size: $header-height;
   }
 }
