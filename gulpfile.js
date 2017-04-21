@@ -5,7 +5,6 @@ var jshint = require('gulp-jshint');
 
 
 var files = {
-    vendor: [],
     js: [
         './src/js/ui-lite.js',
         './src/js/**/*.js'
@@ -49,10 +48,16 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./dist/css/'));
 });
 
+gulp.task('copy-img', function () {
+    gulp.src(['./src/img/**/*'])
+        .pipe(gulp.dest('./dist/img/'));
+});
+
 gulp.task('build', function () {
     gulp.start('jshint');
     gulp.start('js');
     gulp.start('sass');
+    gulp.start('copy-img');
 });
 
 gulp.task('default', function () {

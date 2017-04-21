@@ -1,68 +1,63 @@
-body, html {
-	font-size: 16px;
-	line-height: 16px;
-}
-
-.icon {
+.ui-icon {
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-.icon-list {
+.ui-icon-list {
 	background-image: url("../img/list.png");
 }
 
-.icon-request-search {
+.ui-icon-request-search {
 	background-image: url("../img/search.png");
 }
 
-.icon-history {
+.ui-icon-history {
 	background-image: url("../img/history.png");
 }
 
-.icon-notification {
+.ui-icon-notification {
 	background-image: url("../img/notification.png");
 }
 
-.icon-inbox {
+.ui-icon-inbox {
 	background-image: url("../img/message.png");
 }
 
-.icon-setting {
+.ui-icon-setting {
 	background-image: url("../img/settings.png");
 }
 
-.icon-down-arrow {
+.ui-icon-down-arrow {
 	background-image: url("../img/down-arrow.png");
 }
 
-a:hover i.icon-list {
+.w-ui-icon:hover > i.ui-icon-list {
    background-image: url("../img/list_active.png");
 }
 
-a:hover i.icon-request-search {
+.w-ui-icon:hover > i.ui-icon-request-search {
 	background-image: url("../img/search_active.png");
 }
 
-a:hover i.icon-history {
+.w-ui-icon:hover > i.ui-icon-history {
 	background-image: url("../img/history_active.png");
 }
 
-a:hover i.icon-notification {
+.w-ui-icon:hover > i.ui-icon-notification {
 	background-image: url("../img/notification_active.png");
 }
 
-a:hover i.icon-inbox {
+.w-ui-icon:hover > i.ui-icon-inbox {
 	background-image: url("../img/message_active.png");
 }
 
-a:hover i.icon-setting {
+.w-ui-icon:hover > i.ui-icon-setting {
 	background-image: url("../img/settings_active.png");
 }
 
 @media (max-width: 880px) {
-	a i.ui-logo {
-		background-image: url(../img/velotooler-logo.png);
+	i.ui-logo {
+		  background-image: url(../img/velotooler-logo.png) !important;
 	}
 }
 

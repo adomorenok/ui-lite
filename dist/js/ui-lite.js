@@ -39,7 +39,6 @@
     window.ui = ui;
 })();
 
-<<<<<<< HEAD
 (function () {
 
     'use strict';
@@ -78,40 +77,6 @@
             height = btn.offsetHeight;
 
         ripple.classList.remove('ui-animate');
-=======
-(function() {
-  	'use strict';
-
-  	var UiButton = function UiButton(element) {
-  		this.init(element);
-  	};
-
-	UiButton.prototype.addRipleEffect = function (btn) {
-		var span = document.createElement('span');
-		span.classList.add('ui-btn-ripple-container');
-
-		var spanRipple = document.createElement('span');
-		spanRipple.classList.add('ui-ripple');
-		span.appendChild(spanRipple);
-		btn.appendChild(span);
-	};
-
-	UiButton.prototype.findRipple = function (clidNodes) {
-		for (var j = 0; j < clidNodes.length; j++) {
-			if (clidNodes[j].classList && clidNodes[j].classList.contains('ui-btn-ripple-container')) {
-				return clidNodes[j].childNodes[0];
-			}
-		}
-	};
-
-	UiButton.prototype.mouseDown = function (e) {
-		var btn = e.currentTarget,
-			ripple = btn.ui.findRipple(btn.childNodes);
-		
-		if (!ripple) {
-			return;
-		}
->>>>>>> Repear of some menu issues
 
         var rippleSize = Math.sqrt(width * width + height * height) * 2 + 2;
 
@@ -330,20 +295,14 @@
                     }
                 }
 
-                if (resolutionService.isMobile()) {
-                    menuService.addCloseEventByClickOnPanel(e);
-                }
+				if (resolutionService.isTablet()) {
+					menuService.addCloseEventByClickOnPanel(e);
+				}
 
-<<<<<<< HEAD
                 e.preventDefault();
             });
         }
     };
-=======
-				if(resolutionService.isTablet()) {
-					menuService.addCloseEventByClickOnPanel(e);
-				}
->>>>>>> Repear of some menu issues
 
     UIPanel.prototype.initDefaultActivePanel = function (panel) {
         var activePanel = panel.getElementsByClassName('ui-panel-active');
@@ -797,7 +756,6 @@
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');
     ui.submenu = UISubMenu;
-<<<<<<< HEAD
 
 })();
 (function () {
@@ -874,8 +832,8 @@
 
     'use strict';
 
-    var MOBILEWIDTH = 670; //Max mobile width
-    var TABLETWIDTH = 880; //Max mobile width
+	var MOBILEWIDTH = 470; //Max mobile width
+	var TABLETWIDTH = 880; //Max mobile width
 
     var resolutionService = {
 
@@ -895,104 +853,6 @@
     window.resolutionService = resolutionService;
     window.MOBILEWIDTH = MOBILEWIDTH;
     window.TABLETWIDTH = TABLETWIDTH;
-=======
-})();
-(function() {
-
-	'use strict';
-
-	var submenu =  document.getElementsByClassName('ui-submenu')[0];
-	var container = document.getElementsByClassName('ui-container')[0];
-	var sidebar = document.getElementsByClassName('ui-sidebar')[0];
-	var panel = document.getElementsByClassName('ui-panel')[0];
-
-	function openSubMenu() {
-		submenu.classList.add('ui-submenu-active');
-		if(submenu.classList.contains('ui-submenu-left')) {
-			container.classList.add('ui-container-has-left-open-submenu');
-		} else {
-			container.classList.add('ui-container-has-right-open-submenu');
-		}
-		if(sidebar){
-			sidebar.classList.add('ui-sidebar-hidden');
-		}
-		
-		this.addCloseEventByClickOnSubmenu();
-	}
-
-	function closeSubMenu() {
-		if(sidebar){
-			sidebar.classList.remove('ui-sidebar-hidden');
-		}
-		submenu.classList.remove('ui-submenu-active');
-		submenu.classList.add('ui-submenu-hidden');
-
-		if(submenu.classList.contains('ui-submenu-left')) {
-			container.classList.remove('ui-container-has-left-open-submenu');
-		} else {
-			container.classList.remove('ui-container-has-right-open-submenu');
-		}
-
-		setTimeout(function() {
-			submenu.classList.remove('ui-submenu-hidden');
-		},150);
-
-		document.documentElement.removeEventListener('click', closeSubMenu, true);
-	}
-
-	function closePanel(e) {
-		panel.classList.remove('ui-panel-active');
-		document.documentElement.removeEventListener('click', closePanel, true);
-	}
-
-	function addCloseEventByClickOnSubmenu() {
-		document.documentElement.addEventListener('click', closeSubMenu, true);
-	}
-
-	function addCloseEventByClickOnPanel() {
-		panel.classList.add('ui-panel-active');
-		document.documentElement.addEventListener('click', closePanel, true);
-	}
-
-	var menuService = (function(){
-		return {
-			closeSubMenu: closeSubMenu,
-			openSubMenu: openSubMenu,
-			addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
-			addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
-		}
-	})();
-		
-	window.menuService = menuService;
-})();
-
-		
-(function() {
-
-	'use strict';
-
-	var MOBILEWIDTH = 470; //Max mobile width
-	var TABLETWIDTH = 880; //Max mobile width
-
-	var resolutionService = {
-
-		getScreenWidth : function() {
-			return (window.innerWidth > 0) ? window.innerWidth : screen.width;
-		},
-
-		isMobile : function() {
-			return this.getScreenWidth() < (MOBILEWIDTH + 1) ? true : false;
-		},
-
-		isTablet : function() {
-			return this.getScreenWidth() < (TABLETWIDTH + 1) ? true : false;
-		}
-	};
-
-	window.resolutionService = resolutionService;
-	window.MOBILEWIDTH = MOBILEWIDTH;
-	window.TABLETWIDTH = TABLETWIDTH;
->>>>>>> Repear of some menu issues
 })();
 
 		

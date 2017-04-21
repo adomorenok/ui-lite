@@ -1,10 +1,11 @@
 .ui-panel {
 
 	position: fixed;
+  	top: 0;
 	font-size: $panel-font-size;
 	height: $header-height;
 	overflow: hidden;
-	z-index: 9999;
+	z-index: 99;
 
 	.ui-panel-element-container {
 
@@ -20,12 +21,12 @@
 			padding: 0 20px 0 20px;
 
 			span {
-				color: $yello-text-color;
+				color: $text-color;
 			}
 		}
 
 		&:after {
-			background-color: $yello-color;
+			background-color: $base-color;
 		    bottom: 0px;
 		    content: '';
 		    height: 1px;
@@ -85,7 +86,7 @@
 				border: 0;
 
 				span {
-					color: $yello-active-text-color;
+					color: $active-color;
 				}
 			}
 

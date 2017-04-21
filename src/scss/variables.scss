@@ -22,7 +22,7 @@ $header-background-color: rgba(23, 23, 23, 0.97);
 $full-header-logo-width: 150px;
 
 //Sidebar variables
-$sidebar-color: rgba(23, 23, 23, 0.97);
+$sidebar-color: $header-background-color;
 $sidebar-open-width: 230px;
 $sidebar-text-size: 14px;
 $sidebar-label-width: 156px;
@@ -62,6 +62,8 @@ $select-border-bottom-color: $input-border-bottom-color;
 $select-option-background: #FFFFFF;
 $select-option-background-active: rgb(238, 238, 238);
 
+
+$button-text-color: $header-background-color;
 $button-default-color: $active-color;
 $button-hover-color: $active-color;
 $button-animate-opacity: 0.3;

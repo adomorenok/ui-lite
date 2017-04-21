@@ -41,11 +41,11 @@ a {
       font-size: 2em; }
 
 @media (max-width: 470px) {
-  .ui-header .icon-right {
+  .ui-header .ui-icon-right {
     position: absolute;
     top: 0;
     right: 0; }
-    .ui-header .icon-right i {
+    .ui-header .ui-icon-right i {
       display: block;
       background-size: 40px;
       width: 56px;
@@ -65,10 +65,11 @@ a {
 
 .ui-panel {
   position: fixed;
+  top: 0;
   font-size: 18px;
   height: 56px;
   overflow: hidden;
-  z-index: 9999; }
+  z-index: 99; }
   .ui-panel .ui-panel-element-container {
     display: block;
     position: relative;
@@ -108,10 +109,6 @@ a {
     height: 100%;
     display: block;
     background-color: rgba(23, 23, 23, 0.97);
-<<<<<<< HEAD
-    z-index: 9;
-=======
->>>>>>> Repear of some menu issues
     left: 0;
     top: 56px;
     transform: scaleX(0);
@@ -164,6 +161,57 @@ a {
     right: 0; }
   .ui-panel-toggle-btn {
     display: none !important; } }
+
+.ui-icon {
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.ui-icon-list {
+  background-image: url("../img/list.png"); }
+
+.ui-icon-request-search {
+  background-image: url("../img/search.png"); }
+
+.ui-icon-history {
+  background-image: url("../img/history.png"); }
+
+.ui-icon-notification {
+  background-image: url("../img/notification.png"); }
+
+.ui-icon-inbox {
+  background-image: url("../img/message.png"); }
+
+.ui-icon-setting {
+  background-image: url("../img/settings.png"); }
+
+.ui-icon-down-arrow {
+  background-image: url("../img/down-arrow.png"); }
+
+.w-ui-icon:hover > i.ui-icon-list {
+  background-image: url("../img/list_active.png"); }
+
+.w-ui-icon:hover > i.ui-icon-request-search {
+  background-image: url("../img/search_active.png"); }
+
+.w-ui-icon:hover > i.ui-icon-history {
+  background-image: url("../img/history_active.png"); }
+
+.w-ui-icon:hover > i.ui-icon-notification {
+  background-image: url("../img/notification_active.png"); }
+
+.w-ui-icon:hover > i.ui-icon-inbox {
+  background-image: url("../img/message_active.png"); }
+
+.w-ui-icon:hover > i.ui-icon-setting {
+  background-image: url("../img/settings_active.png"); }
+
+@media (max-width: 880px) {
+  i.ui-logo {
+    background-image: url(../img/velotooler-logo.png) !important; } }
+
+@media (min-width: 671px) {
+  i.ui-logo {
+    background-image: url(../img/logo.png); } }
 
 .ui-input-container {
   display: inline-block;
@@ -219,7 +267,7 @@ a.ui-btn {
   min-width: 5em;
   min-height: 2em;
   background: #FBC02D;
-  color: #FFFFFF;
+  color: rgba(23, 23, 23, 0.97);
   display: inline-block;
   position: relative;
   border: 0px;
@@ -366,14 +414,14 @@ a.ui-btn {
   padding: 26px;
   width: 156px; }
 
-.ui-sidebar-element-container .icon {
+.ui-sidebar-element-container .ui-icon {
   background-size: 32px;
   width: 64px;
   height: 64px;
   float: left; }
 
 @media (max-width: 340px) {
-  i.icon {
+  i.ui-icon {
     width: 60px;
     height: 60px; } }
 
@@ -467,7 +515,7 @@ a.ui-btn {
       display: block;
       padding: 26px;
       font-size: 1em; }
-    .ui-submenu .ui-submenu-element-container .ui-submenu-element .icon-down-arrow {
+    .ui-submenu .ui-submenu-element-container .ui-submenu-element .ui-icon-down-arrow {
       background-size: 30px;
       display: block;
       height: 30px; }
