@@ -54,7 +54,7 @@
     }
 
     function addCloseEventByClickOnPanel() {
-        document.onReady(function() {
+        ui.onReady(function() {
             document.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
             document.documentElement.addEventListener('click', closePanel, true);
         });

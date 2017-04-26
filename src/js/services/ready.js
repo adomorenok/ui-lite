@@ -2,7 +2,7 @@
 
     'use strict';
 
-    document.onReady = function ( fn ) {
+    ui.onReady = function ( fn ) {
 
         // Sanity check
         if ( typeof fn !== 'function' ) return;
