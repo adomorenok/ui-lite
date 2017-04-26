@@ -785,71 +785,74 @@
 
     'use strict';
 
-    document.onReady(function() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0];
-        var container = document.getElementsByClassName('ui-container')[0];
-        var sidebar = document.getElementsByClassName('ui-sidebar')[0];
-        var panel = document.getElementsByClassName('ui-panel')[0];
+    function openSubMenu() {
+        var submenu = document.getElementsByClassName('ui-submenu')[0],
+            container = document.getElementsByClassName('ui-container')[0],
+            sidebar = document.getElementsByClassName('ui-sidebar')[0];
 
-        function openSubMenu() {
-            submenu.classList.add('ui-submenu-active');
-            if (submenu.classList.contains('ui-submenu-left')) {
-                container.classList.add('ui-container-has-left-open-submenu');
-            } else {
-                container.classList.add('ui-container-has-right-open-submenu');
-            }
-            if (sidebar) {
-                sidebar.classList.add('ui-sidebar-hidden');
-            }
-
-            addCloseEventByClickOnSubmenu();
+        submenu.classList.add('ui-submenu-active');
+        if (submenu.classList.contains('ui-submenu-left')) {
+            container.classList.add('ui-container-has-left-open-submenu');
+        } else {
+            container.classList.add('ui-container-has-right-open-submenu');
+        }
+        if (sidebar) {
+            sidebar.classList.add('ui-sidebar-hidden');
         }
 
-        function closeSubMenu() {
-            if (sidebar) {
-                sidebar.classList.remove('ui-sidebar-hidden');
-            }
-            submenu.classList.remove('ui-submenu-active');
-            submenu.classList.add('ui-submenu-hidden');
+        addCloseEventByClickOnSubmenu();
+    }
 
-            if (submenu.classList.contains('ui-submenu-left')) {
-                container.classList.remove('ui-container-has-left-open-submenu');
-            } else {
-                container.classList.remove('ui-container-has-right-open-submenu');
-            }
+    function closeSubMenu() {
+        var submenu = document.getElementsByClassName('ui-submenu')[0],
+            container = document.getElementsByClassName('ui-container')[0],
+            sidebar = document.getElementsByClassName('ui-sidebar')[0];
 
-            setTimeout(function () {
-                submenu.classList.remove('ui-submenu-hidden');
-            }, 150);
+        if (sidebar) {
+            sidebar.classList.remove('ui-sidebar-hidden');
+        }
+        submenu.classList.remove('ui-submenu-active');
+        submenu.classList.add('ui-submenu-hidden');
 
-            document.documentElement.removeEventListener('click', closeSubMenu, true);
+        if (submenu.classList.contains('ui-submenu-left')) {
+            container.classList.remove('ui-container-has-left-open-submenu');
+        } else {
+            container.classList.remove('ui-container-has-right-open-submenu');
         }
 
-        function closePanel(e) {
-            panel.classList.remove('ui-panel-active');
-            document.documentElement.removeEventListener('click', closePanel, true);
-        }
+        setTimeout(function () {
+            submenu.classList.remove('ui-submenu-hidden');
+        }, 150);
 
-        function addCloseEventByClickOnSubmenu() {
-            document.documentElement.addEventListener('click', closeSubMenu, true);
-        }
+        document.documentElement.removeEventListener('click', closeSubMenu, true);
+    }
 
-        function addCloseEventByClickOnPanel() {
-            panel.classList.add('ui-panel-active');
+    function closePanel(e) {
+        document.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
+        document.documentElement.removeEventListener('click', closePanel, true);
+    }
+
+    function addCloseEventByClickOnSubmenu() {
+        document.documentElement.addEventListener('click', closeSubMenu, true);
+    }
+
+    function addCloseEventByClickOnPanel() {
+        document.onReady(function() {
+            document.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
             document.documentElement.addEventListener('click', closePanel, true);
-        }
+        });
+    }
 
-        var menuService = (function () {
-            return {
-                closeSubMenu: closeSubMenu,
-                openSubMenu: openSubMenu,
-                addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
-                addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
-            };
-        })();
+    var menuService = (function () {
+        return {
+            closeSubMenu: closeSubMenu,
+            openSubMenu: openSubMenu,
+            addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
+            addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
+        };
+    })();
 
-        window.menuService = menuService;
-    });
+    window.menuService = menuService;
 })();
 
 		
