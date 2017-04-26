@@ -18,7 +18,7 @@ a {
   width: 100%;
   z-index: 99;
   background-color: rgba(23, 23, 23, 0.97);
-  height: 56px; }
+  height: 64px; }
   .ui-header a, .ui-header .ui-panel-toggle-btn {
     cursor: pointer;
     display: block;
@@ -28,17 +28,17 @@ a {
   .ui-header .ui-logo {
     background-position: center;
     background-repeat: no-repeat;
-    height: 56px;
+    height: 64px;
     display: block; }
   .ui-header .cling {
     position: fixed !important; }
   .ui-header .ui-header-element-container {
     float: left;
-    height: 56px;
+    height: 64px;
     text-align: center;
-    line-height: 56px; }
+    line-height: 64px; }
     .ui-header .ui-header-element-container .fa-bars {
-      line-height: 56px; }
+      line-height: 64px; }
     .ui-header .ui-header-element-container .fa {
       font-size: 2em; }
 
@@ -50,26 +50,26 @@ a {
     .ui-header .ui-icon-right i {
       display: block;
       background-size: 40px;
-      width: 56px;
-      height: 56px; } }
+      width: 64px;
+      height: 64px; } }
 
 @media (max-width: 880px) {
   .ui-header .ui-header-logo-conteiner {
-    width: 56px; }
+    width: 64px; }
   .ui-header-btn i.ui-logo {
-    background-size: 56px; } }
+    background-size: 64px; } }
 
 @media (min-width: 471px) {
   .ui-header-logo-conteiner {
-    width: 150px; }
+    width: calc(200px + 20px); }
   i.ui-logo {
-    background-size: 150px; } }
+    background-size: 200px; } }
 
 .ui-panel {
   position: absolute;
   top: 0;
-  font-size: 18px;
-  height: 56px;
+  font-size: 16px;
+  height: 64px;
   overflow: hidden;
   z-index: 99; }
   .ui-panel .ui-panel-element-container {
@@ -77,13 +77,13 @@ a {
     position: relative;
     float: left;
     text-align: center;
-    height: 56px;
-    line-height: 56px; }
+    height: 64px;
+    line-height: 64px; }
     .ui-panel .ui-panel-element-container a {
       display: block;
       padding: 0 20px 0 20px; }
       .ui-panel .ui-panel-element-container a span {
-        color: rgba(184, 184, 179, 0.97); }
+        color: azure; }
     .ui-panel .ui-panel-element-container:after {
       background-color: #fff2b7;
       bottom: 0px;
@@ -113,7 +113,7 @@ a {
     display: block;
     background-color: rgba(23, 23, 23, 0.97);
     left: 0;
-    top: 56px;
+    top: 64px;
     transform: scaleX(0);
     transform-origin: left;
     /* For Safari 3.1 to 6.0 */
@@ -160,7 +160,7 @@ a {
 @media (min-width: 1350px) {
   .ui-panel {
     display: block;
-    width: 1082px;
+    width: 997px;
     right: 0; }
   .ui-panel-toggle-btn {
     display: none !important; } }
@@ -223,14 +223,14 @@ a {
   position: relative;
   font-size: 1em; }
   .ui-input-container .ui-input {
-    color: rgba(184, 184, 179, 0.97);
+    color: azure;
     border: 0px;
     width: 100%;
     border-bottom: 1px solid rgba(255, 242, 183, 0.25);
     font-size: 1em;
     background: transparent; }
   .ui-input-container .ui-label {
-    color: rgba(184, 184, 179, 0.97);
+    color: azure;
     position: absolute;
     top: 1em;
     bottom: 0px;
@@ -346,13 +346,13 @@ a.ui-btn {
   border-bottom: 1px solid rgba(255, 242, 183, 0.25);
   font-size: 1em;
   background: transparent;
-  color: rgba(184, 184, 179, 0.97); }
+  color: azure; }
 
 .ui-input-container .ui-select-icon {
   position: absolute;
   right: 0;
   cursor: pointer;
-  color: rgba(184, 184, 179, 0.97); }
+  color: azure; }
 
 .ui-input-container .ui-select-icon:after {
   display: block;
@@ -411,7 +411,7 @@ a.ui-btn {
 .ui-sidebar-element-container .ui-sidebar-element-label {
   visibility: hidden;
   display: block;
-  color: rgba(184, 184, 179, 0.97);
+  color: azure;
   font-size: 14px;
   font-weight: bold;
   padding: 26px;
@@ -451,7 +451,7 @@ a.ui-btn {
 @media (min-width: 471px) {
   .ui-sidebar {
     width: 64px;
-    top: 56px;
+    top: 64px;
     float: left;
     transition: all 150ms linear;
     /* For Safari 3.1 to 6.0 */
@@ -459,7 +459,7 @@ a.ui-btn {
   .ui-sidebar-hidden {
     pointer-events: none; }
   .ui-sidebar-has-header {
-    margin-top: 56px; }
+    margin-top: 64px; }
   .ui-sidebar-left {
     left: 0; }
   .ui-sidebar-right {
@@ -493,7 +493,7 @@ a.ui-btn {
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform 150ms linear; }
   .ui-submenu .ui-submenu-element-label {
-    color: rgba(184, 184, 179, 0.97);
+    color: azure;
     font-size: 14px;
     font-weight: bold; }
     .ui-submenu .ui-submenu-element-label:hover {
@@ -540,12 +540,12 @@ a.ui-btn {
   .ui-submenu {
     height: 100%;
     width: 170px;
-    top: 56px;
+    top: 64px;
     transform: scaleX(0);
     /* For Safari 3.1 to 6.0 */
     -webkit-transform: scaleX(0); }
   .ui-sidebar-has-header {
-    margin-top: 56px; }
+    margin-top: 64px; }
   .ui-submenu-left {
     left: 64px;
     transform-origin: left;
@@ -572,7 +572,7 @@ a.ui-btn {
 
 .ui-container {
   position: absolute;
-  top: 56px; }
+  top: 64px; }
 
 @media (min-width: 471px) {
   .ui-container {

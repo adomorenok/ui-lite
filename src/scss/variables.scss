@@ -1,7 +1,7 @@
 //Main variables
 $base-color: rgb(255, 242, 183);
 $active-color: #FBC02D;
-$text-color: rgba(184, 184, 179, 0.97);
+$text-color: rgba(240,255,255,1);
 $text-alternative-color: #FFFFFF;
 $main-background-color: #303030;
 $hover-color: #363737;
@@ -16,10 +16,10 @@ $tablet-width: 880px;
 $not-tablet-width: 881px;
 
 //Header variables
-$header-height: 56px;
+$header-height: 64px;
 $header-background-color: rgba(23, 23, 23, 0.97);
 
-$full-header-logo-width: 150px;
+$full-header-logo-width: 200px;
 
 //Sidebar variables
 $sidebar-color: $header-background-color;
@@ -43,10 +43,10 @@ $submenu-mobile-scale: scaleY(1);
 
 //Panel variables
 $header-full-panel-width-media: 1350px;
-$header-full-panel-width: 1082px;
+$header-full-panel-width: 997px;
 $header-half-panel-width-media: 881px;
 $header-half-panel-width: 645px;
-$panel-font-size: 18px;
+$panel-font-size: 16px;
 $transition-speed-panel: 150ms;
 
 $input-color: $text-color;

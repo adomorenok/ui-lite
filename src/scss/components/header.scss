@@ -73,7 +73,7 @@
 @media (min-width: $not-mobile-width) {
 
   .ui-header-logo-conteiner {
-    width: $full-header-logo-width;
+    width: calc(#{$full-header-logo-width} + 20px);
   }
 
   i.ui-logo {
