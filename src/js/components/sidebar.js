@@ -54,15 +54,11 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (href) {
-            console.log(href);
-        }
-
         if (!resolutionService.isMobile()) {
             UISidebar.prototype.hideSidebar(this);
         }
 
-        e.preventDefault();
+        //e.preventDefault();
     };
 
     UISidebar.prototype.hideSidebar = function () {

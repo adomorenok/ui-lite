@@ -176,11 +176,7 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (href) {
-            console.log(href);
-        }
-
-        e.preventDefault();
+        //e.preventDefault();
     };
 
     UIHeader.prototype.init = function (header) {
@@ -317,7 +313,7 @@
 
     UIPanel.prototype.onButtonClick = function (e) {
 
-        e.preventDefault();
+        //e.preventDefault();
 
         //Find all activ buttons
         var activeButton = panel.getElementsByClassName('ui-panel-btn-active')[0];
@@ -327,11 +323,6 @@
 
         //Parse HREF
         var href = this.getAttribute('href');
-
-
-        if (href) {
-            console.log(href);
-        }
 
         this.parentElement.classList.add('ui-panel-btn-active');
     };
@@ -602,15 +593,11 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (href) {
-            console.log(href);
-        }
-
         if (!resolutionService.isMobile()) {
             UISidebar.prototype.hideSidebar(this);
         }
 
-        e.preventDefault();
+        //e.preventDefault();
     };
 
     UISidebar.prototype.hideSidebar = function () {
@@ -685,11 +672,7 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (href) {
-            console.log(href);
-        }
-
-        e.preventDefault();
+        //e.preventDefault();
     };
 
     UISubMenu.prototype.mouseover = function (e) {

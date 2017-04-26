@@ -52,7 +52,7 @@
 
     UIPanel.prototype.onButtonClick = function (e) {
 
-        e.preventDefault();
+        //e.preventDefault();
 
         //Find all activ buttons
         var activeButton = panel.getElementsByClassName('ui-panel-btn-active')[0];
@@ -62,11 +62,6 @@
 
         //Parse HREF
         var href = this.getAttribute('href');
-
-
-        if (href) {
-            console.log(href);
-        }
 
         this.parentElement.classList.add('ui-panel-btn-active');
     };

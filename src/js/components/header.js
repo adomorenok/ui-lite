@@ -19,11 +19,7 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (href) {
-            console.log(href);
-        }
-
-        e.preventDefault();
+        //e.preventDefault();
     };
 
     UIHeader.prototype.init = function (header) {
