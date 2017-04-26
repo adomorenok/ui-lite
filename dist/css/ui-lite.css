@@ -161,9 +161,11 @@ a {
 
 @media (min-width: 1350px) {
   .ui-panel {
-    display: block;
-    width: 997px;
-    right: 0; }
+    position: relative;
+    float: right;
+    display: block; }
+    .ui-panel .ui-panel-fieldset {
+      display: inline-block; }
   .ui-panel-toggle-btn {
     display: none !important; } }
 

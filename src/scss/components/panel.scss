@@ -131,10 +131,14 @@
 @media (min-width: $header-full-panel-width-media) {
 
 	.ui-panel {
-
+	  	position: relative;
+	  	float: right;
 		display: block;
-		width: $header-full-panel-width;
-		right: 0;
+
+	  	.ui-panel-fieldset {
+		  display: inline-block;
+		}
+
 	}
 
     .ui-panel-toggle-btn {
