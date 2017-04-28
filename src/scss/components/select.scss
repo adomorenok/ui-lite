@@ -52,7 +52,8 @@
     font-size: 1em;
     cursor: pointer;
     line-height: 2.5em;
-    background: $select-option-background;
+    background: $header-background-color;
+    color: $text-color;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow-x: hidden;
@@ -60,7 +61,8 @@
 
   .ui-select-option:hover,
   .ui-select-option:focus {
-    background: $select-option-background-active;
+    background: $main-background-color;
+    color: $active-color;
     outline: 0px solid transparent;
   }
 }

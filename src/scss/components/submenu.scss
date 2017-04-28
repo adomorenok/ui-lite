@@ -80,7 +80,9 @@
 @media (min-width: $not-mobile-width) {
 
   .ui-submenu {
-    height: 100%;
+    height: calc(100% - #{$header-height});
+    overflow-y: auto;
+    overflow-x: hidden;
     width: $submenu-width;
     top: $header-height;
     transform: scaleX(0);

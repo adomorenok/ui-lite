@@ -74,7 +74,10 @@
         _sidebar.ui = this;
 
         //Sidebar for not a mobile resol
-        container = document.getElementsByClassName('ui-container')[0];
+        ui.onReady(function() {
+            container = document.getElementsByClassName('ui-container')[0];
+        });
+
         sidebar = _sidebar;
 
         this.initContainerDependencies();

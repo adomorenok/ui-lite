@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>test</title>
+<html class="ui-scroll">
+	<head>
+		<title>test</title>
 
-	<meta charset="UTF-8">
+		<meta charset="UTF-8">
 
-	<link rel="stylesheet" href="../dist/css/ui-lite.css">
-	<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
-</head>
-<body>
-	<!-- Header -->
-	<header class="ui-header cling">
-		<section>
+		<link rel="stylesheet" href="../dist/css/ui-lite.css">
+		<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="ui-header cling">
 			<div class="ui-header-element-container ui-header-menu-conteiner">
 				<div class="ui-panel-toggle-btn">
 					<i class="ui-icon fa fa-bars"></i>
@@ -22,7 +21,7 @@
 					<i class="ui-icon ui-logo"></i>
 				</a>
 			</div>
-			<div class="ui-panel">
+			<div class="ui-panel ui-scroll">
 				<div class="ui-panel-fieldset">
 					<div class="ui-panel-element-container">
 						<a href="#" class="ui-panel-btn">
@@ -72,11 +71,11 @@
 				<a href="#" class="ui-open-submenu-btn w-ui-icon">
 					<i class="ui-icon ui-icon-setting"></i>
 				</a>
-			</div>	
+			</div>
 		</header>
 
 		<!-- Sidebar -->
-		<section class="ui-sidebar ui-sidebar-left">
+		<div class="ui-sidebar ui-sidebar-left ui-scroll">
 			<div class="ui-sidebar-element-container">
 				<a href="#" class="ui-sidebar-element ui-sidebar-btn w-ui-icon">
 					<i class="ui-icon ui-icon-list"></i>
@@ -107,7 +106,7 @@
 					<span class="ui-sidebar-element-label">
 						Notifications
 					</span>
-				</a>	
+				</a>
 			</div>
 			<div class="ui-sidebar-element-container">
 				<a href="#" class="ui-sidebar-element ui-sidebar-btn w-ui-icon">
@@ -125,10 +124,10 @@
 					</span>
 				</a>
 			</div>
-		</section>
+		</div>
 
 		<!-- Submenu -->
-		<section class="ui-submenu ui-submenu-left">
+		<div class="ui-submenu ui-scroll ui-submenu-left">
 
 			<div class="ui-submenu-element-container">
 				<a href="#" class="ui-submenu-element ui-submenu-btn">
@@ -175,7 +174,7 @@
 					<i class="ui-submenu-close ui-icon ui-icon-down-arrow"></i>
 				</a>
 			</div>
-		</section>
+		</div>
 
 		<ui-content-wraper>
 			<ui-content>
@@ -183,12 +182,12 @@
 			</ui-content>
 
 			<ui-content>
-			
+
 			</ui-content>
 		</ui-content-wraper>
 
 		<!--Container-->
-		<section class="ui-container">
+		<div class="ui-container">
 			<div style="display: inline-block; width: 100%;">
 				<div style="width: 25%; float: left;">
 					<div class="ui-input-container">
@@ -222,7 +221,7 @@
 				<div style="width: 25%; float: left;">
 					<a href="" class="ui-btn">
 						Link
-					</a>	
+					</a>
 				</div>
 
 				<div style="width: 25%; float: left;">
@@ -266,7 +265,315 @@
 
 				</div>
 			</div>
-		</section>
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="123">
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn">
+						<span>Button</span>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<a href="" class="ui-btn">
+						Link
+					</a>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab-min">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select</label>
+						<select class="ui-select">
+							<option value="0">Value zero</option>
+							<option value="1">Value one</option>
+							<option value="2">Value two</option>
+							<option value="3">Value three</option>
+							<option value="4">Value four</option>
+							<option value="5">Value four1</option>
+							<option value="6">Value four2</option>
+						</select>
+					</div>
+				</div>
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select 2</label>
+						<select id="custom-options" class=""></select>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+
+				</div>
+			</div>
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="123">
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn">
+						<span>Button</span>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<a href="" class="ui-btn">
+						Link
+					</a>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab-min">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select</label>
+						<select class="ui-select">
+							<option value="0">Value zero</option>
+							<option value="1">Value one</option>
+							<option value="2">Value two</option>
+							<option value="3">Value three</option>
+							<option value="4">Value four</option>
+							<option value="5">Value four1</option>
+							<option value="6">Value four2</option>
+						</select>
+					</div>
+				</div>
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select 2</label>
+						<select id="custom-options" class=""></select>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+
+				</div>
+			</div>
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="123">
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn">
+						<span>Button</span>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<a href="" class="ui-btn">
+						Link
+					</a>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab-min">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select</label>
+						<select class="ui-select">
+							<option value="0">Value zero</option>
+							<option value="1">Value one</option>
+							<option value="2">Value two</option>
+							<option value="3">Value three</option>
+							<option value="4">Value four</option>
+							<option value="5">Value four1</option>
+							<option value="6">Value four2</option>
+						</select>
+					</div>
+				</div>
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select 2</label>
+						<select id="custom-options" class=""></select>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+
+				</div>
+			</div>
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="">
+					</div>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test input</label>
+						<input class="ui-input" value="123">
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%;">
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn">
+						<span>Button</span>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<a href="" class="ui-btn">
+						Link
+					</a>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div style="width: 25%; float: left;">
+					<button class="ui-btn ui-fab-min">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select</label>
+						<select class="ui-select">
+							<option value="0">Value zero</option>
+							<option value="1">Value one</option>
+							<option value="2">Value two</option>
+							<option value="3">Value three</option>
+							<option value="4">Value four</option>
+							<option value="5">Value four1</option>
+							<option value="6">Value four2</option>
+						</select>
+					</div>
+				</div>
+				<div style="width: 25%; float: left;">
+					<div class="ui-input-container">
+						<label class="ui-label">Test select 2</label>
+						<select id="custom-options" class=""></select>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: inline-block; width: 100%">
+				<div style="width: 25%; float: left;">
+
+				</div>
+			</div>
+		</div>
 
 		<!-- Footer -->
 		<footer class="footer">
@@ -291,6 +598,5 @@
 
 			var uiSelect = new ui.select(select, options, 'name');
 		</script>
-
 	</body>
 </html>
