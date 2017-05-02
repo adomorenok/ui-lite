@@ -26,7 +26,7 @@
     };
 
     UISidebar.prototype.initContainerDependencies = function (e) {
-        if (!resolutionService.isMobile()) {
+        if (!ui.resolutionService.isMobile()) {
             if (!container.classList.contains('ui-container-has-left-sidebar') && sidebar.classList.contains('ui-sidebar-left')) {
                 container.classList.add('ui-container-has-left-sidebar');
             } else if (!container.classList.contains('ui-container-has-right-sidebar') && sidebar.classList.contains('ui-sidebar-right')) {
@@ -54,7 +54,7 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (!resolutionService.isMobile()) {
+        if (!ui.resolutionService.isMobile()) {
             UISidebar.prototype.hideSidebar(this);
         }
 
@@ -75,18 +75,18 @@
 
         //Sidebar for not a mobile resol
         ui.onReady(function() {
-            container = document.getElementsByClassName('ui-container')[0];
+            container = document.documentElement.getElementsByClassName('ui-container')[0];
         });
 
         sidebar = _sidebar;
 
-        this.initContainerDependencies();
+        //this.initContainerDependencies();
         this.initSidebarButtons(_sidebar);
 
         _sidebar.addEventListener('mouseover', this.mouseover);
         _sidebar.addEventListener('mouseout', this.mouseout);
 
-        window.addEventListener('resize', this.initContainerDependencies);
+        //window.addEventListener('resize', this.initContainerDependencies);
     };
 
     ui.register(UISidebar, 'ui-sidebar', 'sidebar');

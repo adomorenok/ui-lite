@@ -49,7 +49,7 @@ a {
     background-repeat: no-repeat;
     height: 64px;
     display: block; }
-  .ui-header .cling {
+  .ui-header.active {
     position: fixed !important; }
   .ui-header .ui-header-element-container {
     float: left;
@@ -60,6 +60,14 @@ a {
       line-height: 64px; }
     .ui-header .ui-header-element-container .fa {
       font-size: 2em; }
+  .ui-header .ui-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0 !important; }
+  .ui-header .ui-header-general {
+    z-index: 9; }
 
 .ui-panel {
   position: absolute;
@@ -93,8 +101,10 @@ a {
       left: 0;
       visibility: visible;
       width: 100%; }
+  .ui-panel .ui-panel-toggle-mobile {
+    display: block; }
 
-.ui-panel, .ui-panel-fieldset {
+.ui-panel, .ui-panel-fieldset, .active {
   transition: transform 150ms linear;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform 150ms linear; }
@@ -118,12 +128,12 @@ a {
   .ui-panel {
     position: fixed;
     width: 221px;
-    height: calc(100% - 64px);
+    height: 100%;
     overflow-y: auto;
     display: block;
     background-color: rgba(23, 23, 23, 0.97);
     left: 0;
-    top: 64px;
+    z-index: 99;
     transform: scaleX(0);
     transform-origin: left;
     /* For Safari 3.1 to 6.0 */
@@ -151,6 +161,10 @@ a {
     width: calc(200px + 20px); }
   i.ui-logo {
     background-size: 200px; } }
+
+@media (min-width: 881px) {
+  .ui-panel-toggle-mobile {
+    display: none !important; } }
 
 @media (min-width: 881px) and (max-width: 1350px) {
   .ui-panel {

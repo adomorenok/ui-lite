@@ -5,7 +5,7 @@
 	var MOBILEWIDTH = 470; //Max mobile width
 	var TABLETWIDTH = 880; //Max mobile width
 
-    var resolutionService = {
+    var uiResolutionService = {
 
         getScreenWidth: function () {
             return (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -20,9 +20,9 @@
         }
     };
 
-    window.resolutionService = resolutionService;
-    window.MOBILEWIDTH = MOBILEWIDTH;
-    window.TABLETWIDTH = TABLETWIDTH;
+    ui.resolutionService = uiResolutionService;
+    ui.MOBILEWIDTH = MOBILEWIDTH;
+    ui.TABLETWIDTH = TABLETWIDTH;
 })();
 
 		

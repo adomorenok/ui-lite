@@ -76,7 +76,7 @@
 
     UISubMenu.prototype.resize = function (e) {
 
-        if (!resolutionService.isMobile()) {
+        if (!ui.resolutionService.isMobile()) {
             if (!container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
                 container.classList.add('ui-container-has-left-submenu');
             } else if (!container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {

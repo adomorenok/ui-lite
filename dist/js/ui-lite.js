@@ -167,10 +167,10 @@
         var headerButtons = header.getElementsByClassName('ui-header-btn');
         var panelButtons = header.getElementsByClassName('ui-panel-btn');
 
-        addButtonEvents(headerButtons);
-        addButtonEvents(panelButtons);
+        addClickOnButton(headerButtons);
+        addClickOnButton(panelButtons);
 
-        function addButtonEvents(buttons) {
+        function addClickOnButton(buttons) {
             for (var b = 0; b < buttons.length; b++) {
                 buttons[b].addEventListener('click', UIHeader.prototype.onButtonClick);
             }
@@ -178,7 +178,8 @@
     };
 
     UIHeader.prototype.initPanelToggleButton = function (header) {
-        var panelToggleButton = document.documentElement.getElementsByClassName('ui-panel-toggle-btn')[0];
+        var panelToggleButtons = document.documentElement.getElementsByClassName('ui-panel-toggle-btn');
+        var panelToggleButton = panelToggleButtons[1] || panelToggleButtons[0];
 
         if (panelToggleButton) {
             panelToggleButton.addEventListener('click', function (e) {
@@ -191,11 +192,9 @@
                     }
                 }
 
-                if (resolutionService.isTablet()) {
+                if (ui.resolutionService.isTablet()) {
                     menuService.addCloseEventByClickOnPanel(e);
                 }
-
-                e.preventDefault();
             });
         }
     };
@@ -208,6 +207,108 @@
             if (firstPanelBlock) {
                 firstPanelBlock.classList.add('ui-panel-active');
             }
+        }
+    };
+
+    UIHeader.prototype.initHeaderStructure = function(header) {
+        /* General Header */
+        var headerGeneral = ui.elementService.create('div',['ui-header-general']);
+
+        /* Panel Toggle */
+        function createPanelToggle() {
+            var uiPanelToggle = ui.elementService.create('div',['ui-header-element-container']);
+            var uiPanelToggleBtn = ui.elementService.create('div',['ui-panel-toggle-btn']);
+            var uiMenuIcon = ui.elementService.create('i',['ui-icon', 'fa', 'fa-bars']);
+            uiPanelToggleBtn.appendChild(uiMenuIcon);
+            uiPanelToggle.appendChild(uiPanelToggleBtn);
+
+            return uiPanelToggle;
+        }
+
+        /* Logo Container */
+        function createLogoContainer() {
+            var uiHome = ui.elementService.create('div',['ui-header-element-container' ,'ui-header-logo-conteiner']);
+            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '#'});
+            var uiHomeLogo = ui.elementService.create('i',['ui-icon', 'ui-logo']);
+            uiHomeBtn.appendChild(uiHomeLogo);
+            uiHome.appendChild(uiHomeBtn);
+
+            return uiHome;
+        }
+
+        /* Right icon */
+        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-right-icon']);
+        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn', 'w-ui-icon']);
+        var uiRightLogo = ui.elementService.create('i',['ui-icon', 'ui-icon-setting']);
+        uiRightBtn.appendChild(uiRightLogo);
+        uiRight.appendChild(uiRightBtn);
+
+        headerGeneral.appendChild(createPanelToggle());
+        headerGeneral.appendChild(createLogoContainer());
+        headerGeneral.appendChild(uiRight);
+
+
+        /* UI Panel */
+        var panel = header.getElementsByClassName('ui-panel');
+        var panelFieldSets = header.getElementsByClassName('ui-panel-fieldset');
+
+        var fieldSetContainer;
+        var panelButton;
+        for (var p = 0; p < 2; p++) {
+
+            fieldSetContainer = panelFieldSets[p].getElementsByTagName('div');
+            panelButton = panelFieldSets[p].getElementsByTagName('a');
+
+            for(var f = 0; f < fieldSetContainer.length; f++) {
+                fieldSetContainer[f].classList.add('ui-panel-element-container');
+            }
+
+            for(var b = 0; b < panelButton.length; b++) {
+                panelButton[b].classList.add('ui-panel-btn');
+            }
+
+            if(p === 0) {
+                var panelToggleContainer = ui.elementService.create('div', ['ui-panel-toggle-mobile']);
+                panelToggleContainer.appendChild(createPanelToggle());
+                panelToggleContainer.appendChild(createLogoContainer());
+                panelFieldSets[0].insertBefore(panelToggleContainer, fieldSetContainer[0]);
+            }
+        }
+
+        /* Mobile Toggle Button */
+        var uiMobileToggle = createPanelToggle();
+        uiMobileToggle.classList.add('ui-mobile-toggle');
+        uiMobileToggle.addEventListener('click', function(e) {
+            var isActive = header.classList.contains('active');
+            var panel = header.getElementsByClassName('ui-panel')[0];
+
+            if(!isActive) {
+                menuService.addCloseEventByClickOnPanel(e);
+                panel.classList.add('ui-panel-active');
+                header.classList.add('active');
+                return;
+            }
+            header.classList.remove('active');
+        }, true);
+        headerGeneral.appendChild(uiMobileToggle);
+
+        /* Assembly */
+        header.appendChild(headerGeneral);
+        header.appendChild(uiMobileToggle);
+
+    };
+
+    UIHeader.prototype.initScrollEvent = function (e) {
+        ui.eventService.scrollHeader();
+    };
+
+    UIHeader.prototype.setHeaderScroll = function() {
+        var mobileToggleBtn = document.documentElement.getElementsByClassName('ui-mobile-toggle')[0];
+        var panel = document.documentElement.getElementsByClassName('ui-panel')[0];
+        if (document.body.scrollTop > 44 || document.documentElement.scrollTop > 44) {
+            mobileToggleBtn.style.display = 'block';
+        } else {
+            mobileToggleBtn.style.display = 'none';
         }
     };
 
@@ -230,9 +331,13 @@
     UIHeader.prototype.init = function (header) {
         header.ui = this;
 
-        this.initButtons(header);
+        this.initHeaderStructure(header);
         this.initPanelToggleButton(header);
+        this.initButtons(header);
         this.initDefaultActivePanel(header);
+
+        this.initScrollEvent();
+        window.addEventListener('resize', this.initScrollEvent);
     };
 
     ui.register(UIHeader, 'ui-header', 'header');
@@ -534,7 +639,7 @@
     };
 
     UISidebar.prototype.initContainerDependencies = function (e) {
-        if (!resolutionService.isMobile()) {
+        if (!ui.resolutionService.isMobile()) {
             if (!container.classList.contains('ui-container-has-left-sidebar') && sidebar.classList.contains('ui-sidebar-left')) {
                 container.classList.add('ui-container-has-left-sidebar');
             } else if (!container.classList.contains('ui-container-has-right-sidebar') && sidebar.classList.contains('ui-sidebar-right')) {
@@ -562,7 +667,7 @@
         //Parse HREF
         var href = this.getAttribute('href');
 
-        if (!resolutionService.isMobile()) {
+        if (!ui.resolutionService.isMobile()) {
             UISidebar.prototype.hideSidebar(this);
         }
 
@@ -583,18 +688,18 @@
 
         //Sidebar for not a mobile resol
         ui.onReady(function() {
-            container = document.getElementsByClassName('ui-container')[0];
+            container = document.documentElement.getElementsByClassName('ui-container')[0];
         });
 
         sidebar = _sidebar;
 
-        this.initContainerDependencies();
+        //this.initContainerDependencies();
         this.initSidebarButtons(_sidebar);
 
         _sidebar.addEventListener('mouseover', this.mouseover);
         _sidebar.addEventListener('mouseout', this.mouseout);
 
-        window.addEventListener('resize', this.initContainerDependencies);
+        //window.addEventListener('resize', this.initContainerDependencies);
     };
 
     ui.register(UISidebar, 'ui-sidebar', 'sidebar');
@@ -679,7 +784,7 @@
 
     UISubMenu.prototype.resize = function (e) {
 
-        if (!resolutionService.isMobile()) {
+        if (!ui.resolutionService.isMobile()) {
             if (!container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
                 container.classList.add('ui-container-has-left-submenu');
             } else if (!container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
@@ -713,6 +818,93 @@
     ui.submenu = UISubMenu;
 
 })();
+;(function () {
+
+    'use strict';
+
+    var elementService = {
+        create: function(elName, elClass, eAttr, eHTML) {
+
+            var e = document.createElement(elName);
+            elClass.forEach(function(_class) {
+                e.classList.add(_class);
+            });
+
+            for(var a in eAttr) {
+                e.setAttribute(a, eAttr[a]);
+            }
+
+            if(eHTML) {
+                e.innerHTML = eHTML;
+            }
+
+            return e;
+        }
+    };
+
+
+    ui.elementService = elementService;
+}());
+;(function () {
+
+    'use strict';
+
+    var eventService = (function () {
+
+        var activeEvents = {
+            header: [],
+            menu: []
+        };
+
+        function scrollHeader() {
+
+            var headerActiveEvents = activeEvents.header;
+            var index = headerActiveEvents.indexOf('scrollHeader');
+            var mobileToggleBtn = document.documentElement.getElementsByClassName('ui-mobile-toggle')[0];
+            if(ui.resolutionService.isMobile() || ui.resolutionService.isTablet()) {
+                if(index === -1) {
+                    window.addEventListener("scroll", ui.header.prototype.setHeaderScroll, false);
+                    activeEvents.header.push('scrollHeader');
+                }
+                if (document.body.scrollTop > 64 || document.documentElement.scrollTop > 64) {
+                    mobileToggleBtn.style.display = 'block';
+                } else {
+                    mobileToggleBtn.style.display = 'none';
+                }
+            } else {
+                mobileToggleBtn.style.display = 'none';
+                window.removeEventListener("scroll", ui.header.prototype.setHeaderScroll, false);
+                if(index > -1) {
+                    headerActiveEvents.splice(index, 1);
+                }
+            }
+        }
+
+        function scrollMenu() {
+
+            var menuActiveEvents = activeEvents.menu;
+            var index = headerActiveEvents.indexOf('scrollMenu');
+            if(ui.resolutionService.isMobile() || ui.resolutionService.isTablet()) {
+                if(index === -1) {
+                    window.addEventListener("scroll", menuService.setMenuScroll, false);
+                    activeEvents.header.push('scrollMenu');
+                }
+            } else {
+                window.removeEventListener("scroll", menuService.setMenuScroll, false);
+                if(index > -1) {
+                    menuActiveEvents.splice(index, 1);
+                }
+            }
+        }
+
+        return {
+            scrollHeader: scrollHeader,
+            scrollMenu: scrollMenu
+        };
+    })();
+
+    ui.eventService = eventService;
+}());
 (function () {
 
     'use strict';
@@ -736,9 +928,9 @@
     }
 
     function closeSubMenu() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0],
-            container = document.getElementsByClassName('ui-container')[0],
-            sidebar = document.getElementsByClassName('ui-sidebar')[0];
+        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0],
+            container = document.documentElement.getElementsByClassName('ui-container')[0],
+            sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
 
         if (sidebar) {
             sidebar.classList.remove('ui-sidebar-hidden');
@@ -760,7 +952,8 @@
     }
 
     function closePanel(e) {
-        document.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
+        document.documentElement.getElementsByClassName('ui-header')[0].classList.remove('active');
+        document.documentElement.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
@@ -770,8 +963,23 @@
 
     function addCloseEventByClickOnPanel() {
         ui.onReady(function() {
-            document.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
+            document.documentElement.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
             document.documentElement.addEventListener('click', closePanel, true);
+        });
+    }
+
+    function setMenuScroll() {
+        ui.onReady(function() {
+            var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
+            var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
+            var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+            if(scroll < 64) {
+                sidebar.style.paddingTop = (64 - scroll) + 'px';
+            } else {
+                sidebar.style.paddingTop = '64px';
+            }
+
         });
     }
 
@@ -779,6 +987,7 @@
         return {
             closeSubMenu: closeSubMenu,
             openSubMenu: openSubMenu,
+            setMenuScroll: setMenuScroll,
             addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
@@ -818,7 +1027,7 @@
 	var MOBILEWIDTH = 470; //Max mobile width
 	var TABLETWIDTH = 880; //Max mobile width
 
-    var resolutionService = {
+    var uiResolutionService = {
 
         getScreenWidth: function () {
             return (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -833,9 +1042,9 @@
         }
     };
 
-    window.resolutionService = resolutionService;
-    window.MOBILEWIDTH = MOBILEWIDTH;
-    window.TABLETWIDTH = TABLETWIDTH;
+    ui.resolutionService = uiResolutionService;
+    ui.MOBILEWIDTH = MOBILEWIDTH;
+    ui.TABLETWIDTH = TABLETWIDTH;
 })();
 
 		

@@ -21,9 +21,9 @@
     }
 
     function closeSubMenu() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0],
-            container = document.getElementsByClassName('ui-container')[0],
-            sidebar = document.getElementsByClassName('ui-sidebar')[0];
+        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0],
+            container = document.documentElement.getElementsByClassName('ui-container')[0],
+            sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
 
         if (sidebar) {
             sidebar.classList.remove('ui-sidebar-hidden');
@@ -45,7 +45,8 @@
     }
 
     function closePanel(e) {
-        document.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
+        document.documentElement.getElementsByClassName('ui-header')[0].classList.remove('active');
+        document.documentElement.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
@@ -55,8 +56,23 @@
 
     function addCloseEventByClickOnPanel() {
         ui.onReady(function() {
-            document.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
+            document.documentElement.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
             document.documentElement.addEventListener('click', closePanel, true);
+        });
+    }
+
+    function setMenuScroll() {
+        ui.onReady(function() {
+            var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
+            var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
+            var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+            if(scroll < 64) {
+                sidebar.style.paddingTop = (64 - scroll) + 'px';
+            } else {
+                sidebar.style.paddingTop = '64px';
+            }
+
         });
     }
 
@@ -64,6 +80,7 @@
         return {
             closeSubMenu: closeSubMenu,
             openSubMenu: openSubMenu,
+            setMenuScroll: setMenuScroll,
             addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
