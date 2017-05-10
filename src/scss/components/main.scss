@@ -10,9 +10,13 @@ a {
 }
 
 .ui-header-element-container:hover, .ui-panel-element-container:hover, .ui-submenu-element-container:hover, .ui-sidebar-element-container:hover {
-  background-color: $hover-color !important;
   transition: all $transition-speed $transition-type;
   -webkit-transition: all $transition-speed $transition-type; /* Safari 3.1 to 6.0 */
+}
+
+a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submenu-element-container:hover, .ui-header-element-container:hover {
+  background-color: $main-background-color;
+  color: $active-color;
 }
 
 /*

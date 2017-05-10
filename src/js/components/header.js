@@ -36,7 +36,7 @@
                 }
 
                 if (ui.resolutionService.isTablet()) {
-                    menuService.addCloseEventByClickOnPanel(e);
+                    ui.menuService.addCloseEventByClickOnPanel(e);
                 }
             });
         }
@@ -126,7 +126,7 @@
             var panel = header.getElementsByClassName('ui-panel')[0];
 
             if(!isActive) {
-                menuService.addCloseEventByClickOnPanel(e);
+                ui.menuService.addCloseEventByClickOnPanel(e);
                 panel.classList.add('ui-panel-active');
                 header.classList.add('active');
                 return;
@@ -172,15 +172,18 @@
     };
 
     UIHeader.prototype.init = function (header) {
-        header.ui = this;
+        var self = this;
+        header.ui = self;
 
-        this.initHeaderStructure(header);
-        this.initPanelToggleButton(header);
-        this.initButtons(header);
-        this.initDefaultActivePanel(header);
+        ui.onReady(function() {
+            self.initHeaderStructure(header);
+            self.initPanelToggleButton(header);
+            self.initButtons(header);
+            self.initDefaultActivePanel(header);
+            self.initScrollEvent();
 
-        this.initScrollEvent();
-        window.addEventListener('resize', this.initScrollEvent);
+            window.addEventListener('resize', self.initScrollEvent);
+        });
     };
 
     ui.register(UIHeader, 'ui-header', 'header');

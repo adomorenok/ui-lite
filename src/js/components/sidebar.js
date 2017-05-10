@@ -2,42 +2,27 @@
 
     'use strict';
 
-    var container,
-        sidebar;
-
     var UISidebar = function UISidebar(element) {
         this.init(element);
     };
 
-    UISidebar.prototype.mouseover = function (e) {
-        if (sidebar.classList.contains('ui-sidebar-left')) {
-            container.classList.add('ui-container-has-left-open-sidebar');
-        } else {
-            container.classList.add('ui-container-has-right-open-sidebar');
-        }
-    };
+    UISidebar.prototype.initSidebarStructure = function(sidebar) {
+        var sidebarContainers = sidebar.getElementsByTagName('div');
+        var sidebarButtons = sidebar.getElementsByTagName('a');
+        var sidebarIcons = sidebar.getElementsByTagName('i');
+        var sidebarLabels = sidebar.getElementsByTagName('span');
 
-    UISidebar.prototype.mouseout = function (e) {
-        if (sidebar.classList.contains('ui-sidebar-left')) {
-            container.classList.remove('ui-container-has-left-open-sidebar');
-        } else {
-            container.classList.remove('ui-container-has-right-open-sidebar');
+        for(var c = 0; c < sidebarContainers.length; c++) {
+            sidebarContainers[c].classList.add('ui-sidebar-element-container');
         }
-    };
-
-    UISidebar.prototype.initContainerDependencies = function (e) {
-        if (!ui.resolutionService.isMobile()) {
-            if (!container.classList.contains('ui-container-has-left-sidebar') && sidebar.classList.contains('ui-sidebar-left')) {
-                container.classList.add('ui-container-has-left-sidebar');
-            } else if (!container.classList.contains('ui-container-has-right-sidebar') && sidebar.classList.contains('ui-sidebar-right')) {
-                container.classList.add('ui-container-has-right-sidebar');
-            }
-        } else {
-            if (container.classList.contains('ui-container-has-left-sidebar') && sidebar.classList.contains('ui-sidebar-left')) {
-                container.classList.remove('ui-container-has-left-sidebar');
-            } else if (container.classList.contains('ui-container-has-right-sidebar') && sidebar.classList.contains('ui-sidebar-right')) {
-                container.classList.remove('ui-container-has-right-sidebar');
-            }
+        for(var b = 0; b < sidebarButtons.length; b++) {
+            sidebarButtons[b].classList.add('ui-sidebar-btn');
+        }
+        for(var i = 0; i < sidebarIcons.length; i++) {
+            sidebarIcons[i].classList.add('ui-icon');
+        }
+        for(var l = 0; l < sidebarLabels.length; l++) {
+            sidebarLabels[l].classList.add('ui-sidebar-element-label');
         }
     };
 
@@ -46,7 +31,12 @@
 
         for (var b = 0; b < sidebarButtons.length; b++) {
             sidebarButtons[b].addEventListener('click', this.onButtonClick);
+            sidebarButtons[b].addEventListener("mouseover", this.showSidebar);
         }
+    };
+
+    UISidebar.prototype.initScrollEvent = function() {
+        ui.eventService.scrollMenu();
     };
 
     UISidebar.prototype.onButtonClick = function (e) {
@@ -57,36 +47,37 @@
         if (!ui.resolutionService.isMobile()) {
             UISidebar.prototype.hideSidebar(this);
         }
-
-        //e.preventDefault();
     };
 
-    UISidebar.prototype.hideSidebar = function () {
+    UISidebar.prototype.showSidebar = function(e) {
+        var sidebar = e.target.offsetParent;
+        if(!sidebar.classList.contains('ui-sidebar-active'))
+            sidebar.classList.add('ui-sidebar-active');
 
-        sidebar.classList.add('ui-sidebar-hidden');
+        sidebar.addEventListener('mouseleave', hideSidebar, false);
 
-        setTimeout(function () {
-            sidebar.classList.remove('ui-sidebar-hidden');
-        }, 150);
+        function hideSidebar(e) {
+            e.target.classList.remove('ui-sidebar-active');
+            sidebar.removeEventListener('mouseleave', hideSidebar, false);
+        }
     };
 
-    UISidebar.prototype.init = function (_sidebar) {
-        _sidebar.ui = this;
+    UISidebar.prototype.hideSidebar = function (e) {
+        var sidebar = e.offsetParent;
+        sidebar.classList.remove('ui-sidebar-active');
+    };
 
-        //Sidebar for not a mobile resol
+    UISidebar.prototype.init = function (sidebar) {
+        var self = this;
+        sidebar.ui = self;
+
         ui.onReady(function() {
-            container = document.documentElement.getElementsByClassName('ui-container')[0];
+            self.initSidebarStructure(sidebar);
+            self.initSidebarButtons(sidebar);
+            self.initScrollEvent();
+            ui.menuService.setMenuScroll(sidebar);
+            window.addEventListener('resize', self.initScrollEvent);
         });
-
-        sidebar = _sidebar;
-
-        //this.initContainerDependencies();
-        this.initSidebarButtons(_sidebar);
-
-        _sidebar.addEventListener('mouseover', this.mouseover);
-        _sidebar.addEventListener('mouseout', this.mouseout);
-
-        //window.addEventListener('resize', this.initContainerDependencies);
     };
 
     ui.register(UISidebar, 'ui-sidebar', 'sidebar');

@@ -2,12 +2,25 @@
 
     'use strict';
 
-    var container,
-        submenu,
-        sidebar;
-
     var UISubMenu = function UISubMenu(element) {
         this.init(element);
+    };
+
+    UISubMenu.prototype.initSubmenuStructure = function(submenu) {
+        var submenuContainers = submenu.getElementsByTagName('div');
+        var submenuButtons = submenu.getElementsByTagName('a');
+        var submenuLabels = submenu.getElementsByTagName('span');
+
+        for(var c = 0; c < submenuContainers.length; c++) {
+            submenuContainers[c].classList.add('ui-submenu-element-container');
+        }
+        for(var b = 0; b < submenuButtons.length; b++) {
+            submenuButtons[b].classList.add('ui-submenu-element');
+            submenuButtons[b].classList.add('ui-submenu-btn');
+        }
+        for(var l = 0; l < submenuLabels.length; l++) {
+            submenuLabels[l].classList.add('ui-submenu-element-label');
+        }
     };
 
     UISubMenu.prototype.initOpenSubmenuButtons = function () {
@@ -27,10 +40,13 @@
     };
 
     UISubMenu.prototype.onOpenSubMenu = function (e) {
+        var submenu = document.getElementsByClassName('ui-submenu')[0];
+
         if (submenu.classList.contains('ui-submenu-active')) {
-            menuService.closeSubMenu();
+            ui.menuService.closeSubMenu();
         } else {
-            menuService.openSubMenu();
+            e.target.offsetParent.classList.remove('ui-sidebar-active');
+            ui.menuService.openSubMenu();
         }
 
         e.preventDefault();
@@ -40,70 +56,23 @@
 
         //Parse HREF
         var href = this.getAttribute('href');
-
-        //e.preventDefault();
+        ui.menuService.closeSubMenu();
     };
 
-    UISubMenu.prototype.mouseover = function (e) {
-
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.add('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.add('ui-container-has-right-open-submenu');
-        }
-
-        if (sidebar) {
-            sidebar.classList.add('ui-sidebar-hidden');
-        }
+    UISubMenu.prototype.mouseleave = function (e) {
+        ui.menuService.closeSubMenu();
     };
 
-    UISubMenu.prototype.mouseout = function (e) {
+    UISubMenu.prototype.init = function (submenu) {
+        var self = this;
+        submenu.ui = self;
 
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.remove('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.remove('ui-container-has-right-open-submenu');
-        }
-
-        submenu.classList.remove('ui-submenu-active');
-
-        if (sidebar) {
-            setTimeout(function () {
-                sidebar.classList.remove('ui-sidebar-hidden');
-            }, 150);
-        }
-    };
-
-    UISubMenu.prototype.resize = function (e) {
-
-        if (!ui.resolutionService.isMobile()) {
-            if (!container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
-                container.classList.add('ui-container-has-left-submenu');
-            } else if (!container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
-                container.classList.add('ui-container-has-right-submenu');
-            }
-        } else {
-            if (container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
-                container.classList.remove('ui-container-has-left-submenu');
-            } else if (container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
-                container.classList.remove('ui-container-has-right-submenu');
-            }
-        }
-    };
-
-    UISubMenu.prototype.init = function (_submenu) {
-        _submenu.ui = this;
-        submenu = _submenu;
-        container = document.getElementsByClassName('ui-container')[0];
-        sidebar = document.getElementsByClassName('ui-sidebar')[0];
-
-        this.initOpenSubmenuButtons(submenu);
-        this.initSubmenuButtons(submenu);
-
-        _submenu.addEventListener('mouseover', this.mouseover);
-        _submenu.addEventListener('mouseout', this.mouseout);
-
-        window.addEventListener('resize', this.resize);
+        ui.onReady(function() {
+            self.initSubmenuStructure(submenu);
+            self.initOpenSubmenuButtons(submenu);
+            self.initSubmenuButtons(submenu);
+            submenu.addEventListener('mouseleave', self.mouseleave);
+        });
     };
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');

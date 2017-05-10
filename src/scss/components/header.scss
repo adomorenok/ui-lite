@@ -40,6 +40,10 @@
     .fa {
       font-size: 2em;
     }
+
+    a:hover .ui-header-element-container {
+      color: $active-color;
+    }
   }
 
   .ui-mobile-toggle {
@@ -77,6 +81,12 @@
 
       span {
         color: $text-color;
+      }
+
+      &:hover {
+        span {
+          color: $active-color;
+        }
       }
     }
 

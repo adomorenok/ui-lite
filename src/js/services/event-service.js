@@ -36,14 +36,16 @@
         function scrollMenu() {
 
             var menuActiveEvents = activeEvents.menu;
-            var index = headerActiveEvents.indexOf('scrollMenu');
-            if(ui.resolutionService.isMobile() || ui.resolutionService.isTablet()) {
+            var index = menuActiveEvents.indexOf('scrollMenu');
+            if(!ui.resolutionService.isMobile()) {
                 if(index === -1) {
-                    window.addEventListener("scroll", menuService.setMenuScroll, false);
+                    window.addEventListener("scroll", ui.menuService.setMenuScroll, false);
+                    window.addEventListener('resize', ui.menuService.setMenuScroll, false);
                     activeEvents.header.push('scrollMenu');
                 }
             } else {
-                window.removeEventListener("scroll", menuService.setMenuScroll, false);
+                window.removeEventListener("scroll", ui.menuService.setMenuScroll, false);
+                window.removeEventListener('resize', ui.menuService.setMenuScroll, false);
                 if(index > -1) {
                     menuActiveEvents.splice(index, 1);
                 }

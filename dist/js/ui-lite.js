@@ -193,7 +193,7 @@
                 }
 
                 if (ui.resolutionService.isTablet()) {
-                    menuService.addCloseEventByClickOnPanel(e);
+                    ui.menuService.addCloseEventByClickOnPanel(e);
                 }
             });
         }
@@ -283,7 +283,7 @@
             var panel = header.getElementsByClassName('ui-panel')[0];
 
             if(!isActive) {
-                menuService.addCloseEventByClickOnPanel(e);
+                ui.menuService.addCloseEventByClickOnPanel(e);
                 panel.classList.add('ui-panel-active');
                 header.classList.add('active');
                 return;
@@ -329,15 +329,18 @@
     };
 
     UIHeader.prototype.init = function (header) {
-        header.ui = this;
+        var self = this;
+        header.ui = self;
 
-        this.initHeaderStructure(header);
-        this.initPanelToggleButton(header);
-        this.initButtons(header);
-        this.initDefaultActivePanel(header);
+        ui.onReady(function() {
+            self.initHeaderStructure(header);
+            self.initPanelToggleButton(header);
+            self.initButtons(header);
+            self.initDefaultActivePanel(header);
+            self.initScrollEvent();
 
-        this.initScrollEvent();
-        window.addEventListener('resize', this.initScrollEvent);
+            window.addEventListener('resize', self.initScrollEvent);
+        });
     };
 
     ui.register(UIHeader, 'ui-header', 'header');
@@ -615,42 +618,27 @@
 
     'use strict';
 
-    var container,
-        sidebar;
-
     var UISidebar = function UISidebar(element) {
         this.init(element);
     };
 
-    UISidebar.prototype.mouseover = function (e) {
-        if (sidebar.classList.contains('ui-sidebar-left')) {
-            container.classList.add('ui-container-has-left-open-sidebar');
-        } else {
-            container.classList.add('ui-container-has-right-open-sidebar');
-        }
-    };
+    UISidebar.prototype.initSidebarStructure = function(sidebar) {
+        var sidebarContainers = sidebar.getElementsByTagName('div');
+        var sidebarButtons = sidebar.getElementsByTagName('a');
+        var sidebarIcons = sidebar.getElementsByTagName('i');
+        var sidebarLabels = sidebar.getElementsByTagName('span');
 
-    UISidebar.prototype.mouseout = function (e) {
-        if (sidebar.classList.contains('ui-sidebar-left')) {
-            container.classList.remove('ui-container-has-left-open-sidebar');
-        } else {
-            container.classList.remove('ui-container-has-right-open-sidebar');
+        for(var c = 0; c < sidebarContainers.length; c++) {
+            sidebarContainers[c].classList.add('ui-sidebar-element-container');
         }
-    };
-
-    UISidebar.prototype.initContainerDependencies = function (e) {
-        if (!ui.resolutionService.isMobile()) {
-            if (!container.classList.contains('ui-container-has-left-sidebar') && sidebar.classList.contains('ui-sidebar-left')) {
-                container.classList.add('ui-container-has-left-sidebar');
-            } else if (!container.classList.contains('ui-container-has-right-sidebar') && sidebar.classList.contains('ui-sidebar-right')) {
-                container.classList.add('ui-container-has-right-sidebar');
-            }
-        } else {
-            if (container.classList.contains('ui-container-has-left-sidebar') && sidebar.classList.contains('ui-sidebar-left')) {
-                container.classList.remove('ui-container-has-left-sidebar');
-            } else if (container.classList.contains('ui-container-has-right-sidebar') && sidebar.classList.contains('ui-sidebar-right')) {
-                container.classList.remove('ui-container-has-right-sidebar');
-            }
+        for(var b = 0; b < sidebarButtons.length; b++) {
+            sidebarButtons[b].classList.add('ui-sidebar-btn');
+        }
+        for(var i = 0; i < sidebarIcons.length; i++) {
+            sidebarIcons[i].classList.add('ui-icon');
+        }
+        for(var l = 0; l < sidebarLabels.length; l++) {
+            sidebarLabels[l].classList.add('ui-sidebar-element-label');
         }
     };
 
@@ -659,7 +647,12 @@
 
         for (var b = 0; b < sidebarButtons.length; b++) {
             sidebarButtons[b].addEventListener('click', this.onButtonClick);
+            sidebarButtons[b].addEventListener("mouseover", this.showSidebar);
         }
+    };
+
+    UISidebar.prototype.initScrollEvent = function() {
+        ui.eventService.scrollMenu();
     };
 
     UISidebar.prototype.onButtonClick = function (e) {
@@ -670,36 +663,37 @@
         if (!ui.resolutionService.isMobile()) {
             UISidebar.prototype.hideSidebar(this);
         }
-
-        //e.preventDefault();
     };
 
-    UISidebar.prototype.hideSidebar = function () {
+    UISidebar.prototype.showSidebar = function(e) {
+        var sidebar = e.target.offsetParent;
+        if(!sidebar.classList.contains('ui-sidebar-active'))
+            sidebar.classList.add('ui-sidebar-active');
 
-        sidebar.classList.add('ui-sidebar-hidden');
+        sidebar.addEventListener('mouseleave', hideSidebar, false);
 
-        setTimeout(function () {
-            sidebar.classList.remove('ui-sidebar-hidden');
-        }, 150);
+        function hideSidebar(e) {
+            e.target.classList.remove('ui-sidebar-active');
+            sidebar.removeEventListener('mouseleave', hideSidebar, false);
+        }
     };
 
-    UISidebar.prototype.init = function (_sidebar) {
-        _sidebar.ui = this;
+    UISidebar.prototype.hideSidebar = function (e) {
+        var sidebar = e.offsetParent;
+        sidebar.classList.remove('ui-sidebar-active');
+    };
 
-        //Sidebar for not a mobile resol
+    UISidebar.prototype.init = function (sidebar) {
+        var self = this;
+        sidebar.ui = self;
+
         ui.onReady(function() {
-            container = document.documentElement.getElementsByClassName('ui-container')[0];
+            self.initSidebarStructure(sidebar);
+            self.initSidebarButtons(sidebar);
+            self.initScrollEvent();
+            ui.menuService.setMenuScroll(sidebar);
+            window.addEventListener('resize', self.initScrollEvent);
         });
-
-        sidebar = _sidebar;
-
-        //this.initContainerDependencies();
-        this.initSidebarButtons(_sidebar);
-
-        _sidebar.addEventListener('mouseover', this.mouseover);
-        _sidebar.addEventListener('mouseout', this.mouseout);
-
-        //window.addEventListener('resize', this.initContainerDependencies);
     };
 
     ui.register(UISidebar, 'ui-sidebar', 'sidebar');
@@ -710,12 +704,25 @@
 
     'use strict';
 
-    var container,
-        submenu,
-        sidebar;
-
     var UISubMenu = function UISubMenu(element) {
         this.init(element);
+    };
+
+    UISubMenu.prototype.initSubmenuStructure = function(submenu) {
+        var submenuContainers = submenu.getElementsByTagName('div');
+        var submenuButtons = submenu.getElementsByTagName('a');
+        var submenuLabels = submenu.getElementsByTagName('span');
+
+        for(var c = 0; c < submenuContainers.length; c++) {
+            submenuContainers[c].classList.add('ui-submenu-element-container');
+        }
+        for(var b = 0; b < submenuButtons.length; b++) {
+            submenuButtons[b].classList.add('ui-submenu-element');
+            submenuButtons[b].classList.add('ui-submenu-btn');
+        }
+        for(var l = 0; l < submenuLabels.length; l++) {
+            submenuLabels[l].classList.add('ui-submenu-element-label');
+        }
     };
 
     UISubMenu.prototype.initOpenSubmenuButtons = function () {
@@ -735,10 +742,13 @@
     };
 
     UISubMenu.prototype.onOpenSubMenu = function (e) {
+        var submenu = document.getElementsByClassName('ui-submenu')[0];
+
         if (submenu.classList.contains('ui-submenu-active')) {
-            menuService.closeSubMenu();
+            ui.menuService.closeSubMenu();
         } else {
-            menuService.openSubMenu();
+            e.target.offsetParent.classList.remove('ui-sidebar-active');
+            ui.menuService.openSubMenu();
         }
 
         e.preventDefault();
@@ -748,70 +758,23 @@
 
         //Parse HREF
         var href = this.getAttribute('href');
-
-        //e.preventDefault();
+        ui.menuService.closeSubMenu();
     };
 
-    UISubMenu.prototype.mouseover = function (e) {
-
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.add('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.add('ui-container-has-right-open-submenu');
-        }
-
-        if (sidebar) {
-            sidebar.classList.add('ui-sidebar-hidden');
-        }
+    UISubMenu.prototype.mouseleave = function (e) {
+        ui.menuService.closeSubMenu();
     };
 
-    UISubMenu.prototype.mouseout = function (e) {
+    UISubMenu.prototype.init = function (submenu) {
+        var self = this;
+        submenu.ui = self;
 
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.remove('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.remove('ui-container-has-right-open-submenu');
-        }
-
-        submenu.classList.remove('ui-submenu-active');
-
-        if (sidebar) {
-            setTimeout(function () {
-                sidebar.classList.remove('ui-sidebar-hidden');
-            }, 150);
-        }
-    };
-
-    UISubMenu.prototype.resize = function (e) {
-
-        if (!ui.resolutionService.isMobile()) {
-            if (!container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
-                container.classList.add('ui-container-has-left-submenu');
-            } else if (!container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
-                container.classList.add('ui-container-has-right-submenu');
-            }
-        } else {
-            if (container.classList.contains('ui-container-has-left-submenu') && submenu.classList.contains('ui-submenu-left')) {
-                container.classList.remove('ui-container-has-left-submenu');
-            } else if (container.classList.contains('ui-container-has-right-submenu') && submenu.classList.contains('ui-submenu-right')) {
-                container.classList.remove('ui-container-has-right-submenu');
-            }
-        }
-    };
-
-    UISubMenu.prototype.init = function (_submenu) {
-        _submenu.ui = this;
-        submenu = _submenu;
-        container = document.getElementsByClassName('ui-container')[0];
-        sidebar = document.getElementsByClassName('ui-sidebar')[0];
-
-        this.initOpenSubmenuButtons(submenu);
-        this.initSubmenuButtons(submenu);
-
-        _submenu.addEventListener('mouseover', this.mouseover);
-        _submenu.addEventListener('mouseout', this.mouseout);
-
-        window.addEventListener('resize', this.resize);
+        ui.onReady(function() {
+            self.initSubmenuStructure(submenu);
+            self.initOpenSubmenuButtons(submenu);
+            self.initSubmenuButtons(submenu);
+            submenu.addEventListener('mouseleave', self.mouseleave);
+        });
     };
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');
@@ -883,14 +846,16 @@
         function scrollMenu() {
 
             var menuActiveEvents = activeEvents.menu;
-            var index = headerActiveEvents.indexOf('scrollMenu');
-            if(ui.resolutionService.isMobile() || ui.resolutionService.isTablet()) {
+            var index = menuActiveEvents.indexOf('scrollMenu');
+            if(!ui.resolutionService.isMobile()) {
                 if(index === -1) {
-                    window.addEventListener("scroll", menuService.setMenuScroll, false);
+                    window.addEventListener("scroll", ui.menuService.setMenuScroll, false);
+                    window.addEventListener('resize', ui.menuService.setMenuScroll, false);
                     activeEvents.header.push('scrollMenu');
                 }
             } else {
-                window.removeEventListener("scroll", menuService.setMenuScroll, false);
+                window.removeEventListener("scroll", ui.menuService.setMenuScroll, false);
+                window.removeEventListener('resize', ui.menuService.setMenuScroll, false);
                 if(index > -1) {
                     menuActiveEvents.splice(index, 1);
                 }
@@ -910,43 +875,15 @@
     'use strict';
 
     function openSubMenu() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0],
-            container = document.getElementsByClassName('ui-container')[0],
-            sidebar = document.getElementsByClassName('ui-sidebar')[0];
-
+        var submenu = document.getElementsByClassName('ui-submenu')[0];
         submenu.classList.add('ui-submenu-active');
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.add('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.add('ui-container-has-right-open-submenu');
-        }
-        if (sidebar) {
-            sidebar.classList.add('ui-sidebar-hidden');
-        }
 
         addCloseEventByClickOnSubmenu();
     }
 
     function closeSubMenu() {
-        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0],
-            container = document.documentElement.getElementsByClassName('ui-container')[0],
-            sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
-
-        if (sidebar) {
-            sidebar.classList.remove('ui-sidebar-hidden');
-        }
+        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
         submenu.classList.remove('ui-submenu-active');
-        submenu.classList.add('ui-submenu-hidden');
-
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.remove('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.remove('ui-container-has-right-open-submenu');
-        }
-
-        setTimeout(function () {
-            submenu.classList.remove('ui-submenu-hidden');
-        }, 150);
 
         document.documentElement.removeEventListener('click', closeSubMenu, true);
     }
@@ -969,18 +906,20 @@
     }
 
     function setMenuScroll() {
-        ui.onReady(function() {
-            var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
-            var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
-            var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
+        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
 
-            if(scroll < 64) {
-                sidebar.style.paddingTop = (64 - scroll) + 'px';
-            } else {
-                sidebar.style.paddingTop = '64px';
-            }
+        if(sidebar) addPadding(sidebar, scroll);
+        if(submenu) addPadding(submenu, scroll);
+    }
 
-        });
+    function addPadding(e, scroll) {
+        if(scroll < 64) {
+            e.style.paddingTop = (64 - scroll) + 'px';
+        } else {
+            e.style.paddingTop = 0;
+        }
     }
 
     var menuService = (function () {
@@ -993,7 +932,7 @@
         };
     })();
 
-    window.menuService = menuService;
+    ui.menuService = menuService;
 })();
 
 		
@@ -1011,13 +950,17 @@
             return fn();
         }
 
-        // Otherwise, wait until document is loaded
-        // The document has finished loading and the document has been parsed but sub-resources such as images, stylesheets and frames are still loading. The state indicates that the DOMContentLoaded event has been fired.
-        document.addEventListener( 'interactive', fn, false );
+        //var onCompleteTimer = setTimeout(function() {
+        //    if(document.readyState === 'complete'  ) {
+        //        clearTimeout(onCompleteTimer);
+        //        return fn();
+        //    } else {
+        //        onCompleteTimer();
+        //    }
+        //},100);
 
-        // Alternative: The document and all sub-resources have finished loading. The state indicates that the load event has been fired.
-        // document.addEventListener( 'complete', fn, false );
-
+        //// Otherwise, wait until document is loaded
+        document.addEventListener( 'DOMContentLoaded', fn, false );
     };
 }());
 (function () {

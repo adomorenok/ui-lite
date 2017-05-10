@@ -3,43 +3,15 @@
     'use strict';
 
     function openSubMenu() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0],
-            container = document.getElementsByClassName('ui-container')[0],
-            sidebar = document.getElementsByClassName('ui-sidebar')[0];
-
+        var submenu = document.getElementsByClassName('ui-submenu')[0];
         submenu.classList.add('ui-submenu-active');
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.add('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.add('ui-container-has-right-open-submenu');
-        }
-        if (sidebar) {
-            sidebar.classList.add('ui-sidebar-hidden');
-        }
 
         addCloseEventByClickOnSubmenu();
     }
 
     function closeSubMenu() {
-        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0],
-            container = document.documentElement.getElementsByClassName('ui-container')[0],
-            sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
-
-        if (sidebar) {
-            sidebar.classList.remove('ui-sidebar-hidden');
-        }
+        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
         submenu.classList.remove('ui-submenu-active');
-        submenu.classList.add('ui-submenu-hidden');
-
-        if (submenu.classList.contains('ui-submenu-left')) {
-            container.classList.remove('ui-container-has-left-open-submenu');
-        } else {
-            container.classList.remove('ui-container-has-right-open-submenu');
-        }
-
-        setTimeout(function () {
-            submenu.classList.remove('ui-submenu-hidden');
-        }, 150);
 
         document.documentElement.removeEventListener('click', closeSubMenu, true);
     }
@@ -62,18 +34,20 @@
     }
 
     function setMenuScroll() {
-        ui.onReady(function() {
-            var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
-            var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
-            var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
+        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
 
-            if(scroll < 64) {
-                sidebar.style.paddingTop = (64 - scroll) + 'px';
-            } else {
-                sidebar.style.paddingTop = '64px';
-            }
+        if(sidebar) addPadding(sidebar, scroll);
+        if(submenu) addPadding(submenu, scroll);
+    }
 
-        });
+    function addPadding(e, scroll) {
+        if(scroll < 64) {
+            e.style.paddingTop = (64 - scroll) + 'px';
+        } else {
+            e.style.paddingTop = 0;
+        }
     }
 
     var menuService = (function () {
@@ -86,7 +60,7 @@
         };
     })();
 
-    window.menuService = menuService;
+    ui.menuService = menuService;
 })();
 
 		

@@ -2,6 +2,7 @@
 
   background-color: $sidebar-color;
   position: fixed;
+  box-sizing: border-box;
   z-index: 9;
   margin: 0;
   padding: 0;
@@ -45,9 +46,6 @@
     text-align: center;
     height: $sidebar-element-size;
     visibility: visible;
-    transition: all $transition-speed linear;
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transition: all $transition-speed linear;
 
     .ui-sidebar-element-container {
 
@@ -62,8 +60,8 @@
     }
   }
 
-  .ui-sidebar-hidden {
-    visibility: hidden !important;
+  body .ui-sidebar {
+    padding-top: 0 !important;
   }
 }
 
@@ -71,18 +69,41 @@
 
   .ui-sidebar {
     width: $sidebar-element-size;
-    top: $header-height;
-    height: calc(100% - #{$header-height});
+    display: flex;
+    flex-direction: column;
+    top: 0;
     overflow-y: auto;
     overflow-x: hidden;
     float: left;
-    transition: all $transition-speed linear;
+    transition: width $transition-speed linear;
     /* For Safari 3.1 to 6.0 */
-    -webkit-transition: all $transition-speed linear;
-  }
+    -webkit-transition: width $transition-speed linear;
 
-  .ui-sidebar-hidden {
-    pointer-events: none;
+    .ui-sidebar-element-container {
+      flex: 0 0 auto;
+
+      &:nth-last-child(2) {
+        flex: 1 0 auto;
+      }
+    }
+
+    &.ui-sidebar-active {
+
+      width: $sidebar-open-width;
+
+      .ui-sidebar-element-label {
+        visibility: visible;
+        transition: visibility 0ms linear $transition-speed !important;
+        /* For Safari 3.1 to 6.0 */
+        -webkit-transition: visibility 0ms linear $transition-speed !important;
+      }
+
+      a:hover i, .ui-sidebar-element-label {
+        transition: color $transition-speed linear;
+        /* For Safari 3.1 to 6.0 */
+        -webkit-transition: color $transition-speed linear;
+      }
+    }
   }
 
   .ui-sidebar-has-header {
@@ -96,35 +117,10 @@
   .ui-sidebar-right {
     right: 0;
   }
+}
 
-  .ui-sidebar-bottom-element {
-    position: absolute !important;
-    width: 100%;
-    bottom: 0;
-  }
-
-  .ui-sidebar:hover {
-
-    width: $sidebar-open-width;
-    transform: scaleX(1);
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleX(1);
-
-    .ui-sidebar-element-label {
-      visibility: visible;
-      transition: visibility 0ms linear $transition-speed !important;
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transition: visibility 0ms linear $transition-speed !important;
-    }
-
-    a:hover .ui-sidebar-element-label {
-      color: $active-color;
-    }
-
-    a:hover i, .ui-sidebar-element-label {
-      transition: color $transition-speed linear;
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transition: color $transition-speed linear;
-    }
+@media (max-width: $tablet-width) {
+  .ui-sidebar {
+    padding-top: 64px !important;
   }
 }

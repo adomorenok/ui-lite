@@ -8,10 +8,13 @@ a {
   text-decoration: none; }
 
 .ui-header-element-container:hover, .ui-panel-element-container:hover, .ui-submenu-element-container:hover, .ui-sidebar-element-container:hover {
-  background-color: #363737 !important;
   transition: all 150ms ease-in-out;
   -webkit-transition: all 150ms ease-in-out;
   /* Safari 3.1 to 6.0 */ }
+
+a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submenu-element-container:hover, .ui-header-element-container:hover {
+  background-color: #303030;
+  color: #FBC02D; }
 
 /*
  *  Styling a scrollbar
@@ -60,6 +63,8 @@ a {
       line-height: 64px; }
     .ui-header .ui-header-element-container .fa {
       font-size: 2em; }
+    .ui-header .ui-header-element-container a:hover .ui-header-element-container {
+      color: #FBC02D; }
   .ui-header .ui-mobile-toggle {
     display: none;
     position: fixed;
@@ -86,6 +91,8 @@ a {
       padding: 0 20px 0 20px; }
       .ui-panel .ui-panel-element-container a span {
         color: azure; }
+      .ui-panel .ui-panel-element-container a:hover span {
+        color: #FBC02D; }
     .ui-panel .ui-panel-element-container:after {
       background-color: #fff2b7;
       bottom: 0px;
@@ -437,6 +444,7 @@ a.ui-btn {
 .ui-sidebar {
   background-color: rgba(23, 23, 23, 0.97);
   position: fixed;
+  box-sizing: border-box;
   z-index: 9;
   margin: 0;
   padding: 0;
@@ -469,58 +477,53 @@ a.ui-btn {
     width: 100%;
     text-align: center;
     height: 64px;
-    visibility: visible;
-    transition: all 150ms linear;
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transition: all 150ms linear; }
+    visibility: visible; }
     .ui-sidebar .ui-sidebar-element-container {
       display: inline-block; }
       .ui-sidebar .ui-sidebar-element-container .ui-sidebar-element-label {
         display: none; }
     .ui-sidebar .ui-sidebar-bottom-element {
       display: none !important; }
-  .ui-sidebar-hidden {
-    visibility: hidden !important; } }
+  body .ui-sidebar {
+    padding-top: 0 !important; } }
 
 @media (min-width: 471px) {
   .ui-sidebar {
     width: 64px;
-    top: 64px;
-    height: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
+    top: 0;
     overflow-y: auto;
     overflow-x: hidden;
     float: left;
-    transition: all 150ms linear;
+    transition: width 150ms linear;
     /* For Safari 3.1 to 6.0 */
-    -webkit-transition: all 150ms linear; }
-  .ui-sidebar-hidden {
-    pointer-events: none; }
+    -webkit-transition: width 150ms linear; }
+    .ui-sidebar .ui-sidebar-element-container {
+      flex: 0 0 auto; }
+      .ui-sidebar .ui-sidebar-element-container:nth-last-child(2) {
+        flex: 1 0 auto; }
+    .ui-sidebar.ui-sidebar-active {
+      width: 208px; }
+      .ui-sidebar.ui-sidebar-active .ui-sidebar-element-label {
+        visibility: visible;
+        transition: visibility 0ms linear 150ms !important;
+        /* For Safari 3.1 to 6.0 */
+        -webkit-transition: visibility 0ms linear 150ms !important; }
+      .ui-sidebar.ui-sidebar-active a:hover i, .ui-sidebar.ui-sidebar-active .ui-sidebar-element-label {
+        transition: color 150ms linear;
+        /* For Safari 3.1 to 6.0 */
+        -webkit-transition: color 150ms linear; }
   .ui-sidebar-has-header {
     margin-top: 64px; }
   .ui-sidebar-left {
     left: 0; }
   .ui-sidebar-right {
-    right: 0; }
-  .ui-sidebar-bottom-element {
-    position: absolute !important;
-    width: 100%;
-    bottom: 0; }
-  .ui-sidebar:hover {
-    width: 230px;
-    transform: scaleX(1);
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleX(1); }
-    .ui-sidebar:hover .ui-sidebar-element-label {
-      visibility: visible;
-      transition: visibility 0ms linear 150ms !important;
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transition: visibility 0ms linear 150ms !important; }
-    .ui-sidebar:hover a:hover .ui-sidebar-element-label {
-      color: #FBC02D; }
-    .ui-sidebar:hover a:hover i, .ui-sidebar:hover .ui-sidebar-element-label {
-      transition: color 150ms linear;
-      /* For Safari 3.1 to 6.0 */
-      -webkit-transition: color 150ms linear; } }
+    right: 0; } }
+
+@media (max-width: 880px) {
+  .ui-sidebar {
+    padding-top: 64px !important; } }
 
 .ui-submenu {
   position: fixed !important;
@@ -535,9 +538,6 @@ a.ui-btn {
     font-weight: bold; }
     .ui-submenu .ui-submenu-element-label:hover {
       color: #FBC02D; }
-
-.ui-submenu-hidden {
-  pointer-events: none; }
 
 @media (max-width: 470px) {
   .ui-submenu {
@@ -564,10 +564,6 @@ a.ui-btn {
     .ui-submenu .ui-submenu-close-container {
       padding: 0;
       margin: 0; }
-  .ui-submenu:hover {
-    transform: scaleY(1);
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleY(1); }
   .ui-submenu-active {
     transform: scaleY(1);
     /* For Safari 3.1 to 6.0 */
@@ -575,20 +571,19 @@ a.ui-btn {
 
 @media (min-width: 471px) {
   .ui-submenu {
-    height: calc(100% - 64px);
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     width: 170px;
-    top: 64px;
+    top: 0;
     transform: scaleX(0);
     /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleX(0); }
-  .ui-sidebar-has-header {
-    margin-top: 64px; }
-  .ui-submenu-left {
+    -webkit-transform: scaleX(0);
     left: 64px;
     transform-origin: left;
     -webkit-transform-origin: left; }
+  .ui-sidebar-has-header {
+    margin-top: 64px; }
   .ui-submenu-right {
     right: 64px;
     transform-origin: right;
@@ -597,10 +592,6 @@ a.ui-btn {
     display: block;
     padding: 26px;
     font-size: 14px; }
-  .ui-submenu:hover {
-    transform: scaleX(1);
-    /* For Safari 3.1 to 6.0 */
-    -webkit-transform: scaleX(1); }
   .ui-submenu-active {
     transform: scaleX(1);
     /* For Safari 3.1 to 6.0 */
@@ -627,6 +618,6 @@ a.ui-btn {
 
 @media (min-width: 880px) {
   .ui-container-has-left-open-sidebar, .ui-container-has-left-open-submenu {
-    left: 230px !important; }
+    left: 208px !important; }
   .ui-container-has-right-open-sidebar, .ui-container-has-right-open-submenu {
-    right: 230px !important; } }
+    right: 208px !important; } }

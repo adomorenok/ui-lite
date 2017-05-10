@@ -12,12 +12,16 @@
             return fn();
         }
 
-        // Otherwise, wait until document is loaded
-        // The document has finished loading and the document has been parsed but sub-resources such as images, stylesheets and frames are still loading. The state indicates that the DOMContentLoaded event has been fired.
-        document.addEventListener( 'interactive', fn, false );
+        //var onCompleteTimer = setTimeout(function() {
+        //    if(document.readyState === 'complete'  ) {
+        //        clearTimeout(onCompleteTimer);
+        //        return fn();
+        //    } else {
+        //        onCompleteTimer();
+        //    }
+        //},100);
 
-        // Alternative: The document and all sub-resources have finished loading. The state indicates that the load event has been fired.
-        // document.addEventListener( 'complete', fn, false );
-
+        //// Otherwise, wait until document is loaded
+        document.addEventListener( 'DOMContentLoaded', fn, false );
     };
 }());
