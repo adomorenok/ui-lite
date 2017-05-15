@@ -30,13 +30,6 @@
     text-align: center;
     line-height: $header-height;
 
-    .fa-bars {
-      line-height: $header-height;
-    }
-    .fa {
-      font-size: 2em;
-    }
-
     a:hover .ui-header-element-container {
       color: $active-color;
     }
@@ -53,13 +46,19 @@
   .ui-header-general {
     z-index: 9;
   }
+
+  .fa-bars {
+    line-height: $header-height;
+  }
+  .fa {
+    font-size: 2em;
+  }
 }
 
 .ui-panel {
 
   position: absolute;
   top: 0;
-  font-size: $panel-font-size;
   font-weight: bold;
   height: $header-height;
 
@@ -77,6 +76,7 @@
       padding: 0 20px 0 20px;
 
       span {
+        font-size: $panel-font-size;
         color: $text-color;
       }
 

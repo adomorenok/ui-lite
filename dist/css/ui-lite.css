@@ -57,10 +57,6 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     height: 64px;
     text-align: center;
     line-height: 64px; }
-    .ui-header .ui-header-element-container .fa-bars {
-      line-height: 64px; }
-    .ui-header .ui-header-element-container .fa {
-      font-size: 2em; }
     .ui-header .ui-header-element-container a:hover .ui-header-element-container {
       color: #FBC02D; }
   .ui-header .ui-mobile-toggle {
@@ -71,11 +67,14 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     z-index: 0 !important; }
   .ui-header .ui-header-general {
     z-index: 9; }
+  .ui-header .fa-bars {
+    line-height: 64px; }
+  .ui-header .fa {
+    font-size: 2em; }
 
 .ui-panel {
   position: absolute;
   top: 0;
-  font-size: 13px;
   font-weight: bold;
   height: 64px; }
   .ui-panel .ui-panel-element-container {
@@ -89,6 +88,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
       display: block;
       padding: 0 20px 0 20px; }
       .ui-panel .ui-panel-element-container a span {
+        font-size: 14px;
         color: azure; }
       .ui-panel .ui-panel-element-container a:hover span {
         color: #FBC02D; }
