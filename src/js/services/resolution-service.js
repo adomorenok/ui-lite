@@ -17,6 +17,10 @@
 
         isTablet: function () {
             return this.getScreenWidth() < (TABLETWIDTH + 1) ? true : false;
+        },
+
+        isFullScreen: function () {
+            return this.getScreenWidth() > TABLETWIDTH ? true : false;
         }
     };
 
