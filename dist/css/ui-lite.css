@@ -52,8 +52,6 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     background-repeat: no-repeat;
     height: 64px;
     display: block; }
-  .ui-header.active {
-    position: fixed !important; }
   .ui-header .ui-header-element-container {
     float: left;
     height: 64px;

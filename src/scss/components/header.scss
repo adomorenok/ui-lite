@@ -24,10 +24,6 @@
     display: block;
   }
 
-  &.active {
-    position: fixed !important;
-  }
-
   .ui-header-element-container {
     float: left;
     height: $header-height;
