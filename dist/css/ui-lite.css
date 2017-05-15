@@ -45,8 +45,6 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     cursor: pointer;
     display: block;
     color: #fff2b7; }
-    .ui-header a .fa.fa-bars, .ui-header .ui-panel-toggle-btn .fa.fa-bars {
-      width: 64px; }
   .ui-header .ui-logo {
     background-position: center;
     background-repeat: no-repeat;
@@ -67,10 +65,10 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     z-index: 0 !important; }
   .ui-header .ui-header-general {
     z-index: 9; }
-  .ui-header .fa-bars {
-    line-height: 64px; }
   .ui-header .fa {
-    font-size: 2em; }
+    line-height: 64px;
+    font-size: 2em;
+    width: 64px; }
 
 .ui-panel {
   position: absolute;

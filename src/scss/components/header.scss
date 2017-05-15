@@ -11,10 +11,6 @@
     cursor: pointer;
     display: block;
     color: $base-color;
-
-    .fa.fa-bars {
-      width: $sidebar-element-size;
-    }
   }
 
   .ui-logo {
@@ -47,11 +43,10 @@
     z-index: 9;
   }
 
-  .fa-bars {
-    line-height: $header-height;
-  }
   .fa {
+    line-height: $header-height;
     font-size: 2em;
+    width: $sidebar-element-size;
   }
 }
 
