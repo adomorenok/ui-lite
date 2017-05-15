@@ -68,16 +68,13 @@
     };
 
     UISidebar.prototype.init = function (sidebar) {
-        var self = this;
-        sidebar.ui = self;
-
-        ui.onReady(function() {
-            self.initSidebarStructure(sidebar);
-            self.initSidebarButtons(sidebar);
-            self.initScrollEvent();
-            ui.menuService.setMenuScroll(sidebar);
-            window.addEventListener('resize', self.initScrollEvent);
-        });
+        sidebar.ui = this;
+        
+        this.initSidebarStructure(sidebar);
+        this.initSidebarButtons(sidebar);
+        this.initScrollEvent();
+        ui.menuService.setMenuScroll(sidebar);
+        window.addEventListener('resize', this.initScrollEvent);
     };
 
     ui.register(UISidebar, 'ui-sidebar', 'sidebar');

@@ -64,15 +64,12 @@
     };
 
     UISubMenu.prototype.init = function (submenu) {
-        var self = this;
         submenu.ui = self;
 
-        ui.onReady(function() {
-            self.initSubmenuStructure(submenu);
-            self.initOpenSubmenuButtons(submenu);
-            self.initSubmenuButtons(submenu);
-            submenu.addEventListener('mouseleave', self.mouseleave);
-        });
+        this.initSubmenuStructure(submenu);
+        this.initOpenSubmenuButtons(submenu);
+        this.initSubmenuButtons(submenu);
+        submenu.addEventListener('mouseleave', this.mouseleave);
     };
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');

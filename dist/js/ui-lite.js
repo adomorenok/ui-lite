@@ -228,7 +228,7 @@
         /* Logo Container */
         function createLogoContainer() {
             var uiHome = ui.elementService.create('div',['ui-header-element-container' ,'ui-header-logo-conteiner']);
-            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '#'});
+            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '/'});
             var uiHomeLogo = ui.elementService.create('i',['ui-icon', 'ui-logo']);
             uiHomeBtn.appendChild(uiHomeLogo);
             uiHome.appendChild(uiHomeBtn);
@@ -329,18 +329,15 @@
     };
 
     UIHeader.prototype.init = function (header) {
-        var self = this;
-        header.ui = self;
+        header.ui = this;
 
-        ui.onReady(function() {
-            self.initHeaderStructure(header);
-            self.initPanelToggleButton(header);
-            self.initButtons(header);
-            self.initDefaultActivePanel(header);
-            self.initScrollEvent();
+        this.initHeaderStructure(header);
+        this.initPanelToggleButton(header);
+        this.initButtons(header);
+        this.initDefaultActivePanel(header);
+        this.initScrollEvent();
 
-            window.addEventListener('resize', self.initScrollEvent);
-        });
+        window.addEventListener('resize', this.initScrollEvent);
     };
 
     ui.register(UIHeader, 'ui-header', 'header');
@@ -684,16 +681,13 @@
     };
 
     UISidebar.prototype.init = function (sidebar) {
-        var self = this;
-        sidebar.ui = self;
-
-        ui.onReady(function() {
-            self.initSidebarStructure(sidebar);
-            self.initSidebarButtons(sidebar);
-            self.initScrollEvent();
-            ui.menuService.setMenuScroll(sidebar);
-            window.addEventListener('resize', self.initScrollEvent);
-        });
+        sidebar.ui = this;
+        
+        this.initSidebarStructure(sidebar);
+        this.initSidebarButtons(sidebar);
+        this.initScrollEvent();
+        ui.menuService.setMenuScroll(sidebar);
+        window.addEventListener('resize', this.initScrollEvent);
     };
 
     ui.register(UISidebar, 'ui-sidebar', 'sidebar');
@@ -766,15 +760,12 @@
     };
 
     UISubMenu.prototype.init = function (submenu) {
-        var self = this;
         submenu.ui = self;
 
-        ui.onReady(function() {
-            self.initSubmenuStructure(submenu);
-            self.initOpenSubmenuButtons(submenu);
-            self.initSubmenuButtons(submenu);
-            submenu.addEventListener('mouseleave', self.mouseleave);
-        });
+        this.initSubmenuStructure(submenu);
+        this.initOpenSubmenuButtons(submenu);
+        this.initSubmenuButtons(submenu);
+        submenu.addEventListener('mouseleave', this.mouseleave);
     };
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');

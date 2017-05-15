@@ -71,7 +71,7 @@
         /* Logo Container */
         function createLogoContainer() {
             var uiHome = ui.elementService.create('div',['ui-header-element-container' ,'ui-header-logo-conteiner']);
-            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '#'});
+            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '/'});
             var uiHomeLogo = ui.elementService.create('i',['ui-icon', 'ui-logo']);
             uiHomeBtn.appendChild(uiHomeLogo);
             uiHome.appendChild(uiHomeBtn);
@@ -172,18 +172,15 @@
     };
 
     UIHeader.prototype.init = function (header) {
-        var self = this;
-        header.ui = self;
+        header.ui = this;
 
-        ui.onReady(function() {
-            self.initHeaderStructure(header);
-            self.initPanelToggleButton(header);
-            self.initButtons(header);
-            self.initDefaultActivePanel(header);
-            self.initScrollEvent();
+        this.initHeaderStructure(header);
+        this.initPanelToggleButton(header);
+        this.initButtons(header);
+        this.initDefaultActivePanel(header);
+        this.initScrollEvent();
 
-            window.addEventListener('resize', self.initScrollEvent);
-        });
+        window.addEventListener('resize', this.initScrollEvent);
     };
 
     ui.register(UIHeader, 'ui-header', 'header');
