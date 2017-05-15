@@ -75,7 +75,8 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
 .ui-panel {
   position: absolute;
   top: 0;
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: bold;
   height: 64px; }
   .ui-panel .ui-panel-element-container {
     display: block;
