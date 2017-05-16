@@ -202,8 +202,8 @@
     UIHeader.prototype.initDefaultActivePanel = function (header) {
         var activePanel = header.getElementsByClassName('ui-panel-active');
 
-        if (!activePanel[0]) {
-            var firstPanelBlock = header.getElementsByClassName('ui-panel-fieldset')[0];
+        if (!activePanel[1]) {
+            var firstPanelBlock = header.getElementsByClassName('ui-panel-fieldset')[1];
             if (firstPanelBlock) {
                 firstPanelBlock.classList.add('ui-panel-active');
             }
