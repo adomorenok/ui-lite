@@ -25,14 +25,14 @@ $full-header-logo-width: 200px;
 $sidebar-color: $header-background-color;
 $sidebar-open-width: 208px;
 $sidebar-text-size: 14px;
-$sidebar-label-width: 156px;
+$sidebar-label-width: $sidebar-open-width;
 $ui-text-family: LandingPage, sans-serif;
 $sidebar-text-style: bold;
 $sidebar-element-size: 64px;
 $sidebar-element-size-small: 60px;
 // iPhone4/5
 
-//Sidebar variables
+//Submenu variables
 $submenu-color: rgba(39, 39, 39, 0.97);
 
 $submenu-title: #181818;
