@@ -80,8 +80,8 @@
         }
 
         /* Right icon */
-        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-right-icon']);
-        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn', 'w-ui-icon']);
+        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-icon-right']);
+        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn']);
         var uiRightLogo = ui.elementService.create('i',['ui-icon', 'ui-icon-setting']);
         uiRightBtn.appendChild(uiRightLogo);
         uiRight.appendChild(uiRightBtn);
