@@ -35,7 +35,11 @@
         }
     };
 
-    UISidebar.prototype.initScrollEvent = function() {
+    UISidebar.prototype.initScrollEvent = function(sidebar) {
+        if(sidebar && !ui.resolutionService.isMobile()) {
+            ui.menuService.setMenuScroll(sidebar);
+        }
+
         ui.eventService.scrollMenu();
     };
 
@@ -72,8 +76,7 @@
         
         this.initSidebarStructure(sidebar);
         this.initSidebarButtons(sidebar);
-        this.initScrollEvent();
-        ui.menuService.setMenuScroll(sidebar);
+        this.initScrollEvent(sidebar);
         window.addEventListener('resize', this.initScrollEvent);
     };
 

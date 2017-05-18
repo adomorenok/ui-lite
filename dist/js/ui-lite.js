@@ -237,8 +237,8 @@
         }
 
         /* Right icon */
-        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-right-icon']);
-        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn', 'w-ui-icon']);
+        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-icon-right']);
+        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn']);
         var uiRightLogo = ui.elementService.create('i',['ui-icon', 'ui-icon-setting']);
         uiRightBtn.appendChild(uiRightLogo);
         uiRight.appendChild(uiRightBtn);
@@ -648,7 +648,11 @@
         }
     };
 
-    UISidebar.prototype.initScrollEvent = function() {
+    UISidebar.prototype.initScrollEvent = function(sidebar) {
+        if(sidebar && !ui.resolutionService.isMobile()) {
+            ui.menuService.setMenuScroll(sidebar);
+        }
+
         ui.eventService.scrollMenu();
     };
 
@@ -685,8 +689,7 @@
         
         this.initSidebarStructure(sidebar);
         this.initSidebarButtons(sidebar);
-        this.initScrollEvent();
-        ui.menuService.setMenuScroll(sidebar);
+        this.initScrollEvent(sidebar);
         window.addEventListener('resize', this.initScrollEvent);
     };
 
