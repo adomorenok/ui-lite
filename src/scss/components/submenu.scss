@@ -1,7 +1,7 @@
 .ui-submenu {
   position: fixed !important;
   background-color: $submenu-color;
-  z-index: 10;
+  z-index: 30;
   transition: transform $transition-speed linear;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform $transition-speed linear;
