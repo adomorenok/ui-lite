@@ -442,7 +442,7 @@ a.ui-btn {
   background-color: rgba(23, 23, 23, 0.97);
   position: fixed;
   box-sizing: border-box;
-  z-index: 9;
+  z-index: 30;
   margin: 0;
   padding: 0;
   bottom: 0; }
@@ -525,7 +525,7 @@ a.ui-btn {
 .ui-submenu {
   position: fixed !important;
   background-color: rgba(39, 39, 39, 0.97);
-  z-index: 10;
+  z-index: 30;
   transition: transform 150ms linear;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform 150ms linear; }
