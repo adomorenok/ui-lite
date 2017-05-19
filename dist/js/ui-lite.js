@@ -650,7 +650,7 @@
 
     UISidebar.prototype.initScrollEvent = function(sidebar) {
         if(sidebar && !ui.resolutionService.isMobile()) {
-            ui.menuService.setMenuScroll(sidebar);
+            ui.menuService.setMenuScroll();
         }
 
         ui.eventService.scrollMenu();
@@ -762,12 +762,21 @@
         ui.menuService.closeSubMenu();
     };
 
+    UISubMenu.prototype.initScrollEvent = function(submenu) {
+        if(submenu && !ui.resolutionService.isMobile()) {
+            ui.menuService.setMenuScroll();
+        }
+
+        ui.eventService.scrollMenu();
+    };
+
     UISubMenu.prototype.init = function (submenu) {
         submenu.ui = self;
 
         this.initSubmenuStructure(submenu);
         this.initOpenSubmenuButtons(submenu);
         this.initSubmenuButtons(submenu);
+        this.initScrollEvent(submenu);
         submenu.addEventListener('mouseleave', this.mouseleave);
     };
 

@@ -37,7 +37,7 @@
 
     UISidebar.prototype.initScrollEvent = function(sidebar) {
         if(sidebar && !ui.resolutionService.isMobile()) {
-            ui.menuService.setMenuScroll(sidebar);
+            ui.menuService.setMenuScroll();
         }
 
         ui.eventService.scrollMenu();
