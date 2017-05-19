@@ -24,6 +24,8 @@
     right: 15px;
     text-align: center;
     border-radius: 15px;
+    max-height: 390px;
+    overflow-y: auto;
     transform: scaleY(0);
     transform-origin: bottom;
     /* For Safari 3.1 to 6.0 */

@@ -49,6 +49,8 @@
                 if(index > -1) {
                     menuActiveEvents.splice(index, 1);
                 }
+
+                ui.menuService.removePadding();
             }
         }
 

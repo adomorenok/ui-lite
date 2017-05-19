@@ -853,6 +853,8 @@
                 if(index > -1) {
                     menuActiveEvents.splice(index, 1);
                 }
+
+                ui.menuService.removePadding();
             }
         }
 
@@ -901,11 +903,10 @@
 
     function setMenuScroll() {
         var scroll = document.body.scrollTop || document.documentElement.scrollTop;
-        var sidebar = document.documentElement.getElementsByClassName('ui-sidebar')[0];
-        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
+        var menuElements = getMenuElements();
 
-        if(sidebar) addPadding(sidebar, scroll);
-        if(submenu) addPadding(submenu, scroll);
+        if(menuElements.sidebar) addPadding(menuElements.sidebar, scroll);
+        if(menuElements.submenu) addPadding(menuElements.submenu, scroll);
     }
 
     function addPadding(e, scroll) {
@@ -916,11 +917,30 @@
         }
     }
 
+    function removePadding() {
+        var menuElements = getMenuElements();
+
+        if(menuElements.sidebar) {
+            menuElements.sidebar.style.paddingTop = 0;
+        }
+        if(menuElements.submenu) {
+            menuElements.submenu.style.paddingTop = 0;
+        }
+    }
+
+    function getMenuElements() {
+        return {
+            sidebar: document.documentElement.getElementsByClassName('ui-sidebar')[0],
+            submenu: document.documentElement.getElementsByClassName('ui-submenu')[0]
+        };
+    }
+
     var menuService = (function () {
         return {
             closeSubMenu: closeSubMenu,
             openSubMenu: openSubMenu,
             setMenuScroll: setMenuScroll,
+            removePadding: removePadding,
             addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
