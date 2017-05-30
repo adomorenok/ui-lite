@@ -14,8 +14,8 @@
         addClickOnButton(panelButtons);
 
         function addClickOnButton(buttons) {
-            for (var b = 0; b < buttons.length; b++) {
-                buttons[b].addEventListener('click', UIHeader.prototype.onButtonClick);
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', UIHeader.prototype.onButtonClick);
             }
         }
     };
@@ -97,20 +97,20 @@
 
         var fieldSetContainer;
         var panelButton;
-        for (var p = 0; p < 2; p++) {
+        for (var i = 0; i < 2; i++) {
 
-            fieldSetContainer = panelFieldSets[p].getElementsByTagName('div');
-            panelButton = panelFieldSets[p].getElementsByTagName('a');
+            fieldSetContainer = panelFieldSets[i].getElementsByTagName('div');
+            panelButton = panelFieldSets[i].getElementsByTagName('a');
 
-            for(var f = 0; f < fieldSetContainer.length; f++) {
-                fieldSetContainer[f].classList.add('ui-panel-element-container');
+            for(var j = 0; j < fieldSetContainer.length; j++) {
+                fieldSetContainer[j].classList.add('ui-panel-element-container');
             }
 
-            for(var b = 0; b < panelButton.length; b++) {
-                panelButton[b].classList.add('ui-panel-btn');
+            for(var k = 0; k < panelButton.length; k++) {
+                panelButton[k].classList.add('ui-panel-btn');
             }
 
-            if(p === 0) {
+            if(i === 0) {
                 var panelToggleContainer = ui.elementService.create('div', ['ui-panel-toggle-mobile']);
                 panelToggleContainer.appendChild(createPanelToggle());
                 panelToggleContainer.appendChild(createLogoContainer());
@@ -156,8 +156,6 @@
     };
 
     UIHeader.prototype.onButtonClick = function (e) {
-
-        //e.preventDefault();
 
         //Find all activ buttons
         var activeButton = document.documentElement.getElementsByClassName('ui-panel-btn-active')[0];

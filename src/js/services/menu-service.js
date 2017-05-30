@@ -2,16 +2,17 @@
 
     'use strict';
 
-    function openSubMenu() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0];
+    function openSubMenu(submenu) {
         submenu.classList.add('ui-submenu-active');
 
         addCloseEventByClickOnSubmenu();
     }
 
     function closeSubMenu() {
-        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
-        submenu.classList.remove('ui-submenu-active');
+        var submenuList = document.documentElement.getElementsByClassName('ui-submenu');
+        for (var i = 0; i < submenuList.length; i++) {
+            submenuList[i].classList.remove('ui-submenu-active');
+        }
 
         document.documentElement.removeEventListener('click', closeSubMenu, true);
     }

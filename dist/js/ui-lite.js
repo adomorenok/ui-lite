@@ -159,195 +159,6 @@
 
     'use strict';
 
-    var UIHeader = function UIHeader(element) {
-        this.init(element);
-    };
-
-    UIHeader.prototype.initButtons = function (header) {
-        var headerButtons = header.getElementsByClassName('ui-header-btn');
-        var panelButtons = header.getElementsByClassName('ui-panel-btn');
-
-        addClickOnButton(headerButtons);
-        addClickOnButton(panelButtons);
-
-        function addClickOnButton(buttons) {
-            for (var b = 0; b < buttons.length; b++) {
-                buttons[b].addEventListener('click', UIHeader.prototype.onButtonClick);
-            }
-        }
-    };
-
-    UIHeader.prototype.initPanelToggleButton = function (header) {
-        var panelToggleButtons = document.documentElement.getElementsByClassName('ui-panel-toggle-btn');
-        var panelToggleButton = panelToggleButtons[1] || panelToggleButtons[0];
-
-        if (panelToggleButton) {
-            panelToggleButton.addEventListener('click', function (e) {
-                var fieldsets = header.getElementsByClassName('ui-panel-fieldset');
-                for (var i = 0; 2 > i; i++) {
-                    if (fieldsets[i].classList.contains('ui-panel-active')) {
-                        fieldsets[i].classList.remove('ui-panel-active');
-                    } else {
-                        fieldsets[i].classList.add('ui-panel-active');
-                    }
-                }
-
-                if (ui.resolutionService.isTablet()) {
-                    ui.menuService.addCloseEventByClickOnPanel(e);
-                }
-            });
-        }
-    };
-
-    UIHeader.prototype.initDefaultActivePanel = function (header) {
-        var activePanel = header.getElementsByClassName('ui-panel-active');
-
-        if (!activePanel[1]) {
-            var firstPanelBlock = header.getElementsByClassName('ui-panel-fieldset')[1];
-            if (firstPanelBlock) {
-                firstPanelBlock.classList.add('ui-panel-active');
-            }
-        }
-    };
-
-    UIHeader.prototype.initHeaderStructure = function(header) {
-        /* General Header */
-        var headerGeneral = ui.elementService.create('div',['ui-header-general']);
-
-        /* Panel Toggle */
-        function createPanelToggle() {
-            var uiPanelToggle = ui.elementService.create('div',['ui-header-element-container']);
-            var uiPanelToggleBtn = ui.elementService.create('div',['ui-panel-toggle-btn']);
-            var uiMenuIcon = ui.elementService.create('i',['ui-icon', 'fa', 'fa-bars']);
-            uiPanelToggleBtn.appendChild(uiMenuIcon);
-            uiPanelToggle.appendChild(uiPanelToggleBtn);
-
-            return uiPanelToggle;
-        }
-
-        /* Logo Container */
-        function createLogoContainer() {
-            var uiHome = ui.elementService.create('div',['ui-header-element-container' ,'ui-header-logo-conteiner']);
-            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '/'});
-            var uiHomeLogo = ui.elementService.create('i',['ui-icon', 'ui-logo']);
-            uiHomeBtn.appendChild(uiHomeLogo);
-            uiHome.appendChild(uiHomeBtn);
-
-            return uiHome;
-        }
-
-        /* Right icon */
-        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-icon-right']);
-        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn']);
-        var uiRightLogo = ui.elementService.create('i',['ui-icon', 'ui-icon-setting']);
-        uiRightBtn.appendChild(uiRightLogo);
-        uiRight.appendChild(uiRightBtn);
-
-        headerGeneral.appendChild(createPanelToggle());
-        headerGeneral.appendChild(createLogoContainer());
-        headerGeneral.appendChild(uiRight);
-
-
-        /* UI Panel */
-        var panel = header.getElementsByClassName('ui-panel');
-        var panelFieldSets = header.getElementsByClassName('ui-panel-fieldset');
-
-        var fieldSetContainer;
-        var panelButton;
-        for (var p = 0; p < 2; p++) {
-
-            fieldSetContainer = panelFieldSets[p].getElementsByTagName('div');
-            panelButton = panelFieldSets[p].getElementsByTagName('a');
-
-            for(var f = 0; f < fieldSetContainer.length; f++) {
-                fieldSetContainer[f].classList.add('ui-panel-element-container');
-            }
-
-            for(var b = 0; b < panelButton.length; b++) {
-                panelButton[b].classList.add('ui-panel-btn');
-            }
-
-            if(p === 0) {
-                var panelToggleContainer = ui.elementService.create('div', ['ui-panel-toggle-mobile']);
-                panelToggleContainer.appendChild(createPanelToggle());
-                panelToggleContainer.appendChild(createLogoContainer());
-                panelFieldSets[0].insertBefore(panelToggleContainer, fieldSetContainer[0]);
-            }
-        }
-
-        /* Mobile Toggle Button */
-        var uiMobileToggle = createPanelToggle();
-        uiMobileToggle.classList.add('ui-mobile-toggle');
-        uiMobileToggle.addEventListener('click', function(e) {
-            var isActive = header.classList.contains('active');
-            var panel = header.getElementsByClassName('ui-panel')[0];
-
-            if(!isActive) {
-                ui.menuService.addCloseEventByClickOnPanel(e);
-                panel.classList.add('ui-panel-active');
-                header.classList.add('active');
-                return;
-            }
-            header.classList.remove('active');
-        }, true);
-        headerGeneral.appendChild(uiMobileToggle);
-
-        /* Assembly */
-        header.appendChild(headerGeneral);
-        header.appendChild(uiMobileToggle);
-
-    };
-
-    UIHeader.prototype.initScrollEvent = function (e) {
-        ui.eventService.scrollHeader();
-    };
-
-    UIHeader.prototype.setHeaderScroll = function() {
-        var mobileToggleBtn = document.documentElement.getElementsByClassName('ui-mobile-toggle')[0];
-        var panel = document.documentElement.getElementsByClassName('ui-panel')[0];
-        if (document.body.scrollTop > 44 || document.documentElement.scrollTop > 44) {
-            mobileToggleBtn.style.display = 'block';
-        } else {
-            mobileToggleBtn.style.display = 'none';
-        }
-    };
-
-    UIHeader.prototype.onButtonClick = function (e) {
-
-        //e.preventDefault();
-
-        //Find all activ buttons
-        var activeButton = document.documentElement.getElementsByClassName('ui-panel-btn-active')[0];
-        if (activeButton) {
-            activeButton.classList.remove('ui-panel-btn-active');
-        }
-
-        //Parse HREF
-        var href = this.getAttribute('href');
-
-        this.parentElement.classList.add('ui-panel-btn-active');
-    };
-
-    UIHeader.prototype.init = function (header) {
-        header.ui = this;
-
-        this.initHeaderStructure(header);
-        this.initPanelToggleButton(header);
-        this.initButtons(header);
-        this.initDefaultActivePanel(header);
-        this.initScrollEvent();
-
-        window.addEventListener('resize', this.initScrollEvent);
-    };
-
-    ui.register(UIHeader, 'ui-header', 'header');
-    ui.header = UIHeader;
-
-})();
-(function () {
-
-    'use strict';
-
     var UiInput = function UiInput(element) {
         this.init(element);
     };
@@ -611,179 +422,6 @@
 
 })();
 
-(function () {
-
-    'use strict';
-
-    var UISidebar = function UISidebar(element) {
-        this.init(element);
-    };
-
-    UISidebar.prototype.initSidebarStructure = function(sidebar) {
-        var sidebarContainers = sidebar.getElementsByTagName('div');
-        var sidebarButtons = sidebar.getElementsByTagName('a');
-        var sidebarIcons = sidebar.getElementsByTagName('i');
-        var sidebarLabels = sidebar.getElementsByTagName('span');
-
-        for(var c = 0; c < sidebarContainers.length; c++) {
-            sidebarContainers[c].classList.add('ui-sidebar-element-container');
-        }
-        for(var b = 0; b < sidebarButtons.length; b++) {
-            sidebarButtons[b].classList.add('ui-sidebar-btn');
-        }
-        for(var i = 0; i < sidebarIcons.length; i++) {
-            sidebarIcons[i].classList.add('ui-icon');
-        }
-        for(var l = 0; l < sidebarLabels.length; l++) {
-            sidebarLabels[l].classList.add('ui-sidebar-element-label');
-        }
-    };
-
-    UISidebar.prototype.initSidebarButtons = function (sidebar) {
-        var sidebarButtons = sidebar.getElementsByClassName('ui-sidebar-btn');
-
-        for (var b = 0; b < sidebarButtons.length; b++) {
-            sidebarButtons[b].addEventListener('click', this.onButtonClick);
-            sidebarButtons[b].addEventListener("mouseover", this.showSidebar);
-        }
-    };
-
-    UISidebar.prototype.initScrollEvent = function(sidebar) {
-        if(sidebar && !ui.resolutionService.isMobile()) {
-            ui.menuService.setMenuScroll();
-        }
-
-        ui.eventService.scrollMenu();
-    };
-
-    UISidebar.prototype.onButtonClick = function (e) {
-
-        //Parse HREF
-        var href = this.getAttribute('href');
-
-        if (!ui.resolutionService.isMobile()) {
-            UISidebar.prototype.hideSidebar(this);
-        }
-    };
-
-    UISidebar.prototype.showSidebar = function(e) {
-        var sidebar = e.target.offsetParent;
-        if(!sidebar.classList.contains('ui-sidebar-active'))
-            sidebar.classList.add('ui-sidebar-active');
-
-        sidebar.addEventListener('mouseleave', hideSidebar, false);
-
-        function hideSidebar(e) {
-            e.target.classList.remove('ui-sidebar-active');
-            sidebar.removeEventListener('mouseleave', hideSidebar, false);
-        }
-    };
-
-    UISidebar.prototype.hideSidebar = function (e) {
-        var sidebar = e.offsetParent;
-        sidebar.classList.remove('ui-sidebar-active');
-    };
-
-    UISidebar.prototype.init = function (sidebar) {
-        sidebar.ui = this;
-        
-        this.initSidebarStructure(sidebar);
-        this.initSidebarButtons(sidebar);
-        this.initScrollEvent(sidebar);
-        window.addEventListener('resize', this.initScrollEvent);
-    };
-
-    ui.register(UISidebar, 'ui-sidebar', 'sidebar');
-    ui.sidebar = UISidebar;
-
-})();
-(function () {
-
-    'use strict';
-
-    var UISubMenu = function UISubMenu(element) {
-        this.init(element);
-    };
-
-    UISubMenu.prototype.initSubmenuStructure = function(submenu) {
-        var submenuContainers = submenu.getElementsByTagName('div');
-        var submenuButtons = submenu.getElementsByTagName('a');
-        var submenuLabels = submenu.getElementsByTagName('span');
-
-        for(var c = 0; c < submenuContainers.length; c++) {
-            submenuContainers[c].classList.add('ui-submenu-element-container');
-        }
-        for(var b = 0; b < submenuButtons.length; b++) {
-            submenuButtons[b].classList.add('ui-submenu-element');
-            submenuButtons[b].classList.add('ui-submenu-btn');
-        }
-        for(var l = 0; l < submenuLabels.length; l++) {
-            submenuLabels[l].classList.add('ui-submenu-element-label');
-        }
-    };
-
-    UISubMenu.prototype.initOpenSubmenuButtons = function () {
-        var openSubmenuButtons = document.documentElement.getElementsByClassName('ui-open-submenu-btn');
-
-        for (var b = 0; b < openSubmenuButtons.length; b++) {
-            openSubmenuButtons[b].addEventListener('click', this.onOpenSubMenu);
-        }
-    };
-
-    UISubMenu.prototype.initSubmenuButtons = function (submenu) {
-        var submenuButtons = submenu.getElementsByClassName('ui-submenu-btn');
-
-        for (var b = 0; b < submenuButtons.length; b++) {
-            submenuButtons[b].addEventListener('click', this.onButtonClick);
-        }
-    };
-
-    UISubMenu.prototype.onOpenSubMenu = function (e) {
-        var submenu = document.getElementsByClassName('ui-submenu')[0];
-
-        if (submenu.classList.contains('ui-submenu-active')) {
-            ui.menuService.closeSubMenu();
-        } else {
-            e.target.offsetParent.classList.remove('ui-sidebar-active');
-            ui.menuService.openSubMenu();
-        }
-
-        e.preventDefault();
-    };
-
-    UISubMenu.prototype.onButtonClick = function (e) {
-
-        //Parse HREF
-        var href = this.getAttribute('href');
-        ui.menuService.closeSubMenu();
-    };
-
-    UISubMenu.prototype.mouseleave = function (e) {
-        ui.menuService.closeSubMenu();
-    };
-
-    UISubMenu.prototype.initScrollEvent = function(submenu) {
-        if(submenu && !ui.resolutionService.isMobile()) {
-            ui.menuService.setMenuScroll();
-        }
-
-        ui.eventService.scrollMenu();
-    };
-
-    UISubMenu.prototype.init = function (submenu) {
-        submenu.ui = self;
-
-        this.initSubmenuStructure(submenu);
-        this.initOpenSubmenuButtons(submenu);
-        this.initSubmenuButtons(submenu);
-        this.initScrollEvent(submenu);
-        submenu.addEventListener('mouseleave', this.mouseleave);
-    };
-
-    ui.register(UISubMenu, 'ui-submenu', 'submenu');
-    ui.submenu = UISubMenu;
-
-})();
 ;(function () {
 
     'use strict';
@@ -879,16 +517,17 @@
 
     'use strict';
 
-    function openSubMenu() {
-        var submenu = document.getElementsByClassName('ui-submenu')[0];
+    function openSubMenu(submenu) {
         submenu.classList.add('ui-submenu-active');
 
         addCloseEventByClickOnSubmenu();
     }
 
     function closeSubMenu() {
-        var submenu = document.documentElement.getElementsByClassName('ui-submenu')[0];
-        submenu.classList.remove('ui-submenu-active');
+        var submenuList = document.documentElement.getElementsByClassName('ui-submenu');
+        for (var i = 0; i < submenuList.length; i++) {
+            submenuList[i].classList.remove('ui-submenu-active');
+        }
 
         document.documentElement.removeEventListener('click', closeSubMenu, true);
     }
@@ -1018,3 +657,346 @@
 })();
 
 		
+(function () {
+
+    'use strict';
+
+    var UIHeader = function UIHeader(element) {
+        this.init(element);
+    };
+
+    UIHeader.prototype.initButtons = function (header) {
+        var headerButtons = header.getElementsByClassName('ui-header-btn');
+        var panelButtons = header.getElementsByClassName('ui-panel-btn');
+
+        addClickOnButton(headerButtons);
+        addClickOnButton(panelButtons);
+
+        function addClickOnButton(buttons) {
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', UIHeader.prototype.onButtonClick);
+            }
+        }
+    };
+
+    UIHeader.prototype.initPanelToggleButton = function (header) {
+        var panelToggleButtons = document.documentElement.getElementsByClassName('ui-panel-toggle-btn');
+        var panelToggleButton = panelToggleButtons[1] || panelToggleButtons[0];
+
+        if (panelToggleButton) {
+            panelToggleButton.addEventListener('click', function (e) {
+                var fieldsets = header.getElementsByClassName('ui-panel-fieldset');
+                for (var i = 0; 2 > i; i++) {
+                    if (fieldsets[i].classList.contains('ui-panel-active')) {
+                        fieldsets[i].classList.remove('ui-panel-active');
+                    } else {
+                        fieldsets[i].classList.add('ui-panel-active');
+                    }
+                }
+
+                if (ui.resolutionService.isTablet()) {
+                    ui.menuService.addCloseEventByClickOnPanel(e);
+                }
+            });
+        }
+    };
+
+    UIHeader.prototype.initDefaultActivePanel = function (header) {
+        var activePanel = header.getElementsByClassName('ui-panel-active');
+
+        if (!activePanel[1]) {
+            var firstPanelBlock = header.getElementsByClassName('ui-panel-fieldset')[1];
+            if (firstPanelBlock) {
+                firstPanelBlock.classList.add('ui-panel-active');
+            }
+        }
+    };
+
+    UIHeader.prototype.initHeaderStructure = function(header) {
+        /* General Header */
+        var headerGeneral = ui.elementService.create('div',['ui-header-general']);
+
+        /* Panel Toggle */
+        function createPanelToggle() {
+            var uiPanelToggle = ui.elementService.create('div',['ui-header-element-container']);
+            var uiPanelToggleBtn = ui.elementService.create('div',['ui-panel-toggle-btn']);
+            var uiMenuIcon = ui.elementService.create('i',['ui-icon', 'fa', 'fa-bars']);
+            uiPanelToggleBtn.appendChild(uiMenuIcon);
+            uiPanelToggle.appendChild(uiPanelToggleBtn);
+
+            return uiPanelToggle;
+        }
+
+        /* Logo Container */
+        function createLogoContainer() {
+            var uiHome = ui.elementService.create('div',['ui-header-element-container' ,'ui-header-logo-conteiner']);
+            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '/'});
+            var uiHomeLogo = ui.elementService.create('i',['ui-icon', 'ui-logo']);
+            uiHomeBtn.appendChild(uiHomeLogo);
+            uiHome.appendChild(uiHomeBtn);
+
+            return uiHome;
+        }
+
+        /* Right icon */
+        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-icon-right']);
+        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn']);
+        var uiRightLogo = ui.elementService.create('i',['ui-icon', 'ui-icon-setting']);
+        uiRightBtn.appendChild(uiRightLogo);
+        uiRight.appendChild(uiRightBtn);
+
+        headerGeneral.appendChild(createPanelToggle());
+        headerGeneral.appendChild(createLogoContainer());
+        headerGeneral.appendChild(uiRight);
+
+
+        /* UI Panel */
+        var panel = header.getElementsByClassName('ui-panel');
+        var panelFieldSets = header.getElementsByClassName('ui-panel-fieldset');
+
+        var fieldSetContainer;
+        var panelButton;
+        for (var i = 0; i < 2; i++) {
+
+            fieldSetContainer = panelFieldSets[i].getElementsByTagName('div');
+            panelButton = panelFieldSets[i].getElementsByTagName('a');
+
+            for(var j = 0; j < fieldSetContainer.length; j++) {
+                fieldSetContainer[j].classList.add('ui-panel-element-container');
+            }
+
+            for(var k = 0; k < panelButton.length; k++) {
+                panelButton[k].classList.add('ui-panel-btn');
+            }
+
+            if(i === 0) {
+                var panelToggleContainer = ui.elementService.create('div', ['ui-panel-toggle-mobile']);
+                panelToggleContainer.appendChild(createPanelToggle());
+                panelToggleContainer.appendChild(createLogoContainer());
+                panelFieldSets[0].insertBefore(panelToggleContainer, fieldSetContainer[0]);
+            }
+        }
+
+        /* Mobile Toggle Button */
+        var uiMobileToggle = createPanelToggle();
+        uiMobileToggle.classList.add('ui-mobile-toggle');
+        uiMobileToggle.addEventListener('click', function(e) {
+            var isActive = header.classList.contains('active');
+            var panel = header.getElementsByClassName('ui-panel')[0];
+
+            if(!isActive) {
+                ui.menuService.addCloseEventByClickOnPanel(e);
+                panel.classList.add('ui-panel-active');
+                header.classList.add('active');
+                return;
+            }
+            header.classList.remove('active');
+        }, true);
+        headerGeneral.appendChild(uiMobileToggle);
+
+        /* Assembly */
+        header.appendChild(headerGeneral);
+        header.appendChild(uiMobileToggle);
+
+    };
+
+    UIHeader.prototype.initScrollEvent = function (e) {
+        ui.eventService.scrollHeader();
+    };
+
+    UIHeader.prototype.setHeaderScroll = function() {
+        var mobileToggleBtn = document.documentElement.getElementsByClassName('ui-mobile-toggle')[0];
+        var panel = document.documentElement.getElementsByClassName('ui-panel')[0];
+        if (document.body.scrollTop > 44 || document.documentElement.scrollTop > 44) {
+            mobileToggleBtn.style.display = 'block';
+        } else {
+            mobileToggleBtn.style.display = 'none';
+        }
+    };
+
+    UIHeader.prototype.onButtonClick = function (e) {
+
+        //Find all activ buttons
+        var activeButton = document.documentElement.getElementsByClassName('ui-panel-btn-active')[0];
+        if (activeButton) {
+            activeButton.classList.remove('ui-panel-btn-active');
+        }
+
+        //Parse HREF
+        var href = this.getAttribute('href');
+
+        this.parentElement.classList.add('ui-panel-btn-active');
+    };
+
+    UIHeader.prototype.init = function (header) {
+        header.ui = this;
+
+        this.initHeaderStructure(header);
+        this.initPanelToggleButton(header);
+        this.initButtons(header);
+        this.initDefaultActivePanel(header);
+        this.initScrollEvent();
+
+        window.addEventListener('resize', this.initScrollEvent);
+    };
+
+    ui.register(UIHeader, 'ui-header', 'header');
+    ui.header = UIHeader;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UIOpenSubMenuBtn = function UIOpenSubMenuBtn(element) {
+        this.init(element);
+    };
+
+    UIOpenSubMenuBtn.prototype.onButtonClick = function (e) {
+        var subMenuName = e.currentTarget.getAttribute('data-sub-menu');
+        var submenu = document.querySelector('[data-sub-menu-name="' + subMenuName + '"]');
+
+        if (submenu.classList.contains('ui-submenu-active')) {
+            ui.menuService.closeSubMenu();
+        } else {
+            e.target.offsetParent.classList.remove('ui-sidebar-active');
+            ui.menuService.openSubMenu(submenu);
+        }
+
+        e.preventDefault();
+    };
+
+    UIOpenSubMenuBtn.prototype.init = function (btn) {
+        btn.ui = self;
+
+        btn.addEventListener('click', this.onButtonClick);
+    };
+
+    ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'open-submenu-btn');
+    ui.submenuBtn = UIOpenSubMenuBtn;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UISidebarBtn = function UISidebarBtnBtn(element) {
+        this.init(element);
+    };
+
+    UISidebarBtn.prototype.showSidebar = function(e) {
+        var sidebar = e.target.offsetParent;
+        if(!sidebar.classList.contains('ui-sidebar-active')) {
+            sidebar.classList.add('ui-sidebar-active');
+        }
+
+        sidebar.addEventListener('mouseleave', hideSidebar, false);
+
+        function hideSidebar(e) {
+            e.target.classList.remove('ui-sidebar-active');
+            sidebar.removeEventListener('mouseleave', hideSidebar, false);
+        }
+    };
+
+    UISidebarBtn.prototype.onButtonClick = function (e) {
+        if (!ui.resolutionService.isMobile()) {
+            UISidebarBtn.prototype.hideSidebar(this);
+        }
+    };
+
+    UISidebarBtn.prototype.hideSidebar = function (e) {
+        var sidebar = e.offsetParent;
+        sidebar.classList.remove('ui-sidebar-active');
+    };
+
+    UISidebarBtn.prototype.init = function (btn) {
+        btn.ui = self;
+
+        btn.addEventListener('click', this.onButtonClick);
+        btn.addEventListener("mouseover", this.showSidebar);
+    };
+
+    ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebar-btn');
+    ui.submenuBtn = UISidebarBtn;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UISidebar = function UISidebar(element) {
+        this.init(element);
+    };
+
+    UISidebar.prototype.initScrollEvent = function(sidebar) {
+        if(sidebar && !ui.resolutionService.isMobile()) {
+            ui.menuService.setMenuScroll();
+        }
+
+        ui.eventService.scrollMenu();
+    };
+
+    UISidebar.prototype.init = function (sidebar) {
+        sidebar.ui = this;
+
+        this.initScrollEvent(sidebar);
+        window.addEventListener('resize', this.initScrollEvent);
+    };
+
+    ui.register(UISidebar, 'ui-sidebar', 'sidebar');
+    ui.sidebar = UISidebar;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UISubMenuBtn = function UISubMenuBtn(element) {
+        this.init(element);
+    };
+
+    UISubMenuBtn.prototype.onButtonClick = function (e) {
+        ui.menuService.closeSubMenu();
+    };
+
+    UISubMenuBtn.prototype.init = function (btn) {
+        btn.ui = self;
+
+        btn.addEventListener('click', this.onButtonClick);
+    };
+
+    ui.register(UISubMenuBtn, 'ui-submenu-btn', 'submenu-btn');
+    ui.submenuBtn = UISubMenuBtn;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UISubMenu = function UISubMenu(element) {
+        this.init(element);
+    };
+
+    UISubMenu.prototype.mouseleave = function (e) {
+        ui.menuService.closeSubMenu();
+    };
+
+    UISubMenu.prototype.initScrollEvent = function(submenu) {
+        if(submenu && !ui.resolutionService.isMobile()) {
+            ui.menuService.setMenuScroll();
+        }
+
+        ui.eventService.scrollMenu();
+    };
+
+    UISubMenu.prototype.init = function (submenu) {
+        submenu.ui = self;
+
+        this.initScrollEvent(submenu);
+        submenu.addEventListener('mouseleave', this.mouseleave);
+    };
+
+    ui.register(UISubMenu, 'ui-submenu', 'submenu');
+    ui.submenu = UISubMenu;
+
+})();
