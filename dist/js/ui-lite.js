@@ -872,8 +872,8 @@
         btn.addEventListener('click', this.onButtonClick);
     };
 
-    ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'open-submenu-btn');
-    ui.submenuBtn = UIOpenSubMenuBtn;
+    ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'openSubMenuBtn');
+    ui.openSubMenuBtn = UIOpenSubMenuBtn;
 
 })();
 (function () {
@@ -916,8 +916,8 @@
         btn.addEventListener("mouseover", this.showSidebar);
     };
 
-    ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebar-btn');
-    ui.submenuBtn = UISidebarBtn;
+    ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebarBtn');
+    ui.sidebarBtn = UISidebarBtn;
 
 })();
 (function () {
@@ -965,7 +965,7 @@
         btn.addEventListener('click', this.onButtonClick);
     };
 
-    ui.register(UISubMenuBtn, 'ui-submenu-btn', 'submenu-btn');
+    ui.register(UISubMenuBtn, 'ui-submenu-btn', 'submenuBtn');
     ui.submenuBtn = UISubMenuBtn;
 
 })();

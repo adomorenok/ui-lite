@@ -38,7 +38,7 @@
         btn.addEventListener("mouseover", this.showSidebar);
     };
 
-    ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebar-btn');
+    ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebarBtn');
     ui.sidebarBtn = UISidebarBtn;
 
 })();

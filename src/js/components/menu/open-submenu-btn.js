@@ -26,7 +26,7 @@
         btn.addEventListener('click', this.onButtonClick);
     };
 
-    ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'open-submenu-btn');
+    ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'openSubMenuBtn');
     ui.openSubMenuBtn = UIOpenSubMenuBtn;
 
 })();
