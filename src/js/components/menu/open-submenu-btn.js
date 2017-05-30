@@ -27,6 +27,6 @@
     };
 
     ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'open-submenu-btn');
-    ui.submenuBtn = UIOpenSubMenuBtn;
+    ui.openSubMenuBtn = UIOpenSubMenuBtn;
 
 })();

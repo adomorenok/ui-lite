@@ -39,6 +39,6 @@
     };
 
     ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebar-btn');
-    ui.submenuBtn = UISidebarBtn;
+    ui.sidebarBtn = UISidebarBtn;
 
 })();
