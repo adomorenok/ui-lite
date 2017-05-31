@@ -1,14 +1,14 @@
-;(function() {
+(function () {
 
     'use strict';
 
-    ui.onReady = function ( fn ) {
+    ui.onReady = function (fn) {
 
         // Sanity check
-        if ( typeof fn !== 'function' ) return;
+        if (typeof fn !== 'function') return;
 
         // If document is already loaded, run method
-        if ( document.readyState === 'complete'  ) {
+        if (document.readyState === 'complete') {
             return fn();
         }
 
@@ -22,6 +22,6 @@
         //},100);
 
         //// Otherwise, wait until document is loaded
-        document.addEventListener( 'DOMContentLoaded', fn, false );
+        document.addEventListener('DOMContentLoaded', fn, false);
     };
 }());

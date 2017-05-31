@@ -1,5 +1,7 @@
 (function () {
 
+    'use strict';
+
     var ui = {};
 
     ui.componentService = {
@@ -422,34 +424,7 @@
 
 })();
 
-;(function () {
-
-    'use strict';
-
-    var elementService = {
-        create: function(elName, elClass, eAttr, eHTML) {
-
-            var e = document.createElement(elName);
-            elClass.forEach(function(_class) {
-                e.classList.add(_class);
-            });
-
-            for(var a in eAttr) {
-                e.setAttribute(a, eAttr[a]);
-            }
-
-            if(eHTML) {
-                e.innerHTML = eHTML;
-            }
-
-            return e;
-        }
-    };
-
-
-    ui.elementService = elementService;
-}());
-;(function () {
+(function () {
 
     'use strict';
 
@@ -461,35 +436,40 @@
         };
 
         function scrollHeader() {
-
             var headerActiveEvents = activeEvents.header;
             var index = headerActiveEvents.indexOf('scrollHeader');
-            var mobileToggleBtn = document.documentElement.getElementsByClassName('ui-mobile-toggle')[0];
-            if(ui.resolutionService.isMobile() || ui.resolutionService.isTablet()) {
-                if(index === -1) {
+            var mobileToggleBtns = document.documentElement.getElementsByClassName('ui-mobile-toggle');
+
+            if (ui.resolutionService.isMobile() || ui.resolutionService.isTablet()) {
+                if (index === -1) {
                     window.addEventListener("scroll", ui.header.prototype.setHeaderScroll, false);
                     activeEvents.header.push('scrollHeader');
                 }
                 if (document.body.scrollTop > 64 || document.documentElement.scrollTop > 64) {
-                    mobileToggleBtn.style.display = 'block';
+                    setButtonsStyle(mobileToggleBtns, {name: 'display', value: 'block'});
                 } else {
-                    mobileToggleBtn.style.display = 'none';
+                    setButtonsStyle(mobileToggleBtns, {name: 'display', value: 'none'});
                 }
             } else {
-                mobileToggleBtn.style.display = 'none';
+                setButtonsStyle(mobileToggleBtns, {name: 'display', value: 'none'});
                 window.removeEventListener("scroll", ui.header.prototype.setHeaderScroll, false);
-                if(index > -1) {
+                if (index > -1) {
                     headerActiveEvents.splice(index, 1);
                 }
             }
         }
 
-        function scrollMenu() {
+        function setButtonsStyle(buttons, style) {
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].style[style.name] = style.value;
+            }
+        }
 
+        function scrollMenu() {
             var menuActiveEvents = activeEvents.menu;
             var index = menuActiveEvents.indexOf('scrollMenu');
-            if(!ui.resolutionService.isMobile()) {
-                if(index === -1) {
+            if (!ui.resolutionService.isMobile()) {
+                if (index === -1) {
                     window.addEventListener("scroll", ui.menuService.setMenuScroll, false);
                     window.addEventListener('resize', ui.menuService.setMenuScroll, false);
                     activeEvents.header.push('scrollMenu');
@@ -497,7 +477,7 @@
             } else {
                 window.removeEventListener("scroll", ui.menuService.setMenuScroll, false);
                 window.removeEventListener('resize', ui.menuService.setMenuScroll, false);
-                if(index > -1) {
+                if (index > -1) {
                     menuActiveEvents.splice(index, 1);
                 }
 
@@ -533,8 +513,8 @@
     }
 
     function closePanel(e) {
-        document.documentElement.getElementsByClassName('ui-header')[0].classList.remove('active');
-        document.documentElement.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
+        removeClassToElements(document.documentElement.getElementsByClassName('ui-header'), 'active');
+        removeClassToElements(document.documentElement.getElementsByClassName('ui-panel'), 'ui-panel-active');
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
@@ -543,8 +523,8 @@
     }
 
     function addCloseEventByClickOnPanel() {
-        ui.onReady(function() {
-            document.documentElement.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
+        ui.onReady(function () {
+            addClassToElements(document.documentElement.getElementsByClassName('ui-panel'), 'ui-panel-active');
             document.documentElement.addEventListener('click', closePanel, true);
         });
     }
@@ -553,34 +533,57 @@
         var scroll = document.body.scrollTop || document.documentElement.scrollTop;
         var menuElements = getMenuElements();
 
-        if(menuElements.sidebar) addPadding(menuElements.sidebar, scroll);
-        if(menuElements.submenu) addPadding(menuElements.submenu, scroll);
+        for (i = 0; i < menuElements.sidebars.length; i++) {
+            addPadding(menuElements.sidebars[i], scroll);
+        }
+        for (i = 0; i < menuElements.submenu.length; i++) {
+            addPadding(menuElements.submenu[i], scroll);
+        }
     }
 
     function addPadding(e, scroll) {
-        if(scroll < 64) {
-            e.style.paddingTop = (64 - scroll) + 'px';
+        if (scroll < 64) {
+            setPaddingTop(e, (64 - scroll) + 'px');
         } else {
-            e.style.paddingTop = 0;
+            setPaddingTop(e, 0);
         }
     }
 
     function removePadding() {
         var menuElements = getMenuElements();
 
-        if(menuElements.sidebar) {
-            menuElements.sidebar.style.paddingTop = 0;
+        var i;
+        for (i = 0; i < menuElements.sidebars.length; i++) {
+            setPaddingTop(menuElements.sidebars[i], 0);
         }
-        if(menuElements.submenu) {
-            menuElements.submenu.style.paddingTop = 0;
+        for (i = 0; i < menuElements.submenu.length; i++) {
+            setPaddingTop(menuElements.submenu[i], 0);
+        }
+    }
+
+    function setPaddingTop(element, padding) {
+        if (element) {
+            element.style.paddingTop = padding;
         }
     }
 
     function getMenuElements() {
         return {
-            sidebar: document.documentElement.getElementsByClassName('ui-sidebar')[0],
-            submenu: document.documentElement.getElementsByClassName('ui-submenu')[0]
+            sidebars: document.documentElement.getElementsByClassName('ui-sidebar'),
+            submenu: document.documentElement.getElementsByClassName('ui-submenu')
         };
+    }
+
+    function addClassToElements(elements, clazz) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.add(clazz);
+        }
+    }
+
+    function removeClassToElements(elements, clazz) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.remove(clazz);
+        }
     }
 
     var menuService = (function () {
@@ -598,17 +601,17 @@
 })();
 
 		
-;(function() {
+(function () {
 
     'use strict';
 
-    ui.onReady = function ( fn ) {
+    ui.onReady = function (fn) {
 
         // Sanity check
-        if ( typeof fn !== 'function' ) return;
+        if (typeof fn !== 'function') return;
 
         // If document is already loaded, run method
-        if ( document.readyState === 'complete'  ) {
+        if (document.readyState === 'complete') {
             return fn();
         }
 
@@ -622,41 +625,67 @@
         //},100);
 
         //// Otherwise, wait until document is loaded
-        document.addEventListener( 'DOMContentLoaded', fn, false );
+        document.addEventListener('DOMContentLoaded', fn, false);
     };
 }());
 (function () {
 
     'use strict';
 
-	var MOBILEWIDTH = 470; //Max mobile width
-	var TABLETWIDTH = 880; //Max mobile width
+    var MOBILE_WIDTH = 470; //Max mobile width
+    var TABLET_WIDTH = 880; //Max tablet width
 
     var uiResolutionService = {
-
         getScreenWidth: function () {
             return (window.innerWidth > 0) ? window.innerWidth : screen.width;
         },
 
         isMobile: function () {
-            return this.getScreenWidth() < (MOBILEWIDTH + 1) ? true : false;
+            return this.getScreenWidth() < (MOBILE_WIDTH + 1) ? true : false;
         },
 
         isTablet: function () {
-            return this.getScreenWidth() < (TABLETWIDTH + 1) ? true : false;
+            return this.getScreenWidth() < (TABLET_WIDTH + 1) ? true : false;
         },
 
         isFullScreen: function () {
-            return this.getScreenWidth() > TABLETWIDTH ? true : false;
+            return this.getScreenWidth() > TABLET_WIDTH ? true : false;
         }
     };
 
     ui.resolutionService = uiResolutionService;
-    ui.MOBILEWIDTH = MOBILEWIDTH;
-    ui.TABLETWIDTH = TABLETWIDTH;
+    ui.MOBILE_WIDTH = MOBILE_WIDTH;
+    ui.TABLETWIDTH = TABLET_WIDTH;
 })();
 
 		
+(function () {
+
+    'use strict';
+
+    var UIHeaderBtn = function UIHeaderBtn(element) {
+        this.init(element);
+    };
+
+    UIHeaderBtn.prototype.onButtonClick = function (e) {
+        var activeButtons = document.documentElement.getElementsByClassName('ui-panel-btn-active');
+        for (var i = 0; i < activeButtons.length; i++) {
+            activeButtons[i].classList.remove('ui-panel-btn-active');
+        }
+
+        this.parentElement.classList.add('ui-panel-btn-active');
+    };
+
+    UIHeaderBtn.prototype.init = function (btn) {
+        btn.ui = self;
+
+        btn.addEventListener('click', this.onButtonClick);
+    };
+
+    ui.register(UIHeaderBtn, 'ui-header-btn', 'headerBtn');
+    ui.headerBtn = UIHeaderBtn;
+
+})();
 (function () {
 
     'use strict';
@@ -665,176 +694,24 @@
         this.init(element);
     };
 
-    UIHeader.prototype.initButtons = function (header) {
-        var headerButtons = header.getElementsByClassName('ui-header-btn');
-        var panelButtons = header.getElementsByClassName('ui-panel-btn');
-
-        addClickOnButton(headerButtons);
-        addClickOnButton(panelButtons);
-
-        function addClickOnButton(buttons) {
-            for (var i = 0; i < buttons.length; i++) {
-                buttons[i].addEventListener('click', UIHeader.prototype.onButtonClick);
-            }
-        }
-    };
-
-    UIHeader.prototype.initPanelToggleButton = function (header) {
-        var panelToggleButtons = document.documentElement.getElementsByClassName('ui-panel-toggle-btn');
-        var panelToggleButton = panelToggleButtons[1] || panelToggleButtons[0];
-
-        if (panelToggleButton) {
-            panelToggleButton.addEventListener('click', function (e) {
-                var fieldsets = header.getElementsByClassName('ui-panel-fieldset');
-                for (var i = 0; 2 > i; i++) {
-                    if (fieldsets[i].classList.contains('ui-panel-active')) {
-                        fieldsets[i].classList.remove('ui-panel-active');
-                    } else {
-                        fieldsets[i].classList.add('ui-panel-active');
-                    }
-                }
-
-                if (ui.resolutionService.isTablet()) {
-                    ui.menuService.addCloseEventByClickOnPanel(e);
-                }
-            });
-        }
-    };
-
-    UIHeader.prototype.initDefaultActivePanel = function (header) {
-        var activePanel = header.getElementsByClassName('ui-panel-active');
-
-        if (!activePanel[1]) {
-            var firstPanelBlock = header.getElementsByClassName('ui-panel-fieldset')[1];
-            if (firstPanelBlock) {
-                firstPanelBlock.classList.add('ui-panel-active');
-            }
-        }
-    };
-
-    UIHeader.prototype.initHeaderStructure = function(header) {
-        /* General Header */
-        var headerGeneral = ui.elementService.create('div',['ui-header-general']);
-
-        /* Panel Toggle */
-        function createPanelToggle() {
-            var uiPanelToggle = ui.elementService.create('div',['ui-header-element-container']);
-            var uiPanelToggleBtn = ui.elementService.create('div',['ui-panel-toggle-btn']);
-            var uiMenuIcon = ui.elementService.create('i',['ui-icon', 'fa', 'fa-bars']);
-            uiPanelToggleBtn.appendChild(uiMenuIcon);
-            uiPanelToggle.appendChild(uiPanelToggleBtn);
-
-            return uiPanelToggle;
-        }
-
-        /* Logo Container */
-        function createLogoContainer() {
-            var uiHome = ui.elementService.create('div',['ui-header-element-container' ,'ui-header-logo-conteiner']);
-            var uiHomeBtn = ui.elementService.create('a',['ui-header-btn'], {'href' : '/'});
-            var uiHomeLogo = ui.elementService.create('i',['ui-icon', 'ui-logo']);
-            uiHomeBtn.appendChild(uiHomeLogo);
-            uiHome.appendChild(uiHomeBtn);
-
-            return uiHome;
-        }
-
-        /* Right icon */
-        var uiRight = ui.elementService.create('div',['ui-header-element-container' ,'ui-icon-right']);
-        var uiRightBtn = ui.elementService.create('div',['ui-open-submenu-btn']);
-        var uiRightLogo = ui.elementService.create('i',['ui-icon', 'ui-icon-setting']);
-        uiRightBtn.appendChild(uiRightLogo);
-        uiRight.appendChild(uiRightBtn);
-
-        headerGeneral.appendChild(createPanelToggle());
-        headerGeneral.appendChild(createLogoContainer());
-        headerGeneral.appendChild(uiRight);
-
-
-        /* UI Panel */
-        var panel = header.getElementsByClassName('ui-panel');
-        var panelFieldSets = header.getElementsByClassName('ui-panel-fieldset');
-
-        var fieldSetContainer;
-        var panelButton;
-        for (var i = 0; i < 2; i++) {
-
-            fieldSetContainer = panelFieldSets[i].getElementsByTagName('div');
-            panelButton = panelFieldSets[i].getElementsByTagName('a');
-
-            for(var j = 0; j < fieldSetContainer.length; j++) {
-                fieldSetContainer[j].classList.add('ui-panel-element-container');
-            }
-
-            for(var k = 0; k < panelButton.length; k++) {
-                panelButton[k].classList.add('ui-panel-btn');
-            }
-
-            if(i === 0) {
-                var panelToggleContainer = ui.elementService.create('div', ['ui-panel-toggle-mobile']);
-                panelToggleContainer.appendChild(createPanelToggle());
-                panelToggleContainer.appendChild(createLogoContainer());
-                panelFieldSets[0].insertBefore(panelToggleContainer, fieldSetContainer[0]);
-            }
-        }
-
-        /* Mobile Toggle Button */
-        var uiMobileToggle = createPanelToggle();
-        uiMobileToggle.classList.add('ui-mobile-toggle');
-        uiMobileToggle.addEventListener('click', function(e) {
-            var isActive = header.classList.contains('active');
-            var panel = header.getElementsByClassName('ui-panel')[0];
-
-            if(!isActive) {
-                ui.menuService.addCloseEventByClickOnPanel(e);
-                panel.classList.add('ui-panel-active');
-                header.classList.add('active');
-                return;
-            }
-            header.classList.remove('active');
-        }, true);
-        headerGeneral.appendChild(uiMobileToggle);
-
-        /* Assembly */
-        header.appendChild(headerGeneral);
-        header.appendChild(uiMobileToggle);
-
-    };
-
     UIHeader.prototype.initScrollEvent = function (e) {
         ui.eventService.scrollHeader();
     };
 
-    UIHeader.prototype.setHeaderScroll = function() {
-        var mobileToggleBtn = document.documentElement.getElementsByClassName('ui-mobile-toggle')[0];
-        var panel = document.documentElement.getElementsByClassName('ui-panel')[0];
-        if (document.body.scrollTop > 44 || document.documentElement.scrollTop > 44) {
-            mobileToggleBtn.style.display = 'block';
-        } else {
-            mobileToggleBtn.style.display = 'none';
+    UIHeader.prototype.setHeaderScroll = function () {
+        var mobileToggleBtns = document.documentElement.getElementsByClassName('ui-mobile-toggle');
+        for (var i = 0; i < mobileToggleBtns.length; i++) {
+            if (document.body.scrollTop > 44 || document.documentElement.scrollTop > 44) {
+                mobileToggleBtns[i].style.display = 'block';
+            } else {
+                mobileToggleBtns[i].style.display = 'none';
+            }
         }
-    };
-
-    UIHeader.prototype.onButtonClick = function (e) {
-
-        //Find all activ buttons
-        var activeButton = document.documentElement.getElementsByClassName('ui-panel-btn-active')[0];
-        if (activeButton) {
-            activeButton.classList.remove('ui-panel-btn-active');
-        }
-
-        //Parse HREF
-        var href = this.getAttribute('href');
-
-        this.parentElement.classList.add('ui-panel-btn-active');
     };
 
     UIHeader.prototype.init = function (header) {
         header.ui = this;
 
-        this.initHeaderStructure(header);
-        this.initPanelToggleButton(header);
-        this.initButtons(header);
-        this.initDefaultActivePanel(header);
         this.initScrollEvent();
 
         window.addEventListener('resize', this.initScrollEvent);
@@ -874,6 +751,40 @@
 
     ui.register(UIOpenSubMenuBtn, 'ui-open-submenu-btn', 'openSubMenuBtn');
     ui.openSubMenuBtn = UIOpenSubMenuBtn;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UIPanelToggleBtn = function UIPanelToggleBtn(element) {
+        this.init(element);
+    };
+
+    UIPanelToggleBtn.prototype.onButtonClick = function (e) {
+        var header = document.getElementsByClassName('ui-header')[0];
+        var fieldsets = header.getElementsByClassName('ui-panel-fieldset');
+        for (var i = 0; 2 > i; i++) {
+            if (fieldsets[i].classList.contains('ui-panel-active')) {
+                fieldsets[i].classList.remove('ui-panel-active');
+            } else {
+                fieldsets[i].classList.add('ui-panel-active');
+            }
+        }
+
+        if (ui.resolutionService.isTablet()) {
+            ui.menuService.addCloseEventByClickOnPanel(e);
+        }
+    };
+
+    UIPanelToggleBtn.prototype.init = function (btn) {
+        btn.ui = self;
+
+        btn.addEventListener('click', this.onButtonClick);
+    };
+
+    ui.register(UIPanelToggleBtn, 'ui-panel-toggle-btn', 'uiPanelToggleBtn');
+    ui.uiPanelToggleBtn = UIPanelToggleBtn;
 
 })();
 (function () {
@@ -998,5 +909,40 @@
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');
     ui.submenu = UISubMenu;
+
+})();
+(function () {
+
+    'use strict';
+
+    var UIMobileToggleBtn = function UIMobileToggleBtn(element) {
+        this.init(element);
+    };
+
+    UIMobileToggleBtn.prototype.onButtonClick = function (e) {
+        var header = e.currentTarget.parentElement;
+        var isActive = header.classList.contains('active');
+
+        if (!isActive) {
+            var panels = header.getElementsByClassName('ui-panel');
+
+            for (var i = 0; i < panels.length; i++) {
+                ui.menuService.addCloseEventByClickOnPanel(e);
+                panels[i].classList.add('ui-panel-active');
+                header.classList.add('active');
+                return;
+            }
+        }
+        header.classList.remove('active');
+    };
+
+    UIMobileToggleBtn.prototype.init = function (btn) {
+        btn.ui = self;
+
+        btn.addEventListener('click', this.onButtonClick);
+    };
+
+    ui.register(UIMobileToggleBtn, 'ui-mobile-toggle', 'uiMobileToggleBtn');
+    ui.uiMobileToggleBtn = UIMobileToggleBtn;
 
 })();

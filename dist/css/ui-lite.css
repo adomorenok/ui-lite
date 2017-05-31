@@ -41,7 +41,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
   z-index: 99;
   background-color: rgba(23, 23, 23, 0.97);
   height: 64px; }
-  .ui-header a, .ui-header .ui-panel-toggle-btn {
+  .ui-header a, .ui-header .ui-panel-toggle-btn, .ui-header .ui-mobile-toggle-btn {
     cursor: pointer;
     display: block;
     color: #fff2b7; }
@@ -127,7 +127,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
 @media (max-width: 880px) {
   .ui-header .ui-header-logo-conteiner {
     width: 64px; }
-  .ui-header-btn i.ui-logo {
+  .ui-header-logo i.ui-logo {
     background-size: 64px; }
   .ui-panel {
     position: fixed;
@@ -198,7 +198,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     display: block; }
     .ui-panel .ui-panel-fieldset {
       display: inline-block; }
-  .ui-panel-toggle-btn {
+  .ui-panel-toggle-btn, .ui-mobile-toggle-btn {
     display: none !important; } }
 
 .ui-icon {

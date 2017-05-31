@@ -1,5 +1,7 @@
 (function () {
 
+    'use strict';
+
     var ui = {};
 
     ui.componentService = {

@@ -7,7 +7,7 @@
   background-color: $header-background-color;
   height: $header-height;
 
-  a, .ui-panel-toggle-btn {
+  a, .ui-panel-toggle-btn, .ui-mobile-toggle-btn {
     cursor: pointer;
     display: block;
     color: $base-color;
@@ -135,7 +135,7 @@
     width: $header-height;
   }
 
-  .ui-header-btn i.ui-logo {
+  .ui-header-logo i.ui-logo {
     background-size: $header-height;
   }
 
@@ -244,7 +244,7 @@
 
   }
 
-  .ui-panel-toggle-btn {
+  .ui-panel-toggle-btn, .ui-mobile-toggle-btn {
     display: none !important;
   }
 }

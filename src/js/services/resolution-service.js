@@ -2,31 +2,30 @@
 
     'use strict';
 
-	var MOBILEWIDTH = 470; //Max mobile width
-	var TABLETWIDTH = 880; //Max mobile width
+    var MOBILE_WIDTH = 470; //Max mobile width
+    var TABLET_WIDTH = 880; //Max tablet width
 
     var uiResolutionService = {
-
         getScreenWidth: function () {
             return (window.innerWidth > 0) ? window.innerWidth : screen.width;
         },
 
         isMobile: function () {
-            return this.getScreenWidth() < (MOBILEWIDTH + 1) ? true : false;
+            return this.getScreenWidth() < (MOBILE_WIDTH + 1) ? true : false;
         },
 
         isTablet: function () {
-            return this.getScreenWidth() < (TABLETWIDTH + 1) ? true : false;
+            return this.getScreenWidth() < (TABLET_WIDTH + 1) ? true : false;
         },
 
         isFullScreen: function () {
-            return this.getScreenWidth() > TABLETWIDTH ? true : false;
+            return this.getScreenWidth() > TABLET_WIDTH ? true : false;
         }
     };
 
     ui.resolutionService = uiResolutionService;
-    ui.MOBILEWIDTH = MOBILEWIDTH;
-    ui.TABLETWIDTH = TABLETWIDTH;
+    ui.MOBILE_WIDTH = MOBILE_WIDTH;
+    ui.TABLETWIDTH = TABLET_WIDTH;
 })();
 
 		

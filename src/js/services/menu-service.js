@@ -18,8 +18,8 @@
     }
 
     function closePanel(e) {
-        document.documentElement.getElementsByClassName('ui-header')[0].classList.remove('active');
-        document.documentElement.getElementsByClassName('ui-panel')[0].classList.remove('ui-panel-active');
+        removeClassToElements(document.documentElement.getElementsByClassName('ui-header'), 'active');
+        removeClassToElements(document.documentElement.getElementsByClassName('ui-panel'), 'ui-panel-active');
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
@@ -28,8 +28,8 @@
     }
 
     function addCloseEventByClickOnPanel() {
-        ui.onReady(function() {
-            document.documentElement.getElementsByClassName('ui-panel')[0].classList.add('ui-panel-active');
+        ui.onReady(function () {
+            addClassToElements(document.documentElement.getElementsByClassName('ui-panel'), 'ui-panel-active');
             document.documentElement.addEventListener('click', closePanel, true);
         });
     }
@@ -38,34 +38,57 @@
         var scroll = document.body.scrollTop || document.documentElement.scrollTop;
         var menuElements = getMenuElements();
 
-        if(menuElements.sidebar) addPadding(menuElements.sidebar, scroll);
-        if(menuElements.submenu) addPadding(menuElements.submenu, scroll);
+        for (i = 0; i < menuElements.sidebars.length; i++) {
+            addPadding(menuElements.sidebars[i], scroll);
+        }
+        for (i = 0; i < menuElements.submenu.length; i++) {
+            addPadding(menuElements.submenu[i], scroll);
+        }
     }
 
     function addPadding(e, scroll) {
-        if(scroll < 64) {
-            e.style.paddingTop = (64 - scroll) + 'px';
+        if (scroll < 64) {
+            setPaddingTop(e, (64 - scroll) + 'px');
         } else {
-            e.style.paddingTop = 0;
+            setPaddingTop(e, 0);
         }
     }
 
     function removePadding() {
         var menuElements = getMenuElements();
 
-        if(menuElements.sidebar) {
-            menuElements.sidebar.style.paddingTop = 0;
+        var i;
+        for (i = 0; i < menuElements.sidebars.length; i++) {
+            setPaddingTop(menuElements.sidebars[i], 0);
         }
-        if(menuElements.submenu) {
-            menuElements.submenu.style.paddingTop = 0;
+        for (i = 0; i < menuElements.submenu.length; i++) {
+            setPaddingTop(menuElements.submenu[i], 0);
+        }
+    }
+
+    function setPaddingTop(element, padding) {
+        if (element) {
+            element.style.paddingTop = padding;
         }
     }
 
     function getMenuElements() {
         return {
-            sidebar: document.documentElement.getElementsByClassName('ui-sidebar')[0],
-            submenu: document.documentElement.getElementsByClassName('ui-submenu')[0]
+            sidebars: document.documentElement.getElementsByClassName('ui-sidebar'),
+            submenu: document.documentElement.getElementsByClassName('ui-submenu')
         };
+    }
+
+    function addClassToElements(elements, clazz) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.add(clazz);
+        }
+    }
+
+    function removeClassToElements(elements, clazz) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.remove(clazz);
+        }
     }
 
     var menuService = (function () {
