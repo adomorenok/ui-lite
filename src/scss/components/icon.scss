@@ -31,30 +31,6 @@
 	background-image: url("../img/ui-lite/down-arrow.png");
 }
 
-.w-ui-icon:hover > i.ui-icon-list {
-   background-image: url("../img/ui-lite/list_active.png");
-}
-
-.w-ui-icon:hover > i.ui-icon-request-search {
-	background-image: url("../img/ui-lite/search_active.png");
-}
-
-.w-ui-icon:hover > i.ui-icon-history {
-	background-image: url("../img/ui-lite/history_active.png");
-}
-
-.w-ui-icon:hover > i.ui-icon-notification {
-	background-image: url("../img/ui-lite/notification_active.png");
-}
-
-.w-ui-icon:hover > i.ui-icon-inbox {
-	background-image: url("../img/ui-lite/message_active.png");
-}
-
-.w-ui-icon:hover > i.ui-icon-setting {
-	background-image: url("../img/ui-lite/settings_active.png");
-}
-
 @media (max-width: 880px) {
 	i.ui-logo {
 		  background-image: url(../img/ui-lite/velotooler-logo.png) !important;

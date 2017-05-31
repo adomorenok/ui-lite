@@ -29,13 +29,6 @@
   }
 }
 
-@media (max-width: 340px) {
-  i.ui-icon {
-    width: $sidebar-element-size-small;
-    height: $sidebar-element-size-small;
-  }
-}
-
 @media (max-width: $mobile-width) {
 
   .ui-sidebar {
