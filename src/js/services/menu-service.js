@@ -38,6 +38,7 @@
         var scroll = document.body.scrollTop || document.documentElement.scrollTop;
         var menuElements = getMenuElements();
 
+        var i;
         for (i = 0; i < menuElements.sidebars.length; i++) {
             addPadding(menuElements.sidebars[i], scroll);
         }
