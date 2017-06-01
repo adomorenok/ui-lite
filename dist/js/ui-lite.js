@@ -231,6 +231,24 @@
 
     'use strict';
 
+    var UIRadio = function UIRadio(element) {
+        this.init(element);
+    };
+
+
+    UIRadio.prototype.init = function (radio) {
+        radio.ui = this;
+    };
+
+    ui.register(UIRadio, 'ui-radio', 'radio');
+    ui.radio = UIRadio;
+
+})();
+
+(function () {
+
+    'use strict';
+
     var UiSelect = function UiSelect(element, list, label) {
         this.init(element, list, label);
     };
@@ -533,6 +551,7 @@
         var scroll = document.body.scrollTop || document.documentElement.scrollTop;
         var menuElements = getMenuElements();
 
+        var i;
         for (i = 0; i < menuElements.sidebars.length; i++) {
             addPadding(menuElements.sidebars[i], scroll);
         }
