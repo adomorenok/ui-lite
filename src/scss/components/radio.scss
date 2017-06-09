@@ -10,12 +10,15 @@
     visibility: hidden;
   }
 
-  & label{
+  & label {
     display: block;
     position: relative;
     padding: 0 15px 0 20px;
     cursor: pointer;
     z-index: 10;
+  }
+
+  & span {
     -webkit-transition: all 0.25s linear;
   }
 
@@ -29,7 +32,7 @@
     }
   }
 
-  .check{
+  .check {
     display: block;
     position: absolute;
     border: 3px solid $radio-color;
@@ -64,8 +67,7 @@
     & ~ .check::before{
       background: $active-color;
     }
-
-    & ~ label{
+    & ~ span {
       color: $active-color;
     }
   }

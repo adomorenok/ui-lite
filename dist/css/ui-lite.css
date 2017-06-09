@@ -295,7 +295,8 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     position: relative;
     padding: 0 15px 0 20px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 10; }
+  .ui-radio span {
     -webkit-transition: all 0.25s linear; }
   .ui-radio:hover label {
     color: #FFFFFF; }
@@ -328,7 +329,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     border: 3px solid #FBC02D; }
   .ui-radio input[type=radio]:checked ~ .check::before {
     background: #FBC02D; }
-  .ui-radio input[type=radio]:checked ~ label {
+  .ui-radio input[type=radio]:checked ~ span {
     color: #FBC02D; }
 
 a.ui-btn {
