@@ -818,9 +818,11 @@
         var sidebar = e.target.offsetParent;
         if(!sidebar.classList.contains('ui-sidebar-active')) {
             sidebar.classList.add('ui-sidebar-active');
-        }
 
-        sidebar.addEventListener('mouseleave', hideSidebar, false);
+            sidebar.addEventListener('mouseleave', hideSidebar, false);
+
+            ui.menuService.closeSubMenu();
+        }
 
         function hideSidebar(e) {
             e.target.classList.remove('ui-sidebar-active');
