@@ -526,7 +526,7 @@ a.ui-btn {
     -webkit-transition: width 150ms linear; }
     .ui-sidebar .ui-sidebar-element-container {
       flex: 0 0 auto; }
-      .ui-sidebar .ui-sidebar-element-container:nth-last-child(2) {
+      .ui-sidebar .ui-sidebar-element-container:nth-last-child(3) {
         flex: 1 0 auto; }
     .ui-sidebar.ui-sidebar-active {
       width: 208px; }
