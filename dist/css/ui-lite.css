@@ -592,6 +592,7 @@ a.ui-btn {
       padding: 0;
       margin: 0; }
   .ui-submenu-active {
+    z-index: 110;
     transform: scaleY(1);
     /* For Safari 3.1 to 6.0 */
     -webkit-transform: scaleY(1); } }
