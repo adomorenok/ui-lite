@@ -7,7 +7,7 @@
     };
 
     UISidebarBtn.prototype.showSidebar = function(e) {
-        var sidebar = e.target.offsetParent;
+        var sidebar = e.currentTarget.offsetParent;
         if(!sidebar.classList.contains('ui-sidebar-active')) {
             sidebar.classList.add('ui-sidebar-active');
 
