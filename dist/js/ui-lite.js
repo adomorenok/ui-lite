@@ -825,7 +825,7 @@
         }
 
         function hideSidebar(e) {
-            e.target.classList.remove('ui-sidebar-active');
+            e.currentTarget.classList.remove('ui-sidebar-active');
             sidebar.removeEventListener('mouseleave', hideSidebar, false);
         }
     };
@@ -845,7 +845,7 @@
         btn.ui = self;
 
         btn.addEventListener('click', this.onButtonClick);
-        btn.addEventListener("mouseover", this.showSidebar);
+        btn.addEventListener("mouseenter", this.showSidebar);
     };
 
     ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebarBtn');
