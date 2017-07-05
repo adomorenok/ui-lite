@@ -12,8 +12,6 @@
             sidebar.classList.add('ui-sidebar-active');
 
             sidebar.addEventListener('mouseleave', hideSidebar, false);
-
-            ui.menuService.closeSubMenu();
         }
 
         function hideSidebar(e) {

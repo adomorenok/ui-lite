@@ -517,8 +517,7 @@
 
     function openSubMenu(submenu) {
         submenu.classList.add('ui-submenu-active');
-
-        addCloseEventByClickOnSubmenu();
+        addCloseEventForSubmenu(submenu);
     }
 
     function closeSubMenu() {
@@ -536,7 +535,8 @@
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
-    function addCloseEventByClickOnSubmenu() {
+    function addCloseEventForSubmenu(submenu) {
+        submenu.addEventListener('mouseleave', closeSubMenu);
         document.documentElement.addEventListener('click', closeSubMenu, true);
     }
 
@@ -611,7 +611,7 @@
             openSubMenu: openSubMenu,
             setMenuScroll: setMenuScroll,
             removePadding: removePadding,
-            addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
+            addCloseEventForSubmenu: addCloseEventForSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
     })();
@@ -820,8 +820,6 @@
             sidebar.classList.add('ui-sidebar-active');
 
             sidebar.addEventListener('mouseleave', hideSidebar, false);
-
-            ui.menuService.closeSubMenu();
         }
 
         function hideSidebar(e) {
@@ -909,10 +907,6 @@
         this.init(element);
     };
 
-    UISubMenu.prototype.mouseleave = function (e) {
-        ui.menuService.closeSubMenu();
-    };
-
     UISubMenu.prototype.initScrollEvent = function(submenu) {
         if(submenu && !ui.resolutionService.isMobile()) {
             ui.menuService.setMenuScroll();
@@ -925,7 +919,6 @@
         submenu.ui = self;
 
         this.initScrollEvent(submenu);
-        submenu.addEventListener('mouseleave', this.mouseleave);
     };
 
     ui.register(UISubMenu, 'ui-submenu', 'submenu');

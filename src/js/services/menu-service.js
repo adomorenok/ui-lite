@@ -4,8 +4,7 @@
 
     function openSubMenu(submenu) {
         submenu.classList.add('ui-submenu-active');
-
-        addCloseEventByClickOnSubmenu();
+        addCloseEventForSubmenu(submenu);
     }
 
     function closeSubMenu() {
@@ -23,7 +22,8 @@
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
-    function addCloseEventByClickOnSubmenu() {
+    function addCloseEventForSubmenu(submenu) {
+        submenu.addEventListener('mouseleave', closeSubMenu);
         document.documentElement.addEventListener('click', closeSubMenu, true);
     }
 
@@ -98,7 +98,7 @@
             openSubMenu: openSubMenu,
             setMenuScroll: setMenuScroll,
             removePadding: removePadding,
-            addCloseEventByClickOnSubmenu: addCloseEventByClickOnSubmenu,
+            addCloseEventForSubmenu: addCloseEventForSubmenu,
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
     })();
