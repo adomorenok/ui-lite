@@ -539,6 +539,8 @@ a.ui-btn {
         transition: color 150ms linear;
         /* For Safari 3.1 to 6.0 */
         -webkit-transition: color 150ms linear; }
+    .ui-sidebar.ui-sidebar-active.ui-sidebar-small {
+      width: 64px; }
   .ui-sidebar-has-header {
     margin-top: 64px; }
   .ui-sidebar-left {

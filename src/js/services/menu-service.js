@@ -12,6 +12,10 @@
         for (var i = 0; i < submenuList.length; i++) {
             submenuList[i].classList.remove('ui-submenu-active');
         }
+        var sidebar = document.documentElement.getElementsByClassName('ui-sidebar-small');
+        for (var s = 0; s < sidebar.length; s++) {
+            sidebar[s].classList.remove('ui-sidebar-small');
+        }
 
         document.documentElement.removeEventListener('click', closeSubMenu, true);
     }

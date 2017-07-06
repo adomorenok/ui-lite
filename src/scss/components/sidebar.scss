@@ -97,6 +97,10 @@
         -webkit-transition: color $transition-speed linear;
       }
     }
+
+    &.ui-sidebar-active.ui-sidebar-small {
+      width: $sidebar-element-size;
+    }
   }
 
   .ui-sidebar-has-header {

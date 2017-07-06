@@ -525,6 +525,10 @@
         for (var i = 0; i < submenuList.length; i++) {
             submenuList[i].classList.remove('ui-submenu-active');
         }
+        var sidebar = document.documentElement.getElementsByClassName('ui-sidebar-small');
+        for (var s = 0; s < sidebar.length; s++) {
+            sidebar[s].classList.remove('ui-sidebar-small');
+        }
 
         document.documentElement.removeEventListener('click', closeSubMenu, true);
     }
@@ -756,6 +760,7 @@
             ui.menuService.closeSubMenu();
         } else {
             e.target.offsetParent.classList.remove('ui-sidebar-active');
+            e.target.offsetParent.classList.add('ui-sidebar-small');
             ui.menuService.openSubMenu(submenu);
         }
 
@@ -843,7 +848,7 @@
         btn.ui = self;
 
         btn.addEventListener('click', this.onButtonClick);
-        btn.addEventListener("mouseenter", this.showSidebar);
+        btn.addEventListener('mouseenter', this.showSidebar);
     };
 
     ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebarBtn');

@@ -35,7 +35,7 @@
         btn.ui = self;
 
         btn.addEventListener('click', this.onButtonClick);
-        btn.addEventListener("mouseenter", this.showSidebar);
+        btn.addEventListener('mouseenter', this.showSidebar);
     };
 
     ui.register(UISidebarBtn, 'ui-sidebar-btn', 'sidebarBtn');
