@@ -38,7 +38,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 75;
   background-color: rgba(23, 23, 23, 0.97);
   height: 64px; }
   .ui-header a, .ui-header .ui-panel-toggle-btn, .ui-header .ui-mobile-toggle-btn {
