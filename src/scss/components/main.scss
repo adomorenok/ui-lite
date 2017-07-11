@@ -19,6 +19,14 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
   color: $active-color;
 }
 
+.ui-badge {
+  position: absolute;
+  top: -1.5em;
+  right: 0.6em;
+  font-size: 11px;
+  color: rgba(255,0,0,1);
+}
+
 /*
  *  Styling a scrollbar
  */
