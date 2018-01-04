@@ -11,15 +11,15 @@
         },
 
         isMobile: function () {
-            return this.getScreenWidth() < (MOBILE_WIDTH + 1) ? true : false;
+            return this.getScreenWidth() < (MOBILE_WIDTH + 1);
         },
 
         isTablet: function () {
-            return this.getScreenWidth() < (TABLET_WIDTH + 1) ? true : false;
+            return this.getScreenWidth() < (TABLET_WIDTH + 1);
         },
 
         isFullScreen: function () {
-            return this.getScreenWidth() > TABLET_WIDTH ? true : false;
+            return this.getScreenWidth() > TABLET_WIDTH;
         }
     };
 

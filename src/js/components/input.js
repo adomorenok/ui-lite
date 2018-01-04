@@ -58,7 +58,6 @@
         if (label) {
             label.addEventListener('click', function () {
                 input.focus();
-                input.value = input.value;
             });
         }
     };

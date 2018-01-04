@@ -28,7 +28,17 @@
 
     function addCloseEventForSubmenu(submenu) {
         submenu.addEventListener('mouseleave', closeSubMenu);
-        document.documentElement.addEventListener('click', closeSubMenu, true);
+        var elements = submenu.getElementsByClassName('ui-submenu-element-container');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].addEventListener('click', closeSubMenu, true);
+        }
+
+        var sidebar = document.getElementsByClassName('ui-sidebar')[0];
+
+        var submenuElements = sidebar.getElementsByClassName('ui-sidebar-element-container');
+        for (i = 0; i < submenuElements.length; i++) {
+            submenuElements[i].addEventListener('click', closeSubMenu, true);
+        }
     }
 
     function addCloseEventByClickOnPanel() {
@@ -96,7 +106,7 @@
         }
     }
 
-    var menuService = (function () {
+    ui.menuService = (function () {
         return {
             closeSubMenu: closeSubMenu,
             openSubMenu: openSubMenu,
@@ -106,8 +116,6 @@
             addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
     })();
-
-    ui.menuService = menuService;
 })();
 
 		

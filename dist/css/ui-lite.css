@@ -14,7 +14,7 @@ a {
 
 a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submenu-element-container:hover, .ui-header-element-container:hover {
   background-color: #303030;
-  color: #FBC02D; }
+  color: #ffec92; }
 
 .ui-badge {
   position: absolute;
@@ -38,7 +38,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
 .ui-scroll::-webkit-scrollbar-thumb {
   border-radius: 70%;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #FBC02D; }
+  background-color: #ffec92; }
 
 .ui-header {
   position: relative;
@@ -63,7 +63,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     text-align: center;
     line-height: 64px; }
     .ui-header .ui-header-element-container a:hover .ui-header-element-container {
-      color: #FBC02D; }
+      color: #ffec92; }
   .ui-header .ui-mobile-toggle {
     display: none;
     position: fixed;
@@ -96,7 +96,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
         font-size: 14px;
         color: azure; }
       .ui-panel .ui-panel-element-container a:hover span {
-        color: #FBC02D; }
+        color: #ffec92; }
     .ui-panel .ui-panel-element-container:after {
       background-color: #fff2b7;
       bottom: 0px;
@@ -163,7 +163,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
       .ui-panel .ui-panel-element-container:hover {
         border: 0; }
         .ui-panel .ui-panel-element-container:hover span {
-          color: #FBC02D; }
+          color: #ffec92; }
       .ui-panel .ui-panel-element-container:after {
         background-color: transparent; } }
 
@@ -333,11 +333,11 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     transition: background 0.25s linear;
     -webkit-transition: background 0.25s linear; }
   .ui-radio input[type=radio]:checked ~ .check {
-    border: 3px solid #FBC02D; }
+    border: 3px solid #ffec92; }
   .ui-radio input[type=radio]:checked ~ .check::before {
-    background: #FBC02D; }
+    background: #ffec92; }
   .ui-radio input[type=radio]:checked ~ span {
-    color: #FBC02D; }
+    color: #ffec92; }
 
 a.ui-btn {
   line-height: 34px; }
@@ -345,7 +345,7 @@ a.ui-btn {
 .ui-btn {
   min-width: 5em;
   min-height: 2em;
-  background: #FBC02D;
+  background: #ffec92;
   color: rgba(23, 23, 23, 0.97);
   display: inline-block;
   position: relative;
@@ -408,7 +408,7 @@ a.ui-btn {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
 
 .ui-btn:active {
-  background: #FBC02D; }
+  background: #ffec92; }
 
 .ui-btn:focus {
   outline-color: transparent; }
@@ -463,7 +463,7 @@ a.ui-btn {
   .ui-select-options .ui-select-option:hover,
   .ui-select-options .ui-select-option:focus {
     background: #303030;
-    color: #FBC02D;
+    color: #ffec92;
     outline: 0px solid transparent; }
 
 .ui-select-options.is-opened {
@@ -571,7 +571,7 @@ a.ui-btn {
     font-size: 14px;
     font-weight: bold; }
     .ui-submenu .ui-submenu-element-label:hover {
-      color: #FBC02D; }
+      color: #ffec92; }
 
 @media (max-width: 470px) {
   .ui-submenu {

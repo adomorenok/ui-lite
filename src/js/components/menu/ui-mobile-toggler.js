@@ -13,12 +13,9 @@
         if (!isActive) {
             var panels = header.getElementsByClassName('ui-panel');
 
-            for (var i = 0; i < panels.length; i++) {
-                ui.menuService.addCloseEventByClickOnPanel(e);
-                panels[i].classList.add('ui-panel-active');
-                header.classList.add('active');
-                return;
-            }
+            ui.menuService.addCloseEventByClickOnPanel(e);
+            panels[0].classList.add('ui-panel-active');
+            header.classList.add('active');
         }
         header.classList.remove('active');
     };
