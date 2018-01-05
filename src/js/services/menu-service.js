@@ -27,17 +27,27 @@
     }
 
     function addCloseEventForSubmenu(submenu) {
-        submenu.addEventListener('mouseleave', closeSubMenu);
+        if (!submenu.classList.contains('ui-ui-submenu__pinned-mode')) {
+            submenu.addEventListener('mouseleave', closeSubMenu);
+        }
+
+        var closeIcons = submenu.getElementsByClassName('ui-submenu__close-icon');
+        for (var i = 0; i < closeIcons.length; i++) {
+            closeIcons[i].addEventListener('click', closeSubMenu, true);
+        }
+
         var elements = submenu.getElementsByClassName('ui-submenu-element-container');
-        for (var i = 0; i < elements.length; i++) {
+        for (i = 0; i < elements.length; i++) {
             elements[i].addEventListener('click', closeSubMenu, true);
         }
 
-        var sidebar = document.getElementsByClassName('ui-sidebar')[0];
+        var sidebars = document.getElementsByClassName('ui-sidebar');
 
-        var submenuElements = sidebar.getElementsByClassName('ui-sidebar-element-container');
-        for (i = 0; i < submenuElements.length; i++) {
-            submenuElements[i].addEventListener('click', closeSubMenu, true);
+        for (i = 0; i < sidebars.length; i++) {
+            var submenuElements = sidebars[i].getElementsByClassName('ui-sidebar-element-container');
+            for (var j = 0; j < submenuElements.length; j++) {
+                submenuElements[j].addEventListener('click', closeSubMenu, true);
+            }
         }
     }
 
