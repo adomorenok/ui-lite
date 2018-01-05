@@ -27,7 +27,7 @@
     }
 
     function addCloseEventForSubmenu(submenu) {
-        if (!submenu.classList.contains('ui-ui-submenu__pinned-mode')) {
+        if (!submenu.classList.contains('ui-submenu__pinned-mode')) {
             submenu.addEventListener('mouseleave', closeSubMenu);
         }
 
