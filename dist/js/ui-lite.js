@@ -543,7 +543,7 @@
             submenu.addEventListener('mouseleave', closeSubMenu);
         }
 
-        var closeIcons = submenu.getElementsByClassName('ui-submenu__close-icon');
+        var closeIcons = submenu.getElementsByClassName('ui-icon-close');
         for (var i = 0; i < closeIcons.length; i++) {
             closeIcons[i].addEventListener('click', closeSubMenu, true);
         }
