@@ -233,6 +233,14 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
 .ui-icon-down-arrow {
   background-image: url("../img/ui-lite/down-arrow.png"); }
 
+.ui-icon-close {
+  background-size: 25px;
+  width: 20px;
+  height: 20px;
+  float: left;
+  cursor: pointer;
+  background-image: url("../img/ui-lite/close-icon.png"); }
+
 @media (max-width: 880px) {
   i.ui-logo {
     background-image: url(../img/ui-lite/velotooler-logo.png) !important; } }
