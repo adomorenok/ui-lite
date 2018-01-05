@@ -541,10 +541,6 @@
     function addCloseEventForSubmenu(submenu) {
         if (!submenu.classList.contains('ui-submenu__pinned-mode')) {
             submenu.addEventListener('mouseleave', closeSubMenu);
-            var elements = submenu.getElementsByClassName('ui-submenu-element-container');
-            for (i = 0; i < elements.length; i++) {
-                elements[i].addEventListener('click', closeSubMenu, true);
-            }
         }
 
         var closeIcons = submenu.getElementsByClassName('ui-icon-close');
