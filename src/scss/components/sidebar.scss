@@ -27,6 +27,13 @@
     height: $sidebar-element-size;
     float: left;
   }
+
+  @media (max-width: $mobile-small-screen-width) {
+    .ui-icon {
+      width: $sidebar-element-size-small;
+      height: $sidebar-element-size-small;
+    }
+  }
 }
 
 @media (max-width: $mobile-width) {
@@ -55,6 +62,12 @@
 
   body .ui-sidebar {
     padding-top: 0 !important;
+  }
+}
+
+@media (max-width: $mobile-small-screen-width) {
+  .ui-sidebar {
+    height: $sidebar-element-size-small;
   }
 }
 

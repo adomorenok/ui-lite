@@ -76,6 +76,26 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
     line-height: 64px;
     font-size: 2em;
     width: 64px; }
+  @media (max-width: 343px) {
+    .ui-header {
+      height: 59px; }
+      .ui-header .ui-header-element-container {
+        height: 59px;
+        line-height: 49px; }
+      .ui-header .ui-logo {
+        height: 59px; }
+      .ui-header .fa {
+        line-height: 59px;
+        width: 59px; }
+      .ui-header .ui-icon-right {
+        position: absolute;
+        top: 0;
+        right: 0; }
+        .ui-header .ui-icon-right i {
+          display: block;
+          background-size: 40px;
+          width: 59px;
+          height: 59px; } }
 
 .ui-panel {
   position: absolute;
@@ -120,7 +140,7 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
   /* For Safari 3.1 to 6.0 */
   -webkit-transition: transform 150ms linear; }
 
-@media (max-width: 470px) {
+@media (min-width: 344px) and (max-width: 470px) {
   .ui-header .ui-icon-right {
     position: absolute;
     top: 0;
@@ -131,11 +151,19 @@ a:hover .ui-sidebar-element-label, .ui-panel-element-container:hover, .ui-submen
       width: 64px;
       height: 64px; } }
 
-@media (max-width: 880px) {
+@media (max-width: 343px) {
+  .ui-header .ui-header-logo-conteiner {
+    width: 59px; }
+  .ui-header-logo i.ui-logo {
+    background-size: 59px; } }
+
+@media (min-width: 344px) and (max-width: 880px) {
   .ui-header .ui-header-logo-conteiner {
     width: 64px; }
   .ui-header-logo i.ui-logo {
-    background-size: 64px; }
+    background-size: 64px; } }
+
+@media (max-width: 880px) {
   .ui-panel {
     position: fixed;
     width: 230px;
@@ -510,6 +538,11 @@ a.ui-btn {
   height: 64px;
   float: left; }
 
+@media (max-width: 343px) {
+  .ui-sidebar-element-container .ui-icon {
+    width: 59px;
+    height: 59px; } }
+
 @media (max-width: 470px) {
   .ui-sidebar {
     position: fixed !important;
@@ -526,6 +559,10 @@ a.ui-btn {
       display: none !important; }
   body .ui-sidebar {
     padding-top: 0 !important; } }
+
+@media (max-width: 343px) {
+  .ui-sidebar {
+    height: 59px; } }
 
 @media (min-width: 471px) {
   .ui-sidebar {

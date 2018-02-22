@@ -11,12 +11,15 @@ $transition-type: ease-in-out;
 
 //Resolution variables
 $mobile-width: 470px;
+$mobile-small-screen-width: 343px;
 $not-mobile-width: 471px;
 $tablet-width: 880px;
 $not-tablet-width: 881px;
 
 //Header variables
 $header-height: 64px;
+$header-height-small: 59px;
+$header-line-height-small: 49px;
 $header-background-color: rgba(23, 23, 23, 0.97);
 
 $full-header-logo-width: 200px;
@@ -29,7 +32,9 @@ $sidebar-label-width: $sidebar-open-width;
 $ui-text-family: LandingPage, sans-serif;
 $sidebar-text-style: bold;
 $sidebar-element-size: 64px;
-$sidebar-element-size-small: 60px;
+$sidebar-element-size-small: 59px;
+
+
 // iPhone4/5
 
 //Submenu variables

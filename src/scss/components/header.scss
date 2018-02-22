@@ -48,6 +48,37 @@
     font-size: 2em;
     width: $sidebar-element-size;
   }
+
+  @media (max-width: $mobile-small-screen-width) {
+    .ui-header-element-container {
+      height: $header-height-small;
+      line-height: $header-line-height-small;
+    }
+
+    .ui-logo {
+      height: $header-height-small;
+    }
+
+    .fa {
+      line-height: $header-height-small;
+      width: $sidebar-element-size-small;
+    }
+
+    .ui-icon-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      i {
+        display: block;
+        background-size: 40px;
+        width: $header-height-small;
+        height: $header-height-small;
+      }
+    }
+
+    height: $header-height-small;
+  }
 }
 
 .ui-panel {
@@ -96,7 +127,7 @@
     }
 
     &.ui-panel-btn-active:after {
-      left:0;
+      left: 0;
       visibility: visible;
       width: 100%;
     }
@@ -113,7 +144,7 @@
   -webkit-transition: transform $transition-speed linear;
 }
 
-@media (max-width: $mobile-width) {
+@media (min-width: $mobile-small-screen-width + 1) and (max-width: $mobile-width) {
   .ui-header {
     .ui-icon-right {
       position: absolute;
@@ -130,7 +161,17 @@
   }
 }
 
-@media (max-width: $tablet-width) {
+@media (max-width: $mobile-small-screen-width) {
+  .ui-header .ui-header-logo-conteiner {
+    width: $header-height-small;
+  }
+
+  .ui-header-logo i.ui-logo {
+    background-size: $header-height-small;
+  }
+}
+
+@media (min-width: $mobile-small-screen-width + 1) and (max-width: $tablet-width) {
   .ui-header .ui-header-logo-conteiner {
     width: $header-height;
   }
@@ -138,7 +179,9 @@
   .ui-header-logo i.ui-logo {
     background-size: $header-height;
   }
+}
 
+@media (max-width: $tablet-width) {
   .ui-panel {
 
     position: fixed;
