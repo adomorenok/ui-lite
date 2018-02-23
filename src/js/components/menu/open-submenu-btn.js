@@ -15,7 +15,8 @@
         } else {
             e.target.offsetParent.classList.remove('ui-sidebar-active');
             e.target.offsetParent.classList.add('ui-sidebar-small');
-            ui.menuService.openSubMenu(submenu);
+            ui.menuService.closeSubMenu();
+            ui.menuService.openSubMenu(submenu, e);
         }
 
         e.preventDefault();

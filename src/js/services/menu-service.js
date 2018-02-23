@@ -2,9 +2,9 @@
 
     'use strict';
 
-    function openSubMenu(submenu) {
+    function openSubMenu(submenu, e) {
         submenu.classList.add('ui-submenu-active');
-        addCloseEventForSubmenu(submenu);
+        addCloseEventForSubmenu(submenu, e);
     }
 
     function closeSubMenu() {
@@ -26,7 +26,7 @@
         document.documentElement.removeEventListener('click', closePanel, true);
     }
 
-    function addCloseEventForSubmenu(submenu) {
+    function addCloseEventForSubmenu(submenu, e) {
         if (!submenu.classList.contains('ui-submenu__pinned-mode')) {
             submenu.addEventListener('mouseleave', closeSubMenu);
         }
@@ -34,15 +34,6 @@
         var closeIcons = submenu.getElementsByClassName('ui-icon-close');
         for (var i = 0; i < closeIcons.length; i++) {
             closeIcons[i].addEventListener('click', closeSubMenu, true);
-        }
-
-        var sidebars = document.getElementsByClassName('ui-sidebar');
-
-        for (i = 0; i < sidebars.length; i++) {
-            var submenuElements = sidebars[i].getElementsByClassName('ui-sidebar-element-container');
-            for (var j = 0; j < submenuElements.length; j++) {
-                submenuElements[j].addEventListener('click', closeSubMenu, true);
-            }
         }
     }
 
