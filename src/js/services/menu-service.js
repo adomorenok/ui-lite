@@ -16,8 +16,6 @@
         for (var s = 0; s < sidebar.length; s++) {
             sidebar[s].classList.remove('ui-sidebar-small');
         }
-
-        document.documentElement.removeEventListener('click', closeSubMenu, true);
     }
 
     function closePanel(e) {
