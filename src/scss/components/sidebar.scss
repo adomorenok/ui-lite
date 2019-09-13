@@ -21,7 +21,7 @@
     width: $sidebar-label-width;
   }
 
-  .ui-icon {
+  .vt-ui-icon {
     background-size: 32px;
     width: $sidebar-element-size;
     height: $sidebar-element-size;
@@ -29,7 +29,7 @@
   }
 
   @media (max-width: $mobile-small-screen-width) {
-    .ui-icon {
+    .vt-ui-icon {
       width: $sidebar-element-size-small;
       height: $sidebar-element-size-small;
     }
