@@ -64,7 +64,7 @@
       width: $sidebar-element-size-small;
     }
 
-    .vt-ui-icon-right {
+    .ui-icon-right {
       position: absolute;
       top: 0;
       right: 0;
@@ -146,7 +146,7 @@
 
 @media (min-width: $mobile-small-screen-width + 1) and (max-width: $mobile-width) {
   .ui-header {
-    .vt-ui-icon-right {
+    .ui-icon-right {
       position: absolute;
       top: 0;
       right: 0;
