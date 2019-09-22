@@ -18,20 +18,6 @@
         }
     }
 
-    function closeSubMenuExcludingPinnedMode() {
-        var submenuList = document.documentElement.getElementsByClassName('ui-submenu');
-        for (var i = 0; i < submenuList.length; i++) {
-            if (!submenuList[i].classList.contains('ui-submenu__pinned-mode')) {
-                submenuList[i].classList.remove('ui-submenu-active');
-            }
-        }
-
-        var sidebar = document.documentElement.getElementsByClassName('ui-sidebar-small');
-        for (var s = 0; s < sidebar.length; s++) {
-            sidebar[s].classList.remove('ui-sidebar-small');
-        }
-    }
-
     function closePanel(e) {
         removeClassToElements(document.documentElement.getElementsByClassName('ui-header'), 'active');
         removeClassToElements(document.documentElement.getElementsByClassName('ui-panel'), 'ui-panel-active');
@@ -121,8 +107,7 @@
             setMenuScroll: setMenuScroll,
             removePadding: removePadding,
             addCloseEventForSubmenu: addCloseEventForSubmenu,
-            addCloseEventByClickOnPanel: addCloseEventByClickOnPanel,
-            closeSubMenuExcludingPinnedMode: closeSubMenuExcludingPinnedMode
+            addCloseEventByClickOnPanel: addCloseEventByClickOnPanel
         };
     })();
 })();

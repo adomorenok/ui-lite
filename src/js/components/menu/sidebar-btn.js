@@ -7,9 +7,9 @@
     };
 
     UISidebarBtn.prototype.showSidebar = function(e) {
-        ui.menuService.closeSubMenuExcludingPinnedMode();
+        ui.menuService.closeSubMenu();
         var sidebar = e.currentTarget.offsetParent;
-        if(!sidebar.classList.contains('ui-sidebar-active') && !existActivePinnedModeSubmenu()) {
+        if(!sidebar.classList.contains('ui-sidebar-active')) {
             sidebar.classList.add('ui-sidebar-active');
 
             sidebar.addEventListener('mouseleave', hideSidebar, false);
@@ -18,19 +18,6 @@
         function hideSidebar(e) {
             e.currentTarget.classList.remove('ui-sidebar-active');
             sidebar.removeEventListener('mouseleave', hideSidebar, false);
-        }
-
-        function existActivePinnedModeSubmenu() {
-            var exist = false;
-            var submenuList = document.documentElement.getElementsByClassName('ui-submenu');
-            for (var i = 0; i < submenuList.length; i++) {
-                if (submenuList[i].classList.contains('ui-submenu-active') &&
-                    submenuList[i].classList.contains('ui-submenu__pinned-mode')) {
-                   exist = true;
-                   break;
-                }
-            }
-            return exist;
         }
     };
 
