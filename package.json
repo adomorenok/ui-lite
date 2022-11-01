@@ -9,7 +9,7 @@
   "author": "adomorenok",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.2",
     "gulp-concat": "",
     "gulp-install": "~0.6.0",
     "gulp-jshint": "",
